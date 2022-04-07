@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<features>
+    <feature>
+        <screenname>Calling</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>card_calling_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.CallingActivity</classname>
+    </feature>
+    <feature>
+        <screenname>Notification</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>card_notifs_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.NotificationsActivity</classname>
+    </feature>
+    <feature>
+        <screenname>Companion</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>card_companion_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.CompanionActivity</classname>
+    </feature>
+    <feature>
+        <screenname>Hand Raise</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>card_raisehand_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.HandRaiseActivity</classname>
+    </feature>
+    <feature>
+        <screenname>Smart Camera Editor</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>card_smartcameraeditor_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.SmartCameraActivity</classname>
+    </feature>
+    <feature>
+        <screenname>Privacy Shutter</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>card_privacy_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.PrivacyShutterActivity</classname>
+    </feature>
+</features>

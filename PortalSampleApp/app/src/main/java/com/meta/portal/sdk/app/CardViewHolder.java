@@ -5,11 +5,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
+    private final CardView mCardView;
     private final TextView mFeatureName;
-    private final TextView mDemoModeTitle;
+    private final TextView mClassNameTitle;
     
     private Feature mFeature;
     
@@ -18,8 +20,9 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     public CardViewHolder(final View view, final OnListItemClickedListener onListItemClickedListener) {
         super(view);
         mOnListItemClickedListener = onListItemClickedListener;
+        mCardView = (CardView) view.findViewById(R.id.card_view);
         mFeatureName = (TextView) view.findViewById(R.id.feature_name);
-        mDemoModeTitle = (TextView) view.findViewById(R.id.demo_mode_title);
+        mClassNameTitle = (TextView) view.findViewById(R.id.class_name_title);
         
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,8 +34,9 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     
     public void bind(Feature feature) {
         mFeature = feature;
+        mCardView.setBackgroundResource(feature.getBackgroundResourceId());
         mFeatureName.setText(feature.getScreenName());
-        mDemoModeTitle.setText(feature.getDemoModeTitle());
+        mClassNameTitle.setText(feature.getClassNameTitle());
     }
     
     public interface OnListItemClickedListener {

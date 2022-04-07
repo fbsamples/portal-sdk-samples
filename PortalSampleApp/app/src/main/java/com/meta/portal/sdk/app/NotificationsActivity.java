@@ -2,12 +2,12 @@ package com.meta.portal.sdk.app;
 
 import android.os.Bundle;
 
-public class MockActivity2 extends BaseActivity {
+public class NotificationsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mocked_2);
+        setContentView(R.layout.activity_notifications);
     }
 
 }

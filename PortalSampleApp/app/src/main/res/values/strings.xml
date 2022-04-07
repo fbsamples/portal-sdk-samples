@@ -12,4 +12,17 @@
 
     <string name="header_first_title">Welcome to the \nReference App</string>
     <string name="header_second_title">Explore the SDK</string>
+
+    <string name="calling_screen_name">Calling</string>
+    <string name="calling_class_name">Lorem_ClassName</string>
+    <string name="notification_screen_name">Notification</string>
+    <string name="notification_class_name">Lorem_ClassName</string>
+    <string name="companion_screen_name">Companion</string>
+    <string name="companion_class_name">Lorem_ClassName</string>
+    <string name="handraise_screen_name">Hand Raise</string>
+    <string name="handraise_class_name">Lorem_ClassName</string>
+    <string name="smart_camera_screen_name">Smart Camera Editor</string>
+    <string name="smart_camera_class_name">Lorem_ClassName</string>
+    <string name="privacy_screen_name">Privacy Shutter</string>
+    <string name="privacy_class_name">Lorem_ClassName</string>
 </resources>

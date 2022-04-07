@@ -1,14 +1,27 @@
 package com.meta.portal.sdk.app;
 
+import androidx.annotation.DrawableRes;
+
 public class Feature {
     
-    private final String mScreenName;
-    private final String mDemoModeTitle;
-    private final Class<?> mClassName;
-    
-    public Feature(final String screenName, final String demoModeTitle, final Class<?> className) {
+    private String mScreenName;
+    private String mClassNameTitle;
+    private @DrawableRes int mBackgroundResourceId;
+    private Class<?> mClassName;
+
+    public void setScreenName(final String screenName) {
         mScreenName = screenName;
-        mDemoModeTitle = demoModeTitle;
+    }
+
+    public void setClassNameTitle(final String classNameTitle) {
+        mClassNameTitle = classNameTitle;
+    }
+
+    public void setBackgroundResourceId(final @DrawableRes int backgroundResourceId) {
+        mBackgroundResourceId = backgroundResourceId;
+    }
+
+    public void setClassName(final Class<?> className) {
         mClassName = className;
     }
 
@@ -16,8 +29,12 @@ public class Feature {
         return mScreenName;
     }
 
-    public String getDemoModeTitle() {
-        return mDemoModeTitle;
+    public String getClassNameTitle() {
+        return mClassNameTitle;
+    }
+
+    public @DrawableRes int getBackgroundResourceId() {
+        return mBackgroundResourceId;
     }
 
     public Class<?> getClassName() {
