@@ -20,6 +20,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".CallingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp.NoActionBar">
+        </activity>
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp.NoActionBar">
+        </activity>
+        <activity
+            android:name=".CompanionActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp.NoActionBar">
+        </activity>
+        <activity
+            android:name=".HandRaiseActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp.NoActionBar">
+        </activity>
+        <activity
+            android:name=".SmartCameraActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp.NoActionBar">
+        </activity>
+        <activity
+            android:name=".PrivacyShutterActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

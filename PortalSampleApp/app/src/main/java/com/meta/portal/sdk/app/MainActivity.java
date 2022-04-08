@@ -11,7 +11,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity implements FeatureCardAdapter.FeatureCardAdapterListener {
     
-    final List<Feature> mFeatures = new ArrayList<>();
+    List<Feature> mFeatures = new ArrayList<>();
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +19,11 @@ public class MainActivity extends BaseActivity implements FeatureCardAdapter.Fea
 
         setContentView(R.layout.activity_main);
 
-        mFeatures.add(createFeature("MockActivity1", "Test MockActivity1", MockActivity1.class));
-        mFeatures.add(createFeature("MockActivity2", "Test MockActivity2", MockActivity2.class));
-        mFeatures.add(createFeature("MockActivity3", "Test MockActivity3", MockActivity3.class));
-        mFeatures.add(createFeature("MockActivity4", "Test MockActivity4", MockActivity4.class));
-        mFeatures.add(createFeature("MockActivity5", "Test MockActivity5", MockActivity5.class));
-        mFeatures.add(createFeature("MockActivity6", "Test MockActivity6", MockActivity6.class));
-        
+        FeatureParser featureParser = new FeatureParser(getAssets(), getResources(), getPackageName());
+        featureParser.parseFeatures();
+
+        mFeatures = featureParser.getFeatures();
+
         FeatureCardAdapter featureCardAdapter = new FeatureCardAdapter();
         featureCardAdapter.setData(mFeatures);
         featureCardAdapter.setFeatureCardAdapterListener(this);
@@ -49,10 +47,6 @@ public class MainActivity extends BaseActivity implements FeatureCardAdapter.Fea
                 });
 
         recyclerView.setLayoutManager(manager);
-    }
-
-    private Feature createFeature(final String screenName, final String demoModeTitle, final Class<?> className) {
-        return new Feature(screenName, demoModeTitle, className);
     }
 
     @Override

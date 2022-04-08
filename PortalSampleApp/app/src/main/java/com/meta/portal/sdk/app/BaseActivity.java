@@ -6,12 +6,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class BaseActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        updateSystemUiVisibility();
-        super.onCreate(savedInstanceState);
-    }
     
     @Override
     protected void onResume() {
