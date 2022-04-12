@@ -2,12 +2,23 @@ package com.meta.portal.sdk.app;
 
 import android.os.Bundle;
 
-public class PrivacyShutterActivity extends BaseActivity {
+import androidx.annotation.LayoutRes;
+import androidx.annotation.StringRes;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_privacy);
+public class PrivacyShutterActivity extends FeatureBaseActivity {
+
+    protected @LayoutRes
+    int getFeatureLayoutResId() {
+        return R.layout.activity_privacy;
+    }
+
+    protected @StringRes
+    int getFeatureInfoHeaderResId() {
+        return R.string.privacy_screen_feature_info_header;
+    }
+
+    protected @StringRes int getFeatureInfoTextResId() {
+        return R.string.privacy_screen_feature_info_text;
     }
 
 }

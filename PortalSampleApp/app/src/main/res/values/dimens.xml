@@ -12,4 +12,12 @@
     <dimen name="header_second_padding_left">10dp</dimen>
     <dimen name="feature_name_height">32dp</dimen>
     <dimen name="class_name_title_height">32dp</dimen>
+    <dimen name="feature_info_margin_left">819dp</dimen>
+    <dimen name="button_default_width">118dp</dimen>
+    <dimen name="button_default_height">60dp</dimen>
+    <dimen name="feature_info_close_button_margin_top">15dp</dimen>
+    <dimen name="feature_info_close_button_margin_right">16dp</dimen>
+    <dimen name="feature_info_header_margin_top">135dp</dimen>
+    <dimen name="feature_info_header_margin_bottom">45dp</dimen>
+    <dimen name="feature_info_text_margin_horizontal">45dp</dimen>
 </resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/feature_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/card_background"/>
+
+    <FrameLayout
+        android:id="@+id/feature_container_background"
+        android:layout_width="@dimen/feature_info_margin_left"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:id="@+id/feature_info_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/feature_info_margin_left">
+
+        <Button
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/feature_info_close_button"
+            android:layout_width="@dimen/button_default_width"
+            android:layout_height="@dimen/button_default_height"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/feature_info_close_button_margin_top"
+            android:layout_marginRight="@dimen/feature_info_close_button_margin_right"
+            android:text="@string/feature_info_close"
+            android:textSize="26sp"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:background="@drawable/button_default_ripple"
+            app:backgroundTint="@null"
+            style="?android:attr/borderlessButtonStyle"/>
+
+        <TextView
+            android:id="@+id/feature_info_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/feature_info_header_margin_top"
+            android:layout_marginBottom="@dimen/feature_info_header_margin_bottom"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:textSize="26sp"
+            android:textColor="@color/black"
+            tools:text="0"/>
+
+        <TextView
+            android:id="@+id/feature_info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/feature_info_header"
+            android:layout_marginRight="@dimen/feature_info_text_margin_horizontal"
+            android:layout_marginLeft="@dimen/feature_info_text_margin_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            tools:text="0"/>
+    </RelativeLayout>
+
+</RelativeLayout>
