@@ -25,4 +25,18 @@
     <string name="smart_camera_class_name">Lorem_ClassName</string>
     <string name="privacy_screen_name">Privacy Shutter</string>
     <string name="privacy_class_name">Lorem_ClassName</string>
+
+    <string name="feature_info_close">Close</string>
+    <string name="calling_feature_info_header">Calling</string>
+    <string name="calling_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
+    <string name="notification_feature_info_header">Notification</string>
+    <string name="notification_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
+    <string name="companion_feature_info_header">Companion</string>
+    <string name="companion_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
+    <string name="handraise_feature_info_header">Hand Raise</string>
+    <string name="handraise_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
+    <string name="smart_camera_feature_info_header">Smart Camera Editor</string>
+    <string name="smart_camera_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
+    <string name="privacy_screen_feature_info_header">Privacy Shutter</string>
+    <string name="privacy_screen_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
 </resources>

@@ -1,13 +1,29 @@
 package com.meta.portal.sdk.app;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
-public class CallingActivity extends BaseActivity {
+import androidx.annotation.LayoutRes;
+import androidx.annotation.StringRes;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calling);
+public class CallingActivity extends FeatureBaseActivity {
+
+    protected @LayoutRes
+    int getFeatureLayoutResId() {
+        return R.layout.activity_calling;
+    }
+
+    protected @StringRes
+    int getFeatureInfoHeaderResId() {
+        return R.string.calling_feature_info_header;
+    }
+
+    protected @StringRes
+    int getFeatureInfoTextResId() {
+        return R.string.calling_feature_info_text;
     }
 
 }

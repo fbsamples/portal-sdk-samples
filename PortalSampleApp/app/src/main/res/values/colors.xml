@@ -11,4 +11,5 @@
     <color name="landing_page_background">@android:color/black</color>
     <color name="card_background">#2B2B2B</color>
     <color name="header_second_text_color">#A6FFFFFF</color>
+    <color name="button_background">#F2F3F5</color>
 </resources>
