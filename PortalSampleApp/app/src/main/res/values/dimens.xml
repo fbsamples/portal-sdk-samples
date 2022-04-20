@@ -20,4 +20,9 @@
     <dimen name="feature_info_header_margin_top">135dp</dimen>
     <dimen name="feature_info_header_margin_bottom">45dp</dimen>
     <dimen name="feature_info_text_margin_horizontal">45dp</dimen>
+    <dimen name="top_app_bar_height">129dp</dimen>
+    <dimen name="top_app_bar_back_button_padding_start">30dp</dimen>
+    <dimen name="top_app_bar_back_button_width">48dp</dimen>
+    <dimen name="top_app_bar_back_button_height">48dp</dimen>
+    <dimen name="top_app_bar_feature_name_padding_start">34dp</dimen>
 </resources>

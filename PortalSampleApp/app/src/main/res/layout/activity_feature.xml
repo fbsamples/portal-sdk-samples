@@ -12,6 +12,14 @@
         android:layout_height="match_parent"
         android:background="@color/card_background"/>
 
+    <include
+        layout="@layout/toolbar"/>
+
+    <FrameLayout
+        android:id="@+id/top_app_bar_container"
+        android:layout_width="match_parent"
+        android:layout_height="129dp"/>
+
     <FrameLayout
         android:id="@+id/feature_container_background"
         android:layout_width="@dimen/feature_info_margin_left"

@@ -1,18 +1,24 @@
 package com.meta.portal.sdk.app;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
+import androidx.appcompat.widget.Toolbar;
 
 public abstract class FeatureBaseActivity extends BaseActivity {
+
+    private static final int TOP_APP_BAR_FADE_OUT_DELAY = 3000;
     
     FrameLayout mFeatureContainer;
     FrameLayout mFeatureInfoContainerBackground;
@@ -20,9 +26,24 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     TextView mFeatureInfoHeader;
     TextView mFeatureInfoText;
     Button mFeatureInfoCloseButton;
+    Toolbar mTopAppBar;
+    FrameLayout mTopAppBarBackground;
 
     private FeatureInfoAnimationController mFeatureInfoAnimationController;
     
+    private TopAppBarAnimationController mTopAppBarAnimationController;
+
+    private final Handler mHandler = new Handler();
+
+    private final Runnable mTopAppBarFadeOutRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mTopAppBarAnimationController.startTopAppBarViewOutAnimation();
+        }
+    };
+
+    private boolean mFeatureInfoShowing = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +64,8 @@ public abstract class FeatureBaseActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
+                mFeatureInfoShowing = false;
+                startTopAppBarFadeOutAnimation();
             }
         });
 
@@ -50,6 +73,8 @@ public abstract class FeatureBaseActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
+                mFeatureInfoShowing = false;
+                startTopAppBarFadeOutAnimation();
             }
         });
 
@@ -66,6 +91,58 @@ public abstract class FeatureBaseActivity extends BaseActivity {
                     }
                 });
 
+        mTopAppBar = (Toolbar) findViewById(R.id.top_app_bar);
+        setSupportActionBar(mTopAppBar);
+
+        mTopAppBarBackground = (FrameLayout) findViewById(R.id.top_app_bar_container);
+
+        mTopAppBarBackground.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                mTopAppBarAnimationController.startTopAppBarViewInAnimation(
+                        new TopAppBarAnimationController.AnimationFinishedCallback() {
+                            @Override
+                            public void animationFinished() {
+                                FeatureBaseActivity.this.startTopAppBarFadeOutAnimation();
+                            }
+                        }
+                );
+                return false;
+            }
+        });
+
+        mTopAppBarAnimationController = new TopAppBarAnimationController(mTopAppBar);
+
+        ImageButton backButton = (ImageButton) findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        TextView featureName = (TextView) findViewById(R.id.feature_name);
+        featureName.setText(getFeatureInfoHeaderResId());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!mFeatureInfoShowing) {
+            startTopAppBarFadeOutAnimation();
+        }
+    }
+
+    private void startTopAppBarFadeOutAnimation() {
+        mHandler.removeCallbacks(mTopAppBarFadeOutRunnable);
+        mHandler.postDelayed(mTopAppBarFadeOutRunnable, TOP_APP_BAR_FADE_OUT_DELAY);
+    }
+
+    @Override
+    public void updateSystemUiVisibility() {
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN |
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
     
     protected abstract @LayoutRes int getFeatureLayoutResId();
