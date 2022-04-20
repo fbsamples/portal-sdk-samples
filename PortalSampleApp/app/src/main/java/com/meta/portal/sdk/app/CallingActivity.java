@@ -1,11 +1,5 @@
 package com.meta.portal.sdk.app;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
 

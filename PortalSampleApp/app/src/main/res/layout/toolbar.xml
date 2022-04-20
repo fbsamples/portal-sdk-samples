@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.meta.portal.sdk.app.TopAppBar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/top_app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/top_app_bar_height"
+    android:background="?attr/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/top_app_bar_back_button_padding_start">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="@dimen/top_app_bar_back_button_height"
+            android:layout_height="@dimen/top_app_bar_back_button_width"
+            android:src="@drawable/ic_back"
+            android:background="@drawable/back_background"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/feature_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="26dp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:paddingStart="@dimen/top_app_bar_feature_name_padding_start"
+            android:layout_toRightOf="@id/back_button"/>
+
+    </RelativeLayout>
+
+</com.meta.portal.sdk.app.TopAppBar>
+
