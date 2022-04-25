@@ -45,7 +45,7 @@
             android:text="@string/feature_info_close"
             android:textSize="26sp"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:background="@drawable/button_default_ripple"
             app:backgroundTint="@null"
             style="?android:attr/borderlessButtonStyle"/>

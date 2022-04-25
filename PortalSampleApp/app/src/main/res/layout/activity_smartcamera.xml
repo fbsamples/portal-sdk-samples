@@ -7,16 +7,38 @@
     android:background="@color/card_background"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/launch_smart_camera_button"
+        android:layout_width="435dp"
+        android:layout_height="@dimen/button_default_height"
+        android:gravity="center"
         android:layout_centerInParent="true"
-        android:paddingBottom="@dimen/header_first_padding_bottom"
-        android:paddingLeft="@dimen/header_first_padding_left"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/smart_camera_screen_name"
-        android:textSize="72sp"
+        android:text="Launch Smart Camera Editor"
+        android:textSize="26sp"
+        android:textAllCaps="false"
         android:textColor="@color/white"
-        tools:text="0"/>
+        android:background="@drawable/button_default_ripple"
+        app:backgroundTint="@null"
+        style="?android:attr/borderlessButtonStyle"/>
+
+<!--    <com.facebook.portal.ui.view.PortalSmartCameraEditorButton-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        />-->
+
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:paddingBottom="@dimen/header_first_padding_bottom"-->
+<!--        android:paddingLeft="@dimen/header_first_padding_left"-->
+<!--        android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--        android:text="@string/smart_camera_screen_name"-->
+<!--        android:textSize="72sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        tools:text="0"/>-->
 
 </RelativeLayout>

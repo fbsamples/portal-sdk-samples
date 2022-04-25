@@ -39,4 +39,14 @@
     <string name="smart_camera_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
     <string name="privacy_screen_feature_info_header">Privacy Shutter</string>
     <string name="privacy_screen_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
+    <string name="camera_error" description="Camera error message">Camera error, exiting activity.</string>
+    <string name="default_mode" description="Default Mode">Default Mode</string>
+    <string name="desk_mode" description="Desk Mode">Desk Mode</string>
+    <string name="up" description="Manual mode up navigation">Up</string>
+    <string name="down" description="Manual mode down navigation">Down</string>
+    <string name="left" description="Manual mode left navigation">Left</string>
+    <string name="right" description="Manual mode right navigation">Right</string>
+    <string name="zoom_in" description="Manual mode zoom in">Zoom In</string>
+    <string name="zoom_out" description="Manual mode zoom out">Zoom Out</string>
+    <string name="launch_editor" description="Launch Editor">Launch Editor</string>
 </resources>

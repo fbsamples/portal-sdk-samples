@@ -25,4 +25,9 @@
     <dimen name="top_app_bar_back_button_width">48dp</dimen>
     <dimen name="top_app_bar_back_button_height">48dp</dimen>
     <dimen name="top_app_bar_feature_name_padding_start">34dp</dimen>
+    <dimen name="marginTiny">16dp</dimen>
+    <dimen name="fontSizeSmall">20sp</dimen>
+    <dimen name="marginLarge">48dp</dimen>
+    <dimen name="marginSmall">28dp</dimen>
+    <dimen name="fixedButtonWidth">100dp</dimen>
 </resources>

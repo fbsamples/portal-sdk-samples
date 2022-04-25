@@ -1,0 +1,118 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.facebook.portal",
+    "module": "calling-client",
+    "version": "1.1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "base",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "calling-ipc",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.microg",
+          "module": "safe-parcel",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "calling-client-1.1.1.aar",
+          "url": "calling-client-1.1.1.aar",
+          "size": 10320,
+          "sha512": "2dd4a22a28f899935b51b87fdff43959fe0992ab847f0dea58ad8879ca1c11d5d70d23cadea09f7dfcd6a84daeb272dad59c69739373673947760dcaf505030c",
+          "sha256": "2ba589e3c81f4f21a7cc39d622e57715d20d75f288c12374361e81e95db1ce61",
+          "sha1": "b1b773d1ca2d131fc939e72e0f1db328f5dd955b",
+          "md5": "41bef53ab84e00482aa9154f627f2c91"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "base",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "calling-ipc",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.microg",
+          "module": "safe-parcel",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "calling-client-1.1.1.aar",
+          "url": "calling-client-1.1.1.aar",
+          "size": 10320,
+          "sha512": "2dd4a22a28f899935b51b87fdff43959fe0992ab847f0dea58ad8879ca1c11d5d70d23cadea09f7dfcd6a84daeb272dad59c69739373673947760dcaf505030c",
+          "sha256": "2ba589e3c81f4f21a7cc39d622e57715d20d75f288c12374361e81e95db1ce61",
+          "sha1": "b1b773d1ca2d131fc939e72e0f1db328f5dd955b",
+          "md5": "41bef53ab84e00482aa9154f627f2c91"
+        }
+      ]
+    }
+  ]
+}

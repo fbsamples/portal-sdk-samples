@@ -1,0 +1,167 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.facebook.portal",
+    "module": "calling",
+    "version": "1.1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "base",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "call-notification",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "calling-client",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "calling-ipc",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "ui-calling",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.microg",
+          "module": "safe-parcel",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "calling-1.1.1.aar",
+          "url": "calling-1.1.1.aar",
+          "size": 53013,
+          "sha512": "b39b35c35a6d5369ed0751d132128eaf3fe82a076bbcc3559286b41a14b8e74a126c225a21b098e2d5bd2de09e3d0cb20c1afabb0a5eef0718a14b43f4c7af1b",
+          "sha256": "2417257103ed7a8f86a6c18969538ba7c1ecd79072d3ff41ea881054dce8af9f",
+          "sha1": "f9449e649798be75f88d75c97d601270c20bfacd",
+          "md5": "017d6912f5221effbc477b822d515ca3"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "base",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "call-notification",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "calling-client",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "calling-ipc",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "ui-calling",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.microg",
+          "module": "safe-parcel",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "calling-1.1.1.aar",
+          "url": "calling-1.1.1.aar",
+          "size": 53013,
+          "sha512": "b39b35c35a6d5369ed0751d132128eaf3fe82a076bbcc3559286b41a14b8e74a126c225a21b098e2d5bd2de09e3d0cb20c1afabb0a5eef0718a14b43f4c7af1b",
+          "sha256": "2417257103ed7a8f86a6c18969538ba7c1ecd79072d3ff41ea881054dce8af9f",
+          "sha1": "f9449e649798be75f88d75c97d601270c20bfacd",
+          "md5": "017d6912f5221effbc477b822d515ca3"
+        }
+      ]
+    }
+  ]
+}

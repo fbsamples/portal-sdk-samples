@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+  <TextureView
+      android:id="@+id/texture"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toTopOf="@id/texture"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+<!--    <TextView-->
+<!--        android:id="@+id/currentMode"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        android:layout_marginStart="@dimen/marginTiny"-->
+<!--        android:textColor="@color/colorBlack"-->
+<!--        android:textSize="@dimen/fontSizeSmall"-->
+<!--        />-->
+
+    <TextView
+        android:id="@+id/failureText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="@dimen/marginTiny"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/fontSizeSmall"
+        android:visibility="gone"
+        />
+  </FrameLayout>
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:orientation="horizontal"
+      >
+
+  <Button
+      android:id="@+id/defaultMode"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/marginTiny"
+      android:layout_marginTop="@dimen/marginLarge"
+      style="@style/sdksamplesButton"
+      android:text="@string/default_mode"
+      />
+
+  <Button
+      android:id="@+id/deskMode"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/marginSmall"
+      android:layout_marginTop="@dimen/marginLarge"
+      style="@style/sdksamplesButton"
+      android:text="@string/desk_mode"
+      />
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginLeft="@dimen/marginSmall"
+      android:orientation="vertical"
+      android:gravity="bottom|left"
+      >
+
+  <Button
+      android:id="@+id/up"
+      android:layout_width="@dimen/fixedButtonWidth"
+      android:layout_height="wrap_content"
+      style="@style/sdksamplesButton"
+      android:text="@string/up"
+      />
+
+  <Button
+      android:id="@+id/down"
+      android:layout_width="@dimen/fixedButtonWidth"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/marginSmall"
+      style="@style/sdksamplesButton"
+      android:text="@string/down"
+      />
+
+  <Button
+      android:id="@+id/left"
+      android:layout_width="@dimen/fixedButtonWidth"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/marginSmall"
+      style="@style/sdksamplesButton"
+      android:text="@string/left"
+      />
+
+  <Button
+      android:id="@+id/right"
+      android:layout_width="@dimen/fixedButtonWidth"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/marginSmall"
+      android:layout_marginBottom="@dimen/marginSmall"
+      style="@style/sdksamplesButton"
+      android:text="@string/right"
+      />
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="horizontal"
+      android:gravity="top|right"
+      >
+
+    <Button
+        android:id="@+id/zoomIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginLarge"
+        style="@style/sdksamplesButton"
+        android:text="@string/zoom_in"
+        />
+    <Button
+      android:id="@+id/zoomOut"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/marginLarge"
+      android:layout_marginLeft="@dimen/marginSmall"
+      android:layout_marginRight="@dimen/marginSmall"
+      style="@style/sdksamplesButton"
+      android:text="@string/zoom_out"
+      />
+  </LinearLayout>
+
+  <Button
+      android:id="@+id/launch_editor"
+      style="@style/sdksamplesButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginEnd="@dimen/marginSmall"
+      android:layout_marginBottom="@dimen/marginSmall"
+      android:text="@string/launch_editor"
+      />
+
+</RelativeLayout>
