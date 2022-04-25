@@ -1,0 +1,111 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.facebook.portal",
+    "module": "assistantactions",
+    "version": "1.1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "assistantactions-ipc",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "base",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "assistantactions-1.1.1.aar",
+          "url": "assistantactions-1.1.1.aar",
+          "size": 35432,
+          "sha512": "be510c5f6c2eadf446200f7699a05b335f744fd7b9567600c0d4941b1ccfb01ecd2bdbed098c930df318aec239c402c8baa8cdc45f17fe73e99a7491310703ed",
+          "sha256": "342fc9869b84f0f450e6dfb5e28c7b2cf770e635a6693c694f56293e2143bd34",
+          "sha1": "ac683f921692548ea95faeb080b4bc06069e1b17",
+          "md5": "c5fe183e32669e3d975ed1adda2c971d"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "assistantactions-ipc",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "com.facebook.portal",
+          "module": "base",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "assistantactions-1.1.1.aar",
+          "url": "assistantactions-1.1.1.aar",
+          "size": 35432,
+          "sha512": "be510c5f6c2eadf446200f7699a05b335f744fd7b9567600c0d4941b1ccfb01ecd2bdbed098c930df318aec239c402c8baa8cdc45f17fe73e99a7491310703ed",
+          "sha256": "342fc9869b84f0f450e6dfb5e28c7b2cf770e635a6693c694f56293e2143bd34",
+          "sha1": "ac683f921692548ea95faeb080b4bc06069e1b17",
+          "md5": "c5fe183e32669e3d975ed1adda2c971d"
+        }
+      ]
+    }
+  ]
+}

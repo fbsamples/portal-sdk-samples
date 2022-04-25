@@ -7,7 +7,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateSystemUiVisibility();
+        updateSystemUiVisibility(); 
     }
     
     public void updateSystemUiVisibility() {

@@ -1,0 +1,97 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.facebook.portal",
+    "module": "base",
+    "version": "1.1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "context",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "base-1.1.1.aar",
+          "url": "base-1.1.1.aar",
+          "size": 42015,
+          "sha512": "6e5fe189de02c6187d746423faab11716a83033e2da39c0c23d8983a87a4d0dc607025f41d85b6e8b44d85b79cf8a76f7c5988071703ef465b535128db67fb43",
+          "sha256": "353e984e9682285601c7d4a868624952c3b7bb33657a48c143b7db98ed3e84fe",
+          "sha1": "d86947bd5c437f18dce1dcffcc624d195b5d2782",
+          "md5": "aa840a1459be0a97386f6f8f46496a87"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "context",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "base-1.1.1.aar",
+          "url": "base-1.1.1.aar",
+          "size": 42015,
+          "sha512": "6e5fe189de02c6187d746423faab11716a83033e2da39c0c23d8983a87a4d0dc607025f41d85b6e8b44d85b79cf8a76f7c5988071703ef465b535128db67fb43",
+          "sha256": "353e984e9682285601c7d4a868624952c3b7bb33657a48c143b7db98ed3e84fe",
+          "sha1": "d86947bd5c437f18dce1dcffcc624d195b5d2782",
+          "md5": "aa840a1459be0a97386f6f8f46496a87"
+        }
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.meta.portal.sdk.app"
-        minSdk 21
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -45,4 +45,9 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Portal SDK Dependencies
+    implementation 'com.facebook.portal:ui:1.1.1'
+    implementation 'com.facebook.portal:smartcamera-editor:1.1.1'
+
 }
