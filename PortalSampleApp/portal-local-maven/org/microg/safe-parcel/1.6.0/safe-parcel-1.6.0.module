@@ -1,0 +1,58 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.microg",
+    "module": "safe-parcel",
+    "version": "1.6.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "safe-parcel-1.6.0.aar",
+          "url": "safe-parcel-1.6.0.aar",
+          "size": 20113,
+          "sha512": "4f048c45e12c9b19f08c132f111c92347f43855677e39f466f1703295e5c6d35fb1d6623b2fd3e9d4255a1947bacdf6c43a478acf5de1444846969d46dae1199",
+          "sha256": "3ab9791ac39b348b1c2ba95557830745f6c681d044a9ff7cbaa49864b5386e42",
+          "sha1": "ff8325ae7ec480a458116de670300af14ab099e0",
+          "md5": "7d35411aef77b9861cedd9ea7a690519"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "safe-parcel-1.6.0.aar",
+          "url": "safe-parcel-1.6.0.aar",
+          "size": 20113,
+          "sha512": "4f048c45e12c9b19f08c132f111c92347f43855677e39f466f1703295e5c6d35fb1d6623b2fd3e9d4255a1947bacdf6c43a478acf5de1444846969d46dae1199",
+          "sha256": "3ab9791ac39b348b1c2ba95557830745f6c681d044a9ff7cbaa49864b5386e42",
+          "sha1": "ff8325ae7ec480a458116de670300af14ab099e0",
+          "md5": "7d35411aef77b9861cedd9ea7a690519"
+        }
+      ]
+    }
+  ]
+}

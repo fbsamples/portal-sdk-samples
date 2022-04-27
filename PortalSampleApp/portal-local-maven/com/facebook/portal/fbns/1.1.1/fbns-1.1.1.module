@@ -1,0 +1,83 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.facebook.portal",
+    "module": "fbns",
+    "version": "1.1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "fbns-1.1.1.aar",
+          "url": "fbns-1.1.1.aar",
+          "size": 20097,
+          "sha512": "c9e0cae7f1e9acb42a7916acc8293d6d0a5a3b1cb7be6dd18f13bf721b9e9ade95b9ed685248a488f1ec2589a54ada72ac68bd6fc789224751889bb267478138",
+          "sha256": "388205739aad2b6b1e278cd31fd1f5fe96740c71788eb2feb835c6711f09cd76",
+          "sha1": "d3228a545dfa278f8f9b7b0555ccd7dfdac9a5d5",
+          "md5": "57ffa1577e14d9a78c6748fa2ae44e81"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "fbns-1.1.1.aar",
+          "url": "fbns-1.1.1.aar",
+          "size": 20097,
+          "sha512": "c9e0cae7f1e9acb42a7916acc8293d6d0a5a3b1cb7be6dd18f13bf721b9e9ade95b9ed685248a488f1ec2589a54ada72ac68bd6fc789224751889bb267478138",
+          "sha256": "388205739aad2b6b1e278cd31fd1f5fe96740c71788eb2feb835c6711f09cd76",
+          "sha1": "d3228a545dfa278f8f9b7b0555ccd7dfdac9a5d5",
+          "md5": "57ffa1577e14d9a78c6748fa2ae44e81"
+        }
+      ]
+    }
+  ]
+}

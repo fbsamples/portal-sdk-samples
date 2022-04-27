@@ -1,0 +1,97 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.facebook.portal",
+    "module": "calling-ipc",
+    "version": "1.1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.microg",
+          "module": "safe-parcel",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "calling-ipc-1.1.1.aar",
+          "url": "calling-ipc-1.1.1.aar",
+          "size": 27703,
+          "sha512": "6a8f977c8bf9e11ec4d43e58e5296f2fbf48eb70dd7a8ab5848d899b09ad6fb059fbd6cee44953983f93907055b752602f90db143043f7846f22ea3002ec5cba",
+          "sha256": "c0a9efe5bb415197ec7f6e069b36312b7b4cc9c8b9ba8398972bdeaf1c51426a",
+          "sha1": "08020bf1153f3e4db4b6f65f6ffe3c38f665bc99",
+          "md5": "f8a5a52a0a3741ab89a7bb4bcd6f7a74"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.microg",
+          "module": "safe-parcel",
+          "version": {
+            "requires": "1.6.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "calling-ipc-1.1.1.aar",
+          "url": "calling-ipc-1.1.1.aar",
+          "size": 27703,
+          "sha512": "6a8f977c8bf9e11ec4d43e58e5296f2fbf48eb70dd7a8ab5848d899b09ad6fb059fbd6cee44953983f93907055b752602f90db143043f7846f22ea3002ec5cba",
+          "sha256": "c0a9efe5bb415197ec7f6e069b36312b7b4cc9c8b9ba8398972bdeaf1c51426a",
+          "sha1": "08020bf1153f3e4db4b6f65f6ffe3c38f665bc99",
+          "md5": "f8a5a52a0a3741ab89a7bb4bcd6f7a74"
+        }
+      ]
+    }
+  ]
+}

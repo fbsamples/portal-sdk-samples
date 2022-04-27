@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.meta.portal.sdk.app">
 
+    <!-- Declare features -->
+    <uses-feature android:name="android.hardware.camera" />
+
+    <!-- Declare permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission
+        android:name="com.facebook.portal.permission.SHOW_SMART_CAMERA_EDITOR" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -42,7 +51,7 @@
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".SmartCameraActivity"
+            android:name=".CameraActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
