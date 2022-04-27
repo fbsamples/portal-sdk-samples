@@ -66,7 +66,7 @@ class CameraActivity : FeatureBaseActivity() {
 
     @LayoutRes
     override fun getFeatureLayoutResId(): Int {
-        return R.layout.activity_camera
+        return R.layout.activity_smartcameraold
     }
 
     @StringRes
