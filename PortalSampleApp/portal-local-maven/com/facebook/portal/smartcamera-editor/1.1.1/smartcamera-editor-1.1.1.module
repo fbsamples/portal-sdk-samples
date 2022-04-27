@@ -1,0 +1,104 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.facebook.portal",
+    "module": "smartcamera-editor",
+    "version": "1.1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "context",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "smartcamera-editor-1.1.1.aar",
+          "url": "smartcamera-editor-1.1.1.aar",
+          "size": 7129,
+          "sha512": "3a0c31729127a1f34878aae756fb9d737751b717cce7a74125c083f81e8b4ac9138f2de4cf34dabd64621307e3659d9909ff70ac84faec44dc8a0ce073e4213e",
+          "sha256": "ce709fd4b112d1dfefca2064666363b9580de1e79160d2bb961e2faa05051a38",
+          "sha1": "b1d0e57ce1d2d7b8679825f1d1d305947c2ad2df",
+          "md5": "928c9dc040db867e75111f221cf60a83"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "context",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.6.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "smartcamera-editor-1.1.1.aar",
+          "url": "smartcamera-editor-1.1.1.aar",
+          "size": 7129,
+          "sha512": "3a0c31729127a1f34878aae756fb9d737751b717cce7a74125c083f81e8b4ac9138f2de4cf34dabd64621307e3659d9909ff70ac84faec44dc8a0ce073e4213e",
+          "sha256": "ce709fd4b112d1dfefca2064666363b9580de1e79160d2bb961e2faa05051a38",
+          "sha1": "b1d0e57ce1d2d7b8679825f1d1d305947c2ad2df",
+          "md5": "928c9dc040db867e75111f221cf60a83"
+        }
+      ]
+    }
+  ]
+}
