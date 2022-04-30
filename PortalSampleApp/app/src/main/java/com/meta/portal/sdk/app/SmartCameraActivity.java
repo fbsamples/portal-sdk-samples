@@ -4,20 +4,20 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
-public class CallingActivity extends FeatureBaseActivity {
+public class SmartCameraActivity extends FeatureBaseActivity {
 
     protected Fragment getFragment() {
-        return CallingFragment.newInstance();
+        return SmartCameraFragment.Companion.newInstance();
     }
 
     protected @StringRes
     int getFeatureInfoHeaderResId() {
-        return R.string.calling_feature_info_header;
+        return R.string.smart_camera_feature_info_header;
     }
 
     protected @StringRes
     int getFeatureInfoTextResId() {
-        return R.string.calling_feature_info_text;
+        return R.string.smart_camera_feature_info_text;
     }
 
 }

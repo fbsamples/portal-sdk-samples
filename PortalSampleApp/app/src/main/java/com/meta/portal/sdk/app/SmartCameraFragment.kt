@@ -16,8 +16,10 @@
 
 package com.meta.portal.sdk.app
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.hardware.display.DisplayManager
 import android.os.Bundle
@@ -25,22 +27,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.window.WindowManager
 import com.meta.portal.sdk.app.databinding.FragmentCameraBinding
 import com.meta.portal.sdk.app.databinding.CameraUiContainerBinding
-import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
-class CameraFragment : Fragment() {
+private const val PERMISSIONS_REQUEST_CODE = 10
+private val PERMISSIONS_REQUIRED = arrayOf(Manifest.permission.CAMERA)
+
+class SmartCameraFragment : Fragment() {
 
     private var _fragmentCameraBinding: FragmentCameraBinding? = null
 
@@ -61,16 +65,13 @@ class CameraFragment : Fragment() {
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
 
-
-
     override fun onResume() {
         super.onResume()
         // Make sure that all permissions are still present, since the
         // user could have removed them while the app was in paused state.
-        if (!PermissionsFragment.hasPermissions(requireContext())) {
-            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
-                    CameraFragmentDirections.actionCameraToPermissions()
-            )
+        if (!hasPermissions(requireContext())) {
+            // Request camera-related permissions
+            requestPermissions(PERMISSIONS_REQUIRED, PERMISSIONS_REQUEST_CODE)
         }
     }
 
@@ -237,11 +238,33 @@ class CameraFragment : Fragment() {
         return cameraProvider?.hasCamera(CameraSelector.DEFAULT_FRONT_CAMERA) ?: false
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSIONS_REQUEST_CODE) {
+            if (PackageManager.PERMISSION_GRANTED == grantResults.firstOrNull()) {
+                Toast.makeText(context, "Permission request granted", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(context, "Permission request denied", Toast.LENGTH_LONG).show()
+                activity?.onBackPressed()
+            }
+        }
+    }
+
+    /** Convenience method used to check if all permissions required by this app are granted */
+    fun hasPermissions(context: Context) = PERMISSIONS_REQUIRED.all {
+        ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+    }
+
     companion object {
 
         private const val TAG = "CameraXBasic"
         private const val RATIO_4_3_VALUE = 4.0 / 3.0
         private const val RATIO_16_9_VALUE = 16.0 / 9.0
+
+        fun newInstance(): SmartCameraFragment? {
+            return SmartCameraFragment()
+        }
 
     }
 

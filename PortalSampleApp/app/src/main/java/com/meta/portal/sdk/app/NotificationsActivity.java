@@ -4,12 +4,12 @@ import android.os.Bundle;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 
 public class NotificationsActivity extends FeatureBaseActivity {
 
-    protected @LayoutRes
-    int getFeatureLayoutResId() {
-        return R.layout.activity_notifications;
+    protected Fragment getFragment() {
+        return NotificationsFragment.newInstance();
     }
 
     protected @StringRes

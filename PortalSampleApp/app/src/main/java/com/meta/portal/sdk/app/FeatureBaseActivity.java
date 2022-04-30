@@ -15,12 +15,13 @@ import android.widget.TextView;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public abstract class FeatureBaseActivity extends BaseActivity {
 
     private static final int TOP_APP_BAR_FADE_OUT_DELAY = 3000;
     
-    FrameLayout mFeatureContainer;
     FrameLayout mFeatureInfoContainerBackground;
     RelativeLayout mFeatureInfoContainer;
     TextView mFeatureInfoHeader;
@@ -48,9 +49,6 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feature);
-        mFeatureContainer = (FrameLayout) findViewById(R.id.feature_container);
-        View activityView = LayoutInflater.from(this).inflate(getFeatureLayoutResId(), null, false);
-        mFeatureContainer.addView(activityView);
         mFeatureInfoContainerBackground = (FrameLayout) findViewById(R.id.feature_container_background);
         mFeatureInfoCloseButton = (Button) findViewById(R.id.feature_info_close_button);
         mFeatureInfoContainer = (RelativeLayout) findViewById(R.id.feature_info_container);
@@ -124,6 +122,9 @@ public abstract class FeatureBaseActivity extends BaseActivity {
 
         TextView featureName = (TextView) findViewById(R.id.feature_name);
         featureName.setText(getFeatureInfoHeaderResId());
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, getFragment()).commit();
     }
 
     @Override
@@ -145,7 +146,7 @@ public abstract class FeatureBaseActivity extends BaseActivity {
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
     
-    protected abstract @LayoutRes int getFeatureLayoutResId();
+    protected abstract Fragment getFragment();
     
     protected abstract @StringRes int getFeatureInfoHeaderResId();
 

@@ -51,7 +51,7 @@
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".CameraActivity"
+            android:name=".SmartCameraActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>

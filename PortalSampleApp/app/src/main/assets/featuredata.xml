@@ -28,7 +28,7 @@
         <screenname>Smart Camera Editor</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>
         <backgroundresourceid>card_smartcameraeditor_bkg</backgroundresourceid>
-        <classname>com.meta.portal.sdk.app.CameraActivity</classname>
+        <classname>com.meta.portal.sdk.app.SmartCameraActivity</classname>
     </feature>
     <feature>
         <screenname>Privacy Shutter</screenname>

@@ -4,12 +4,12 @@ import android.os.Bundle;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 
 public class HandRaiseActivity extends FeatureBaseActivity {
 
-    protected @LayoutRes
-    int getFeatureLayoutResId() {
-        return R.layout.activity_handraise;
+    protected Fragment getFragment() {
+        return HandRaiseFragment.newInstance();
     }
 
     protected @StringRes
