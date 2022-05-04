@@ -24,7 +24,10 @@
     <dimen name="top_app_bar_back_button_padding_start">30dp</dimen>
     <dimen name="top_app_bar_back_button_width">48dp</dimen>
     <dimen name="top_app_bar_back_button_height">48dp</dimen>
+    <dimen name="top_app_bar_info_button_width">72dp</dimen>
+    <dimen name="top_app_bar_info_button_height">72dp</dimen>
     <dimen name="top_app_bar_feature_name_padding_start">34dp</dimen>
+    <dimen name="top_app_bar_info_button_margin_start">868dp</dimen>
 
     <dimen name="margin_xlarge">92dp</dimen>
     <dimen name="margin_small">32dp</dimen>

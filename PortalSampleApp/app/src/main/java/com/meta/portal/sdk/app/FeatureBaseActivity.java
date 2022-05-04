@@ -120,6 +120,15 @@ public abstract class FeatureBaseActivity extends BaseActivity {
             }
         });
 
+        ImageButton infoButton = (ImageButton) findViewById(R.id.info_button);
+
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
+            }
+        });
+
         TextView featureName = (TextView) findViewById(R.id.feature_name);
         featureName.setText(getFeatureInfoHeaderResId());
 
@@ -142,8 +151,7 @@ public abstract class FeatureBaseActivity extends BaseActivity {
 
     @Override
     public void updateSystemUiVisibility() {
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN |
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        return;
     }
     
     protected abstract Fragment getFragment();

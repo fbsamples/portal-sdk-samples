@@ -14,5 +14,5 @@
     <color name="button_background">#F2F3F5</color>
     <color name="button_back_background">#1AFFFFFF</color>
     <color name="button_back_background_pressed">#33FFFFFF</color>
-<!--    <color name="button_back_background">#ff00ff00</color>-->
+    <color name="top_app_bar_background">#00FFFFFF</color>
 </resources>

@@ -5,7 +5,7 @@
     android:id="@+id/top_app_bar"
     android:layout_width="match_parent"
     android:layout_height="@dimen/top_app_bar_height"
-    android:background="?attr/colorPrimary"
+    android:background="@color/top_app_bar_background"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -32,6 +32,16 @@
             android:layout_centerVertical="true"
             android:paddingStart="@dimen/top_app_bar_feature_name_padding_start"
             android:layout_toRightOf="@id/back_button"/>
+
+        <ImageButton
+            android:id="@+id/info_button"
+            android:layout_width="@dimen/top_app_bar_info_button_height"
+            android:layout_height="@dimen/top_app_bar_info_button_width"
+            android:src="@drawable/ic_info"
+            android:background="@drawable/back_background"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:layout_marginStart="@dimen/top_app_bar_info_button_margin_start"/>
 
     </RelativeLayout>
 

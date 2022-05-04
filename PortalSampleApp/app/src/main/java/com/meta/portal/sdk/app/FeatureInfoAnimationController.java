@@ -30,6 +30,8 @@ public class FeatureInfoAnimationController {
     }
 
     public void startFeatureInfoViewInAnimation() {
+        mFeatureInfoContainer.setVisibility(View.VISIBLE);
+        mFeatureInfoContainerBackground.setVisibility(View.VISIBLE);
         startFeatureInfoViewInFirstAnimation();
     }
 
@@ -93,6 +95,7 @@ public class FeatureInfoAnimationController {
         mStartFeatureInfoViewOutXAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
+                mFeatureInfoContainer.setX(mFeatureInfoViewDefaultX);
                 mFeatureInfoContainer.setVisibility(View.GONE);
                 mFeatureInfoContainerBackground.setVisibility(View.GONE);
             }
