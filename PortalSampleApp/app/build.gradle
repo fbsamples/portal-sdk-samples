@@ -71,5 +71,6 @@ dependencies {
     //Portal SDK Dependencies
     implementation 'com.facebook.portal:ui:1.1.1'
     implementation 'com.facebook.portal:smartcamera-editor:1.1.1'
-    implementation 'com.facebook.portal:calling:1.1.1'
+    implementation 'com.facebook.portal:systemstate:1.1.1'
+
 }

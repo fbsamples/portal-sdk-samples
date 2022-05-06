@@ -33,9 +33,8 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.window.WindowManager
-import com.facebook.portal.calling.external.PortalCalling
-import com.facebook.portal.calling.external.PortalVCCallListener
-import com.facebook.portal.calling.model.VCCall
+import com.facebook.portal.systemstate.SystemStateClient
+import com.facebook.portal.tasks.Task
 import com.meta.portal.sdk.app.databinding.FragmentCameraBinding
 import com.meta.portal.sdk.app.databinding.CameraUiContainerBinding
 import com.meta.portal.sdk.app.databinding.PrivacyShutterCameraUiContainerBinding
@@ -62,7 +61,20 @@ class PrivacyShutterCameraFragment : Fragment() {
     private var cameraProvider: ProcessCameraProvider? = null
     private lateinit var windowManager: WindowManager
 
-    private var portalCalling = PortalCalling.getInstance()
+    private lateinit var privacyStateClient: SystemStateClient
+
+    private val listener: SystemStateClient.SystemStateListener =
+        object : SystemStateClient.SystemStateListener {
+            override fun onCameraStateChanged(enabled: Boolean) {
+                Log.d(TAG, "Camera State $enabled")
+            
+            }
+
+            override fun onMicrophoneStateChanged(enabled: Boolean) {
+                Log.d(TAG, "Microphone State $enabled")
+
+            }
+        }
 
     private val displayManager by lazy {
         requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
@@ -70,6 +82,12 @@ class PrivacyShutterCameraFragment : Fragment() {
 
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        privacyStateClient = SystemStateClient(activity)
+    }
 
     override fun onResume() {
         super.onResume()
@@ -79,6 +97,19 @@ class PrivacyShutterCameraFragment : Fragment() {
             // Request camera-related permissions
             requestPermissions(PERMISSIONS_REQUIRED, PERMISSIONS_REQUEST_CODE)
         }
+
+        privacyStateClient.registerListener(listener)
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        privacyStateClient.unregisterListener(listener)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        privacyStateClient.destroy()
     }
 
     override fun onDestroyView() {
@@ -88,7 +119,6 @@ class PrivacyShutterCameraFragment : Fragment() {
         // Shut down our background executor
         cameraExecutor.shutdown()
 
-        portalCalling.unregisterService()
     }
 
     override fun onCreateView(
@@ -97,6 +127,7 @@ class PrivacyShutterCameraFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View {
         _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
+
         return fragmentCameraBinding.root
     }
 
@@ -110,6 +141,8 @@ class PrivacyShutterCameraFragment : Fragment() {
         //Initialize WindowManager to retrieve display metrics
         windowManager = WindowManager(view.context)
 
+        privacyStateClient.registerListener(listener)
+
         // Wait for the views to be properly laid out
         fragmentCameraBinding.viewFinder.post {
 
@@ -120,63 +153,9 @@ class PrivacyShutterCameraFragment : Fragment() {
             setUpCamera()
         }
 
-        portalCalling.init(
-            requireActivity().baseContext,
-            "Reference App",
-            R.mipmap.ic_launcher,
-            SampleVoipConnectionComponent.getComponentName(requireActivity().baseContext),
-            portalVCCallListener,
-            false)
-
-        portalCalling.registerService()
     }
 
-    private val portalVCCallListener =
-        object : PortalVCCallListener {
-            override fun onCreateIncomingCallFailed(call: VCCall) {
-                return
-            }
 
-            override fun onCreateIncomingCall(call: VCCall) {
-                return
-            }
-
-            override fun onCreateOutgoingCallFailed(call: VCCall) {
-                return
-            }
-
-            override fun onCreateOutgoingCall(call: VCCall) {
-                return
-            }
-
-            override fun onAnswer(call: VCCall, videoState: Int) = Unit
-
-            override fun onReject(call: VCCall) = Unit
-
-            override fun onDisconnect(call: VCCall) = Unit
-
-            override fun onMuteMicrophone(call: VCCall) = Unit
-
-            override fun onUnmuteMicrophone(call: VCCall) = Unit
-
-            override fun onEnableMicrophone(call: VCCall) = Unit
-
-            override fun onDisableMicrophone(call: VCCall) = Unit
-
-            override fun onMuteCamera(call: VCCall) = onCameraMuted()
-
-            override fun onUnmuteCamera(call: VCCall) = Unit
-
-            override fun onEnableCamera(call: VCCall) = Unit
-
-            override fun onDisableCamera(call: VCCall) = Unit
-
-            override fun onRaiseHand(call: VCCall?) = Unit
-
-            override fun onLowerHand(call: VCCall?) = Unit
-
-            override fun onCallAudioRouteChanged(callAudioRoute: Int) = Unit
-        }
 
     private fun onCameraMuted() {
         System.out.println("RefenceApp onCameraMuted")
@@ -392,8 +371,14 @@ class PrivacyShutterCameraFragment : Fragment() {
 
             if (it.isSelected()) {
                 //Handle selected state change
+                Toast.makeText(context,
+                    "Camera State 1",
+                    Toast.LENGTH_SHORT).show()
             } else {
                 //Handle de-select state change
+                Toast.makeText(context,
+                    "Camera State 2",
+                    Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -403,8 +388,15 @@ class PrivacyShutterCameraFragment : Fragment() {
 
             if (it.isSelected()) {
                 //Handle selected state change
+                Toast.makeText(context,
+                    "Mic State 1",
+                    Toast.LENGTH_SHORT).show()
             } else {
                 //Handle de-select state change
+                Toast.makeText(context,
+                    "Mic State 2",
+                    Toast.LENGTH_SHORT).show()
+
             }
 
         }

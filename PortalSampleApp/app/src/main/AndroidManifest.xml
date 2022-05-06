@@ -7,13 +7,8 @@
 
     <!-- Declare permissions -->
     <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-permission
-        android:name="com.facebook.portal.permission.SHOW_SMART_CAMERA_EDITOR" />
-
-    <uses-permission android:name="com.facebook.portal.permission.BIND_PORTAL_VC_SERVICE"/>
-    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="com.facebook.portal.permission.SHOW_SMART_CAMERA_EDITOR" />
+    <uses-permission android:name="com.facebook.portal.permission.ACCESS_CAMERA_MIC_STATE" />
 
 
     <application
