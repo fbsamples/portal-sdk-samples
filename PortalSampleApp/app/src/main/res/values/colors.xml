@@ -15,4 +15,6 @@
     <color name="button_back_background">#1AFFFFFF</color>
     <color name="button_back_background_pressed">#33FFFFFF</color>
     <color name="top_app_bar_background">#00FFFFFF</color>
+    <color name="button_privacy_shutter_background">#33FFFFFF</color>
+    <color name="button_privacy_shutter_background_pressed">#66FFFFFF</color>
 </resources>

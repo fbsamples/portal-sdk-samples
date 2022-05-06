@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 public class PrivacyShutterActivity extends FeatureBaseActivity {
 
     protected Fragment getFragment() {
-        return PrivacyShutterFragment.newInstance();
+        return PrivacyShutterCameraFragment.Companion.newInstance();
     }
 
     protected @StringRes
