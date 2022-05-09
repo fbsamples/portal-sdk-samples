@@ -55,7 +55,7 @@
 
         </LinearLayout>
 
-        <com.meta.portal.sdk.app.VisualizerView
+        <com.meta.portal.sdk.app.privacyshutter.VisualizerView
             android:id="@+id/visualizer"
             android:layout_width="179dp"
             android:layout_height="94dp"

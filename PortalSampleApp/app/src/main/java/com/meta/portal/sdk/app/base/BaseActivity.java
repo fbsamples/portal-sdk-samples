@@ -1,4 +1,4 @@
-package com.meta.portal.sdk.app;
+package com.meta.portal.sdk.app.base;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.meta.portal.sdk.app;
+package com.meta.portal.sdk.app.privacyshutter;
 
 import android.annotation.SuppressLint;
 import android.media.AudioFormat;
@@ -55,7 +55,6 @@ public class RecordingSampler {
     public void startRecording() {
         mTimer = new Timer();
         mAudioRecord.startRecording();
-        System.out.println("ReferenceApp mAudioRecord.startRecording()");
         mIsRecording = true;
         runRecording();
     }
@@ -87,7 +86,6 @@ public class RecordingSampler {
                 if (mVisualizerViews != null && !mVisualizerViews.isEmpty()) {
                     for (int i = 0; i < mVisualizerViews.size(); i++) {
                         mVisualizerViews.get(i).receive(decibel);
-                        System.out.println("ReferenceApp mVisualizerViews.get(i).receive(decibel)");
                     }
                 }
                 

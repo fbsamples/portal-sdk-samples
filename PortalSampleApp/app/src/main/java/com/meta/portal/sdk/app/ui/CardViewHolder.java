@@ -1,4 +1,4 @@
-package com.meta.portal.sdk.app;
+package com.meta.portal.sdk.app.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.meta.portal.sdk.app.data.Feature;
+import com.meta.portal.sdk.app.R;
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
     private final CardView mCardView;

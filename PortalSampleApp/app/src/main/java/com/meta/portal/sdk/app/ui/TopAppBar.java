@@ -1,4 +1,4 @@
-package com.meta.portal.sdk.app;
+package com.meta.portal.sdk.app.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;

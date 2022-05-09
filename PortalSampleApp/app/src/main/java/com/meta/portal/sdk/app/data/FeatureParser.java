@@ -1,4 +1,4 @@
-package com.meta.portal.sdk.app;
+package com.meta.portal.sdk.app.data;
 
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -55,6 +55,7 @@ public class FeatureParser {
     private void processParsing(XmlPullParser parser) throws IOException, XmlPullParserException{
         int eventType = parser.getEventType();
         Feature feature = null;
+        boolean visible = false;
 
         while (eventType != XmlPullParser.END_DOCUMENT) {
             String eltName = null;
@@ -64,21 +65,30 @@ public class FeatureParser {
                     eltName = parser.getName();
                     if ("feature".equals(eltName)) {
                         feature = new Feature();
-                        mFeatures.add(feature);
                     } else if (feature != null) {
-                        if ("screenname".equals(eltName)) {
-                            feature.setScreenName(parser.nextText());
-                        } else if ("classnametitle".equals(eltName)) {
-                            feature.setClassNameTitle(parser.nextText());
-                        } else if ("backgroundresourceid".equals(eltName)) {
-                            @DrawableRes int resourceID = mResources.getIdentifier(parser.nextText(), "drawable", mPackageName);
-                            feature.setBackgroundResourceId(resourceID);
-                        } else if ("classname".equals(eltName)) {
-                            try {
-                                Class featureClass = Class.forName(parser.nextText());
-                                feature.setClassName(featureClass);
-                            } catch(ClassNotFoundException e) {
-                                Log.d(TAG, "No class found for class name");
+                        if ("visible".equals(eltName)) {
+                            if (parser.nextText().equals("true")) {
+                                visible = true;
+                                mFeatures.add(feature);
+                            } else  {
+                                visible = false;
+                            }
+                        }
+                        if (visible) {
+                            if ("screenname".equals(eltName)) {
+                                feature.setScreenName(parser.nextText());
+                            } else if ("classnametitle".equals(eltName)) {
+                                feature.setClassNameTitle(parser.nextText());
+                            } else if ("backgroundresourceid".equals(eltName)) {
+                                @DrawableRes int resourceID = mResources.getIdentifier(parser.nextText(), "drawable", mPackageName);
+                                feature.setBackgroundResourceId(resourceID);
+                            } else if ("classname".equals(eltName)) {
+                                try {
+                                    Class featureClass = Class.forName(parser.nextText());
+                                    feature.setClassName(featureClass);
+                                } catch (ClassNotFoundException e) {
+                                    Log.d(TAG, "No class found for class name");
+                                }
                             }
                         }
                     }

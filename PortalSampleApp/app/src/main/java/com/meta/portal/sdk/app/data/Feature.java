@@ -1,4 +1,4 @@
-package com.meta.portal.sdk.app;
+package com.meta.portal.sdk.app.data;
 
 import androidx.annotation.DrawableRes;
 

@@ -35,32 +35,32 @@
         </activity>
 
         <activity
-            android:name=".CallingActivity"
+            android:name=".calling.CallingActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".NotificationsActivity"
+            android:name=".notifications.NotificationsActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".CompanionActivity"
+            android:name=".companion.CompanionActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".HandRaiseActivity"
+            android:name=".handraise.HandRaiseActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".SmartCameraActivity"
+            android:name=".smartcamera.SmartCameraActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".PrivacyShutterActivity"
+            android:name=".privacyshutter.PrivacyShutterActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>

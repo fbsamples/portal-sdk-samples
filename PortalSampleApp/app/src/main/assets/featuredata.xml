@@ -1,39 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <features>
     <feature>
+        <visible>false</visible>
         <screenname>Calling</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>
         <backgroundresourceid>card_calling_bkg</backgroundresourceid>
-        <classname>com.meta.portal.sdk.app.CallingActivity</classname>
+        <classname>com.meta.portal.sdk.app.calling.CallingActivity</classname>
     </feature>
     <feature>
+        <visible>false</visible>
         <screenname>Notification</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>
         <backgroundresourceid>card_notifs_bkg</backgroundresourceid>
-        <classname>com.meta.portal.sdk.app.NotificationsActivity</classname>
+        <classname>com.meta.portal.sdk.app.notifications.NotificationsActivity</classname>
     </feature>
     <feature>
+        <visible>false</visible>
         <screenname>Companion</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>
         <backgroundresourceid>card_companion_bkg</backgroundresourceid>
-        <classname>com.meta.portal.sdk.app.CompanionActivity</classname>
+        <classname>com.meta.portal.sdk.app.companion.CompanionActivity</classname>
     </feature>
     <feature>
+        <visible>false</visible>
         <screenname>Hand Raise</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>
         <backgroundresourceid>card_raisehand_bkg</backgroundresourceid>
-        <classname>com.meta.portal.sdk.app.HandRaiseActivity</classname>
+        <classname>com.meta.portal.sdk.app.handraise.HandRaiseActivity</classname>
     </feature>
     <feature>
+        <visible>true</visible>
         <screenname>Smart Camera Editor</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>
         <backgroundresourceid>card_smartcameraeditor_bkg</backgroundresourceid>
-        <classname>com.meta.portal.sdk.app.SmartCameraActivity</classname>
+        <classname>com.meta.portal.sdk.app.smartcamera.SmartCameraActivity</classname>
     </feature>
     <feature>
+        <visible>true</visible>
         <screenname>Privacy Shutter</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>
         <backgroundresourceid>card_privacy_bkg</backgroundresourceid>
-        <classname>com.meta.portal.sdk.app.PrivacyShutterActivity</classname>
+        <classname>com.meta.portal.sdk.app.privacyshutter.PrivacyShutterActivity</classname>
     </feature>
 </features>

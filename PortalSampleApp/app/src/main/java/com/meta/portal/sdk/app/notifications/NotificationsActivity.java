@@ -1,10 +1,10 @@
-package com.meta.portal.sdk.app;
+package com.meta.portal.sdk.app.notifications;
 
-import android.os.Bundle;
-
-import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
+
+import com.meta.portal.sdk.app.base.FeatureBaseActivity;
+import com.meta.portal.sdk.app.R;
 
 public class NotificationsActivity extends FeatureBaseActivity {
 

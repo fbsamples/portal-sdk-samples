@@ -1,8 +1,7 @@
-package com.meta.portal.sdk.app;
+package com.meta.portal.sdk.app.base;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -12,11 +11,14 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.meta.portal.sdk.app.ui.FeatureInfoAnimationController;
+import com.meta.portal.sdk.app.R;
+import com.meta.portal.sdk.app.ui.TopAppBarAnimationController;
 
 public abstract class FeatureBaseActivity extends BaseActivity {
 
@@ -110,15 +112,6 @@ public abstract class FeatureBaseActivity extends BaseActivity {
         });
 
         mTopAppBarAnimationController = new TopAppBarAnimationController(mTopAppBar);
-
-        ImageButton backButton = (ImageButton) findViewById(R.id.back_button);
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
         ImageButton infoButton = (ImageButton) findViewById(R.id.info_button);
 

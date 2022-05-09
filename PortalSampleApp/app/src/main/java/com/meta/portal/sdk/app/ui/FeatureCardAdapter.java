@@ -1,9 +1,11 @@
-package com.meta.portal.sdk.app;
+package com.meta.portal.sdk.app.ui;
 
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.meta.portal.sdk.app.data.Feature;
 
 import java.util.ArrayList;
 import java.util.List;
