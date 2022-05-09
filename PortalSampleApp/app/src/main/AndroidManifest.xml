@@ -10,11 +10,10 @@
 
     <uses-permission
         android:name="com.facebook.portal.permission.SHOW_SMART_CAMERA_EDITOR" />
+    <uses-permission android:name="com.facebook.portal.permission.ACCESS_CAMERA_MIC_STATE" />
 
-    <uses-permission android:name="com.facebook.portal.permission.BIND_PORTAL_VC_SERVICE"/>
-    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <application
         android:allowBackup="true"
@@ -65,15 +64,6 @@
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
-
-        <service
-            android:name="com.meta.portal.sdk.app.SampleVoipConnectionService"
-            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.telecom.ConnectionService" />
-            </intent-filter>
-        </service>
 
     </application>
 

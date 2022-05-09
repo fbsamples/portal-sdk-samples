@@ -27,26 +27,25 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.window.WindowManager
-import com.facebook.portal.calling.external.PortalCalling
-import com.facebook.portal.calling.external.PortalVCCallListener
-import com.facebook.portal.calling.model.VCCall
+import com.facebook.portal.systemstate.SystemStateClient
 import com.meta.portal.sdk.app.databinding.FragmentCameraBinding
-import com.meta.portal.sdk.app.databinding.CameraUiContainerBinding
 import com.meta.portal.sdk.app.databinding.PrivacyShutterCameraUiContainerBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import android.media.AudioManager
 
-private const val PERMISSIONS_REQUEST_CODE = 10
-private val PERMISSIONS_REQUIRED = arrayOf(Manifest.permission.CAMERA)
+private const val PERMISSIONS_REQUEST_CODE_CAMERA = 10
+private const val PERMISSIONS_REQUEST_CODE_MICROPHONE = 11
+private val PERMISSIONS_REQUIRED_CAMERA = arrayOf(Manifest.permission.CAMERA)
+private val PERMISSIONS_REQUIRED_MICROPHONE = arrayOf(Manifest.permission.RECORD_AUDIO)
 
 class PrivacyShutterCameraFragment : Fragment() {
 
@@ -62,7 +61,25 @@ class PrivacyShutterCameraFragment : Fragment() {
     private var cameraProvider: ProcessCameraProvider? = null
     private lateinit var windowManager: WindowManager
 
-    private var portalCalling = PortalCalling.getInstance()
+    // Recording Info
+    private var mRecordingSampler: RecordingSampler? = null
+
+    private lateinit var privacyStateClient: SystemStateClient
+
+    private val listener: SystemStateClient.SystemStateListener =
+        object : SystemStateClient.SystemStateListener {
+            override fun onCameraStateChanged(enabled: Boolean) {
+                Log.d(TAG, "Camera State $enabled")
+                privacyShutterCameraUiContainerBinding?.cameraButton?.setSelected(!enabled)
+
+            }
+
+            override fun onMicrophoneStateChanged(enabled: Boolean) {
+                Log.d(TAG, "Microphone State $enabled")
+                privacyShutterCameraUiContainerBinding?.microphoneButton?.setSelected(!enabled)
+
+            }
+        }
 
     private val displayManager by lazy {
         requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
@@ -71,14 +88,33 @@ class PrivacyShutterCameraFragment : Fragment() {
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        privacyStateClient = SystemStateClient(activity)
+    }
+
     override fun onResume() {
         super.onResume()
         // Make sure that all permissions are still present, since the
         // user could have removed them while the app was in paused state.
-        if (!hasPermissions(requireContext())) {
+        if (!hasPermissionsCamera(requireContext())) {
             // Request camera-related permissions
-            requestPermissions(PERMISSIONS_REQUIRED, PERMISSIONS_REQUEST_CODE)
+            requestPermissions(PERMISSIONS_REQUIRED_CAMERA, PERMISSIONS_REQUEST_CODE_CAMERA)
+        } else if (!hasPermissionsMicrophone(requireContext())) {
+            // Request microphone-related permissions
+            requestPermissions(PERMISSIONS_REQUIRED_MICROPHONE, PERMISSIONS_REQUEST_CODE_MICROPHONE)
         }
+        privacyStateClient.registerListener(listener)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        privacyStateClient.unregisterListener(listener)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        privacyStateClient.destroy()
     }
 
     override fun onDestroyView() {
@@ -88,7 +124,7 @@ class PrivacyShutterCameraFragment : Fragment() {
         // Shut down our background executor
         cameraExecutor.shutdown()
 
-        portalCalling.unregisterService()
+        mRecordingSampler?.release();
     }
 
     override fun onCreateView(
@@ -120,70 +156,9 @@ class PrivacyShutterCameraFragment : Fragment() {
             setUpCamera()
         }
 
-        portalCalling.init(
-            requireActivity().baseContext,
-            "Reference App",
-            R.mipmap.ic_launcher,
-            SampleVoipConnectionComponent.getComponentName(requireActivity().baseContext),
-            portalVCCallListener,
-            false)
-
-        portalCalling.registerService()
     }
 
-    private val portalVCCallListener =
-        object : PortalVCCallListener {
-            override fun onCreateIncomingCallFailed(call: VCCall) {
-                return
-            }
-
-            override fun onCreateIncomingCall(call: VCCall) {
-                return
-            }
-
-            override fun onCreateOutgoingCallFailed(call: VCCall) {
-                return
-            }
-
-            override fun onCreateOutgoingCall(call: VCCall) {
-                return
-            }
-
-            override fun onAnswer(call: VCCall, videoState: Int) = Unit
-
-            override fun onReject(call: VCCall) = Unit
-
-            override fun onDisconnect(call: VCCall) = Unit
-
-            override fun onMuteMicrophone(call: VCCall) = Unit
-
-            override fun onUnmuteMicrophone(call: VCCall) = Unit
-
-            override fun onEnableMicrophone(call: VCCall) = Unit
-
-            override fun onDisableMicrophone(call: VCCall) = Unit
-
-            override fun onMuteCamera(call: VCCall) = onCameraMuted()
-
-            override fun onUnmuteCamera(call: VCCall) = Unit
-
-            override fun onEnableCamera(call: VCCall) = Unit
-
-            override fun onDisableCamera(call: VCCall) = Unit
-
-            override fun onRaiseHand(call: VCCall?) = Unit
-
-            override fun onLowerHand(call: VCCall?) = Unit
-
-            override fun onCallAudioRouteChanged(callAudioRoute: Int) = Unit
-        }
-
-    private fun onCameraMuted() {
-        System.out.println("RefenceApp onCameraMuted")
-        privacyShutterCameraUiContainerBinding?.cameraButton?.setSelected(true)
-    }
-
-            /**
+    /**
      * Inflate camera controls and update the UI manually upon config changes to avoid removing
      * and re-adding the view finder from the view hierarchy; this provides a seamless rotation
      * transition on devices that support it.
@@ -257,100 +232,8 @@ class PrivacyShutterCameraFragment : Fragment() {
 
             // Attach the viewfinder's surface provider to preview use case
             preview?.setSurfaceProvider(fragmentCameraBinding.viewFinder.surfaceProvider)
-//            observeCameraState(camera?.cameraInfo!!)
         } catch (exc: Exception) {
             Log.e(TAG, "Use case binding failed", exc)
-        }
-    }
-
-    private fun observeCameraState(cameraInfo: CameraInfo) {
-        cameraInfo.cameraState.observe(viewLifecycleOwner) { cameraState ->
-            run {
-                when (cameraState.type) {
-                    CameraState.Type.PENDING_OPEN -> {
-                        // Ask the user to close other camera apps
-                        Toast.makeText(context,
-                                "CameraState: Pending Open",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    CameraState.Type.OPENING -> {
-                        // Show the Camera UI
-                        Toast.makeText(context,
-                                "CameraState: Opening",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    CameraState.Type.OPEN -> {
-                        // Setup Camera resources and begin processing
-                        Toast.makeText(context,
-                                "CameraState: Open",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    CameraState.Type.CLOSING -> {
-                        // Close camera UI
-                        Toast.makeText(context,
-                                "CameraState: Closing",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    CameraState.Type.CLOSED -> {
-                        // Free camera resources
-                        Toast.makeText(context,
-                                "CameraState: Closed",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-
-            cameraState.error?.let { error ->
-                when (error.code) {
-                    // Open errors
-                    CameraState.ERROR_STREAM_CONFIG -> {
-                        // Make sure to setup the use cases properly
-                        Toast.makeText(context,
-                                "Stream config error",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    // Opening errors
-                    CameraState.ERROR_CAMERA_IN_USE -> {
-                        // Close the camera or ask user to close another camera app that's using the
-                        // camera
-                        Toast.makeText(context,
-                                "Camera in use",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    CameraState.ERROR_MAX_CAMERAS_IN_USE -> {
-                        // Close another open camera in the app, or ask the user to close another
-                        // camera app that's using the camera
-                        Toast.makeText(context,
-                                "Max cameras in use",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    CameraState.ERROR_OTHER_RECOVERABLE_ERROR -> {
-                        Toast.makeText(context,
-                                "Other recoverable error",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    // Closing errors
-                    CameraState.ERROR_CAMERA_DISABLED -> {
-                        // Ask the user to enable the device's cameras
-                        Toast.makeText(context,
-                                "Camera disabled",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    CameraState.ERROR_CAMERA_FATAL_ERROR -> {
-                        // Ask the user to reboot the device to restore camera function
-                        Toast.makeText(context,
-                                "Fatal error",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                    // Closed errors
-                    CameraState.ERROR_DO_NOT_DISTURB_MODE_ENABLED -> {
-                        // Ask the user to disable the "Do Not Disturb" mode, then reopen the camera
-                        Toast.makeText(context,
-                                "Do not disturb mode enabled",
-                                Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
         }
     }
 
@@ -392,21 +275,39 @@ class PrivacyShutterCameraFragment : Fragment() {
 
             if (it.isSelected()) {
                 //Handle selected state change
+                val cameraProvider = cameraProvider
+                        ?: throw IllegalStateException("Camera initialization failed.")
+                cameraProvider.unbindAll()
             } else {
                 //Handle de-select state change
+                // Rebind the camera with the updated display metrics
+                bindCameraUseCases()
             }
 
         }
 
         privacyShutterCameraUiContainerBinding?.microphoneButton?.setOnClickListener {
             it.setSelected(!it.isSelected())
-
+            val audioManager = requireActivity().getSystemService(Context.AUDIO_SERVICE) as AudioManager
             if (it.isSelected()) {
                 //Handle selected state change
+                if (audioManager.isMicrophoneMute == false) {
+                    audioManager.isMicrophoneMute = true
+                }
+
             } else {
                 //Handle de-select state change
+                if (audioManager.isMicrophoneMute == true) {
+                    audioManager.isMicrophoneMute = false
+                }
             }
 
+        }
+
+        if (hasPermissionsMicrophone(requireContext())) {
+            mRecordingSampler = RecordingSampler()
+            mRecordingSampler?.link(privacyShutterCameraUiContainerBinding?.visualizer)
+            mRecordingSampler?.startRecording();
         }
 
     }
@@ -424,24 +325,35 @@ class PrivacyShutterCameraFragment : Fragment() {
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSIONS_REQUEST_CODE) {
+        if (requestCode == PERMISSIONS_REQUEST_CODE_CAMERA) {
+            if (!(PackageManager.PERMISSION_GRANTED == grantResults.firstOrNull())) {
+                activity?.onBackPressed()
+            }
+        }
+        if (requestCode == PERMISSIONS_REQUEST_CODE_MICROPHONE) {
             if (PackageManager.PERMISSION_GRANTED == grantResults.firstOrNull()) {
-                Toast.makeText(context, "Permission request granted", Toast.LENGTH_LONG).show()
+                mRecordingSampler = RecordingSampler()
+                mRecordingSampler?.link(privacyShutterCameraUiContainerBinding?.visualizer)
+                mRecordingSampler?.startRecording();
             } else {
-                Toast.makeText(context, "Permission request denied", Toast.LENGTH_LONG).show()
                 activity?.onBackPressed()
             }
         }
     }
 
     /** Convenience method used to check if all permissions required by this app are granted */
-    fun hasPermissions(context: Context) = PERMISSIONS_REQUIRED.all {
+    fun hasPermissionsCamera(context: Context) = PERMISSIONS_REQUIRED_CAMERA.all {
+        ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    /** Convenience method used to check if all permissions required by this app are granted */
+    fun hasPermissionsMicrophone(context: Context) = PERMISSIONS_REQUIRED_MICROPHONE.all {
         ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
     }
 
     companion object {
 
-        private const val TAG = "CameraXBasic"
+        private const val TAG = "PrivacyShutterCameraFragment"
         private const val RATIO_4_3_VALUE = 4.0 / 3.0
         private const val RATIO_16_9_VALUE = 16.0 / 9.0
 
