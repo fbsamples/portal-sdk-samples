@@ -10,6 +10,10 @@
 
     <uses-permission
         android:name="com.facebook.portal.permission.SHOW_SMART_CAMERA_EDITOR" />
+    <uses-permission android:name="com.facebook.portal.permission.ACCESS_CAMERA_MIC_STATE" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <application
         android:allowBackup="true"
@@ -31,35 +35,36 @@
         </activity>
 
         <activity
-            android:name=".CallingActivity"
+            android:name=".calling.CallingActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".NotificationsActivity"
+            android:name=".notifications.NotificationsActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".CompanionActivity"
+            android:name=".companion.CompanionActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".HandRaiseActivity"
+            android:name=".handraise.HandRaiseActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".CameraActivity"
+            android:name=".smartcamera.SmartCameraActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".PrivacyShutterActivity"
+            android:name=".privacyshutter.PrivacyShutterActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
+
     </application>
 
 </manifest>

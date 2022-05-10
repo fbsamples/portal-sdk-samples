@@ -6,6 +6,11 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.meta.portal.sdk.app.base.BaseActivity;
+import com.meta.portal.sdk.app.data.Feature;
+import com.meta.portal.sdk.app.data.FeatureParser;
+import com.meta.portal.sdk.app.ui.FeatureCardAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
