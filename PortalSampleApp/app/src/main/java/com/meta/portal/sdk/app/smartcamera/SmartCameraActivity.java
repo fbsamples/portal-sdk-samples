@@ -8,8 +8,11 @@ import com.meta.portal.sdk.app.R;
 
 public class SmartCameraActivity extends FeatureBaseActivity {
 
+    private Fragment mFragment;
+
     protected Fragment getFragment() {
-        return SmartCameraFragment.Companion.newInstance();
+        mFragment = SmartCameraFragment.Companion.newInstance();
+        return mFragment;
     }
 
     protected @StringRes
@@ -20,6 +23,10 @@ public class SmartCameraActivity extends FeatureBaseActivity {
     protected @StringRes
     int getFeatureInfoTextResId() {
         return R.string.smart_camera_feature_info_text;
+    }
+
+    protected void updateDebugModeLayoutContainerVisibility(boolean visible) {
+        ((SmartCameraFragment) mFragment).updateDebugModeLayoutContainerVisibility(visible);
     }
 
 }

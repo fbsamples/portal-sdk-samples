@@ -21,4 +21,7 @@ public class CompanionActivity extends FeatureBaseActivity {
         return R.string.companion_feature_info_text;
     }
 
+    protected void updateDebugModeLayoutContainerVisibility(boolean visible) {
+    }
+
 }

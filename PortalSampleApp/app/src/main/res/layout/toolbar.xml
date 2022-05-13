@@ -25,13 +25,30 @@
 
         <ImageButton
             android:id="@+id/info_button"
-            android:layout_width="@dimen/top_app_bar_info_button_height"
-            android:layout_height="@dimen/top_app_bar_info_button_width"
+            android:layout_width="@dimen/top_app_bar_info_button_width"
+            android:layout_height="@dimen/top_app_bar_info_button_height"
             android:src="@drawable/ic_info"
             android:background="@drawable/button_back"
             android:layout_centerVertical="true"
             android:adjustViewBounds="true"
-            android:layout_marginStart="@dimen/top_app_bar_info_button_margin_start"/>
+            android:layout_marginEnd="@dimen/top_app_bar_info_button_margin_end"
+            android:layout_toStartOf="@+id/debug_mode_button"/>
+
+        <Button
+            android:id="@+id/debug_mode_button"
+            android:layout_width="@dimen/top_app_bar_debug_mode_button_width"
+            android:layout_height="@dimen/top_app_bar_info_button_height"
+            android:text="Debug mode: OFF"
+            android:textSize="28sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:gravity="start|center_vertical"
+            android:paddingStart="32dp"
+            android:background="@drawable/button_debug"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:layout_marginEnd="5dp"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 

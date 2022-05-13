@@ -1,7 +1,11 @@
 package com.meta.portal.sdk.app.base;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -46,6 +50,8 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     };
 
     private boolean mFeatureInfoShowing = true;
+
+    private boolean mDebugModeOn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +128,26 @@ public abstract class FeatureBaseActivity extends BaseActivity {
             }
         });
 
+        Button debugModeButton = (Button) findViewById(R.id.debug_mode_button);
+
+        debugModeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!mDebugModeOn) {
+                    Spannable debugModeText = new SpannableString("Debug mode: ON");
+                    debugModeText.setSpan(new ForegroundColorSpan(Color.GREEN), 12, 14,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    debugModeButton.setText(debugModeText);
+                    mDebugModeOn = true;
+                    updateDebugModeLayoutContainerVisibility(true);
+                } else {
+                    debugModeButton.setText("Debug mode: OFF");
+                    mDebugModeOn = false;
+                    updateDebugModeLayoutContainerVisibility(false);
+                }
+            }
+        });
+
         TextView featureName = (TextView) findViewById(R.id.feature_name);
         featureName.setText(getFeatureInfoHeaderResId());
 
@@ -152,5 +178,7 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     protected abstract @StringRes int getFeatureInfoHeaderResId();
 
     protected abstract @StringRes int getFeatureInfoTextResId();
+
+    protected abstract void updateDebugModeLayoutContainerVisibility(boolean visible);
 
 }

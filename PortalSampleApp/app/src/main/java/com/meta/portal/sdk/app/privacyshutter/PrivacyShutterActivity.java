@@ -8,8 +8,11 @@ import com.meta.portal.sdk.app.R;
 
 public class PrivacyShutterActivity extends FeatureBaseActivity {
 
+    private Fragment mFragment;
+
     protected Fragment getFragment() {
-        return PrivacyShutterCameraFragment.Companion.newInstance();
+        mFragment = PrivacyShutterCameraFragment.Companion.newInstance();
+        return mFragment;
     }
 
     protected @StringRes
@@ -19,6 +22,10 @@ public class PrivacyShutterActivity extends FeatureBaseActivity {
 
     protected @StringRes int getFeatureInfoTextResId() {
         return R.string.privacy_screen_feature_info_text;
+    }
+
+    protected void updateDebugModeLayoutContainerVisibility(boolean visible) {
+        ((PrivacyShutterCameraFragment) mFragment).updateDebugModeLayoutContainerVisibility(visible);
     }
 
 }

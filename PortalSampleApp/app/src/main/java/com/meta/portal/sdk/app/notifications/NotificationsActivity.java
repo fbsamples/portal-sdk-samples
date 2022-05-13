@@ -21,4 +21,7 @@ public class NotificationsActivity extends FeatureBaseActivity {
         return R.string.notification_feature_info_text;
     }
 
+    protected void updateDebugModeLayoutContainerVisibility(boolean visible) {
+    }
+
 }

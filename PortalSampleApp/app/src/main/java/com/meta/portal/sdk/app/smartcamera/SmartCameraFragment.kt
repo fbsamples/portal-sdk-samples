@@ -256,6 +256,16 @@ class SmartCameraFragment : Fragment() {
         ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
     }
 
+    fun updateDebugModeLayoutContainerVisibility(visible: Boolean) {
+        if (visible) {
+            cameraUiContainerBinding?.debugModeLayoutContainer?.visibility =
+                View.VISIBLE
+        } else {
+            cameraUiContainerBinding?.debugModeLayoutContainer?.visibility =
+                View.GONE
+        }
+    }
+
     companion object {
 
         private const val TAG = "CameraXBasic"
