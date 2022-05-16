@@ -22,4 +22,7 @@ public class CallingActivity extends FeatureBaseActivity {
         return R.string.calling_feature_info_text;
     }
 
+    protected void updateDebugModeLayoutContainerVisibility(boolean visible) {
+    }
+
 }

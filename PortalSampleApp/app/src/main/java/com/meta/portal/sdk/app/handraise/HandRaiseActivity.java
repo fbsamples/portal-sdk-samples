@@ -21,4 +21,7 @@ public class HandRaiseActivity extends FeatureBaseActivity {
         return R.string.handraise_feature_info_text;
     }
 
+    protected void updateDebugModeLayoutContainerVisibility(boolean visible) {
+    }
+
 }

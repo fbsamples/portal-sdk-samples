@@ -26,8 +26,9 @@
     <dimen name="top_app_bar_back_button_height">48dp</dimen>
     <dimen name="top_app_bar_info_button_width">72dp</dimen>
     <dimen name="top_app_bar_info_button_height">72dp</dimen>
+    <dimen name="top_app_bar_debug_mode_button_width">299dp</dimen>
     <dimen name="top_app_bar_feature_name_padding_start">34dp</dimen>
-    <dimen name="top_app_bar_info_button_margin_start">868dp</dimen>
+    <dimen name="top_app_bar_info_button_margin_end">16dp</dimen>
     <dimen name="privacy_shutter_camera_button_width">96dp</dimen>
     <dimen name="privacy_shutter_camera_button_height">96dp</dimen>
     <dimen name="privacy_shutter_microphone_button_width">96dp</dimen>
@@ -44,4 +45,6 @@
     <dimen name="spacing_medium">8dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
     <dimen name="spacing_xlarge">32dp</dimen>
+
+    <dimen name="hairline_height">1dp</dimen>
 </resources>

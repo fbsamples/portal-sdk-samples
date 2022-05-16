@@ -351,6 +351,16 @@ class PrivacyShutterCameraFragment : Fragment() {
         ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
     }
 
+    fun updateDebugModeLayoutContainerVisibility(visible: Boolean) {
+        if (visible) {
+            privacyShutterCameraUiContainerBinding?.debugModeLayoutContainer?.visibility =
+                View.VISIBLE
+        } else {
+            privacyShutterCameraUiContainerBinding?.debugModeLayoutContainer?.visibility =
+                View.GONE
+        }
+    }
+
     companion object {
 
         private const val TAG = "PrivacyShutterCameraFragment"
