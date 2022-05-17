@@ -33,6 +33,7 @@ public class TopAppBarAnimationController {
         if ((mTopAppBarFadeInXAnimator != null && mTopAppBarFadeInXAnimator.isRunning())) {
             return;
         }
+        mTopAppBarView.setVisibility(View.VISIBLE);
         mTopAppBarFadeInXAnimator = ObjectAnimator.ofFloat(mTopAppBarView, "alpha",
                 1.0f);
         mTopAppBarFadeInXAnimator.setDuration(TOP_APP_BAR_FADE_IN_DURATION);
@@ -52,6 +53,12 @@ public class TopAppBarAnimationController {
         mTopAppBarFadeOutXAnimator = ObjectAnimator.ofFloat(mTopAppBarView, "alpha",
                 0f);
         mTopAppBarFadeOutXAnimator.setDuration(TOP_APP_BAR_FADE_OUT_DURATION);
+        mTopAppBarFadeOutXAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mTopAppBarView.setVisibility(View.GONE);
+            }
+        });
         mTopAppBarFadeOutXAnimator.start();
     }
 
