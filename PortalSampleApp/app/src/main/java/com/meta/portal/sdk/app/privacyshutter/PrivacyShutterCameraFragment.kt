@@ -29,18 +29,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.window.WindowManager
 import com.facebook.portal.systemstate.SystemStateClient
-import com.meta.portal.sdk.app.databinding.FragmentCameraBinding
-import com.meta.portal.sdk.app.databinding.PrivacyShutterCameraUiContainerBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import android.media.AudioManager
+import android.widget.ImageButton
+import android.widget.RelativeLayout
+import androidx.constraintlayout.widget.ConstraintLayout
+
+import com.meta.portal.sdk.app.R
 
 private const val PERMISSIONS_REQUEST_CODE_CAMERA = 10
 private const val PERMISSIONS_REQUEST_CODE_MICROPHONE = 11
@@ -49,11 +53,17 @@ private val PERMISSIONS_REQUIRED_MICROPHONE = arrayOf(Manifest.permission.RECORD
 
 class PrivacyShutterCameraFragment : Fragment() {
 
-    private var _fragmentCameraBinding: FragmentCameraBinding? = null
+    private var privacyShutterCameraUiContainer: ConstraintLayout? = null
 
-    private val fragmentCameraBinding get() = _fragmentCameraBinding!!
+    private var fragmentCameraView: ViewGroup? = null
+    private var viewFinder: PreviewView? = null
 
-    private var privacyShutterCameraUiContainerBinding: PrivacyShutterCameraUiContainerBinding? = null
+    private var cameraButton: ImageButton? = null
+    private var microphoneButton: ImageButton? = null
+
+    private var visualizer: VisualizerView? = null
+
+    private var debugModeLayoutContainer: RelativeLayout? = null
 
     private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
     private var preview: Preview? = null
@@ -70,13 +80,13 @@ class PrivacyShutterCameraFragment : Fragment() {
         object : SystemStateClient.SystemStateListener {
             override fun onCameraStateChanged(enabled: Boolean) {
                 Log.d(TAG, "Camera State $enabled")
-                privacyShutterCameraUiContainerBinding?.cameraButton?.setSelected(!enabled)
+                cameraButton?.setSelected(!enabled)
 
             }
 
             override fun onMicrophoneStateChanged(enabled: Boolean) {
                 Log.d(TAG, "Microphone State $enabled")
-                privacyShutterCameraUiContainerBinding?.microphoneButton?.setSelected(!enabled)
+                microphoneButton?.setSelected(!enabled)
 
             }
         }
@@ -118,7 +128,6 @@ class PrivacyShutterCameraFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        _fragmentCameraBinding = null
         super.onDestroyView()
 
         // Shut down our background executor
@@ -132,8 +141,9 @@ class PrivacyShutterCameraFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
-        return fragmentCameraBinding.root
+        fragmentCameraView = inflater.inflate(R.layout.fragment_camera, container, false) as ViewGroup
+        viewFinder = fragmentCameraView?.findViewById(R.id.view_finder)
+        return fragmentCameraView as View
     }
 
     @SuppressLint("MissingPermission")
@@ -147,7 +157,7 @@ class PrivacyShutterCameraFragment : Fragment() {
         windowManager = WindowManager(view.context)
 
         // Wait for the views to be properly laid out
-        fragmentCameraBinding.viewFinder.post {
+        viewFinder?.post {
 
             // Build UI controls
             updateCameraUi()
@@ -204,7 +214,7 @@ class PrivacyShutterCameraFragment : Fragment() {
         val screenAspectRatio = aspectRatio(metrics.width(), metrics.height())
         Log.d(TAG, "Preview aspect ratio: $screenAspectRatio")
 
-        val rotation = fragmentCameraBinding.viewFinder.display.rotation
+        val rotation = viewFinder?.display?.rotation
 
         // CameraProvider
         val cameraProvider = cameraProvider
@@ -218,7 +228,7 @@ class PrivacyShutterCameraFragment : Fragment() {
                 // We request aspect ratio but no resolution
                 .setTargetAspectRatio(screenAspectRatio)
                 // Set initial target rotation
-                .setTargetRotation(rotation)
+                .setTargetRotation(rotation!!)
                 .build()
 
         // Must unbind the use-cases before rebinding them
@@ -231,7 +241,7 @@ class PrivacyShutterCameraFragment : Fragment() {
                     this, cameraSelector, preview)
 
             // Attach the viewfinder's surface provider to preview use case
-            preview?.setSurfaceProvider(fragmentCameraBinding.viewFinder.surfaceProvider)
+            preview?.setSurfaceProvider(viewFinder?.surfaceProvider)
         } catch (exc: Exception) {
             Log.e(TAG, "Use case binding failed", exc)
         }
@@ -259,24 +269,26 @@ class PrivacyShutterCameraFragment : Fragment() {
     /** Method used to re-draw the camera UI controls, called every time configuration changes. */
     private fun updateCameraUi() {
 
-        // Remove previous UI if any
-        privacyShutterCameraUiContainerBinding?.root?.let {
-            fragmentCameraBinding.root.removeView(it)
-        }
+        privacyShutterCameraUiContainer = LayoutInflater.from(requireContext()).inflate(
+                R.layout.privacy_shutter_camera_ui_container,
+                fragmentCameraView) as ConstraintLayout
 
-        privacyShutterCameraUiContainerBinding = PrivacyShutterCameraUiContainerBinding.inflate(
-                LayoutInflater.from(requireContext()),
-                fragmentCameraBinding.root,
-                true
-        )
+        cameraButton = privacyShutterCameraUiContainer?.findViewById(R.id.camera_button)
 
-        privacyShutterCameraUiContainerBinding?.cameraButton?.setOnClickListener {
+        microphoneButton = privacyShutterCameraUiContainer?.findViewById(R.id.microphone_button)
+
+        visualizer = privacyShutterCameraUiContainer?.findViewById(R.id.visualizer)
+
+        debugModeLayoutContainer = privacyShutterCameraUiContainer?.findViewById(
+                 R.id.debug_mode_layout_container)
+
+        cameraButton?.setOnClickListener {
             it.setSelected(!it.isSelected())
 
             if (it.isSelected()) {
                 //Handle selected state change
                 val cameraProvider = cameraProvider
-                        ?: throw IllegalStateException("Camera initialization failed.")
+                    ?: throw IllegalStateException("Camera initialization failed.")
                 cameraProvider.unbindAll()
             } else {
                 //Handle de-select state change
@@ -286,7 +298,7 @@ class PrivacyShutterCameraFragment : Fragment() {
 
         }
 
-        privacyShutterCameraUiContainerBinding?.microphoneButton?.setOnClickListener {
+        microphoneButton?.setOnClickListener {
             it.setSelected(!it.isSelected())
             val audioManager = requireActivity().getSystemService(Context.AUDIO_SERVICE) as AudioManager
             if (it.isSelected()) {
@@ -306,7 +318,7 @@ class PrivacyShutterCameraFragment : Fragment() {
 
         if (hasPermissionsMicrophone(requireContext())) {
             mRecordingSampler = RecordingSampler()
-            mRecordingSampler?.link(privacyShutterCameraUiContainerBinding?.visualizer)
+            mRecordingSampler?.link(visualizer)
             mRecordingSampler?.startRecording();
         }
 
@@ -333,7 +345,7 @@ class PrivacyShutterCameraFragment : Fragment() {
         if (requestCode == PERMISSIONS_REQUEST_CODE_MICROPHONE) {
             if (PackageManager.PERMISSION_GRANTED == grantResults.firstOrNull()) {
                 mRecordingSampler = RecordingSampler()
-                mRecordingSampler?.link(privacyShutterCameraUiContainerBinding?.visualizer)
+                mRecordingSampler?.link(visualizer)
                 mRecordingSampler?.startRecording();
             } else {
                 activity?.onBackPressed()
@@ -353,10 +365,10 @@ class PrivacyShutterCameraFragment : Fragment() {
 
     fun updateDebugModeLayoutContainerVisibility(visible: Boolean) {
         if (visible) {
-            privacyShutterCameraUiContainerBinding?.debugModeLayoutContainer?.visibility =
+            debugModeLayoutContainer?.visibility =
                 View.VISIBLE
         } else {
-            privacyShutterCameraUiContainerBinding?.debugModeLayoutContainer?.visibility =
+            debugModeLayoutContainer?.visibility =
                 View.GONE
         }
     }
