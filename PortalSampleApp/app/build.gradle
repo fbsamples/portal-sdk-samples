@@ -58,7 +58,7 @@ dependencies {
     implementation "androidx.camera:camera-view:$camerax_version"
 
     //WindowManager
-    implementation 'androidx.window:window:1.0.0-alpha09'
+    implementation 'androidx.window:window:1.0.0'
 
     // Navigation library
     def nav_version = "2.3.5"

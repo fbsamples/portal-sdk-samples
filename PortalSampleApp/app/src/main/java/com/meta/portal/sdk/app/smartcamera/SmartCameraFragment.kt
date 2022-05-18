@@ -35,8 +35,8 @@ import androidx.camera.view.PreviewView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.window.WindowManager
 import com.meta.portal.sdk.app.R
+import com.meta.portal.sdk.app.privacyshutter.PrivacyShutterCameraFragment
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
@@ -59,7 +59,6 @@ class SmartCameraFragment : Fragment() {
     private var preview: Preview? = null
     private var camera: Camera? = null
     private var cameraProvider: ProcessCameraProvider? = null
-    private lateinit var windowManager: WindowManager
 
     private val displayManager by lazy {
         requireContext().getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
@@ -102,9 +101,6 @@ class SmartCameraFragment : Fragment() {
 
         // Initialize our background executor
         cameraExecutor = Executors.newSingleThreadExecutor()
-
-        //Initialize WindowManager to retrieve display metrics
-        windowManager = WindowManager(view.context)
 
         // Wait for the views to be properly laid out
         viewFinder?.post {
@@ -157,10 +153,12 @@ class SmartCameraFragment : Fragment() {
     private fun bindCameraUseCases() {
 
         // Get screen metrics used to setup camera for full screen resolution
-        val metrics = windowManager.getCurrentWindowMetrics().bounds
-        Log.d(TAG, "Screen metrics: ${metrics.width()} x ${metrics.height()}")
 
-        val screenAspectRatio = aspectRatio(metrics.width(), metrics.height())
+        // Get screen metrics used to setup camera for full screen resolution
+        val metrics = resources.displayMetrics
+        Log.d(TAG, "Screen metrics: ${metrics.widthPixels} x ${metrics.heightPixels}")
+
+        val screenAspectRatio = aspectRatio(metrics.widthPixels, metrics.heightPixels)
         Log.d(TAG, "Preview aspect ratio: $screenAspectRatio")
 
         val rotation = viewFinder?.display?.rotation

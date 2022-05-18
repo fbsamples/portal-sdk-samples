@@ -32,7 +32,6 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.window.WindowManager
 import com.facebook.portal.systemstate.SystemStateClient
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -40,6 +39,7 @@ import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import android.media.AudioManager
+import android.util.DisplayMetrics
 import android.widget.ImageButton
 import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -69,7 +69,6 @@ class PrivacyShutterCameraFragment : Fragment() {
     private var preview: Preview? = null
     private var camera: Camera? = null
     private var cameraProvider: ProcessCameraProvider? = null
-    private lateinit var windowManager: WindowManager
 
     // Recording Info
     private var mRecordingSampler: RecordingSampler? = null
@@ -153,15 +152,11 @@ class PrivacyShutterCameraFragment : Fragment() {
         // Initialize our background executor
         cameraExecutor = Executors.newSingleThreadExecutor()
 
-        //Initialize WindowManager to retrieve display metrics
-        windowManager = WindowManager(view.context)
-
         // Wait for the views to be properly laid out
         viewFinder?.post {
 
             // Build UI controls
             updateCameraUi()
-
             // Set up the camera and its use cases
             setUpCamera()
         }
@@ -208,10 +203,11 @@ class PrivacyShutterCameraFragment : Fragment() {
     private fun bindCameraUseCases() {
 
         // Get screen metrics used to setup camera for full screen resolution
-        val metrics = windowManager.getCurrentWindowMetrics().bounds
-        Log.d(TAG, "Screen metrics: ${metrics.width()} x ${metrics.height()}")
+        val metrics = resources.displayMetrics
 
-        val screenAspectRatio = aspectRatio(metrics.width(), metrics.height())
+        Log.d(TAG, "Screen metrics: ${metrics.widthPixels} x ${metrics.heightPixels}")
+
+        val screenAspectRatio = aspectRatio(metrics.widthPixels, metrics.heightPixels)
         Log.d(TAG, "Preview aspect ratio: $screenAspectRatio")
 
         val rotation = viewFinder?.display?.rotation
