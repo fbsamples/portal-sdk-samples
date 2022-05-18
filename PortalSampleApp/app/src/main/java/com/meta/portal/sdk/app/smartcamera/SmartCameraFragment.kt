@@ -27,14 +27,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.view.PreviewView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.window.WindowManager
-import com.meta.portal.sdk.app.databinding.FragmentCameraBinding
-import com.meta.portal.sdk.app.databinding.CameraUiContainerBinding
+import com.meta.portal.sdk.app.R
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
@@ -46,11 +48,12 @@ private val PERMISSIONS_REQUIRED = arrayOf(Manifest.permission.CAMERA)
 
 class SmartCameraFragment : Fragment() {
 
-    private var _fragmentCameraBinding: FragmentCameraBinding? = null
+    private var cameraUiContainer: ConstraintLayout? = null
 
-    private val fragmentCameraBinding get() = _fragmentCameraBinding!!
+    private var fragmentCameraView: ViewGroup? = null
+    private var viewFinder: PreviewView? = null
 
-    private var cameraUiContainerBinding: CameraUiContainerBinding? = null
+    private var debugModeLayoutContainer: RelativeLayout? = null
 
     private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
     private var preview: Preview? = null
@@ -76,7 +79,6 @@ class SmartCameraFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        _fragmentCameraBinding = null
         super.onDestroyView()
 
         // Shut down our background executor
@@ -89,8 +91,9 @@ class SmartCameraFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        _fragmentCameraBinding = FragmentCameraBinding.inflate(inflater, container, false)
-        return fragmentCameraBinding.root
+        fragmentCameraView = inflater.inflate(R.layout.fragment_camera, container, false) as ViewGroup
+        viewFinder = fragmentCameraView?.findViewById<PreviewView>(R.id.view_finder)
+        return fragmentCameraView as View
     }
 
     @SuppressLint("MissingPermission")
@@ -104,7 +107,7 @@ class SmartCameraFragment : Fragment() {
         windowManager = WindowManager(view.context)
 
         // Wait for the views to be properly laid out
-        fragmentCameraBinding.viewFinder.post {
+        viewFinder?.post {
 
             // Build UI controls
             updateCameraUi()
@@ -160,7 +163,7 @@ class SmartCameraFragment : Fragment() {
         val screenAspectRatio = aspectRatio(metrics.width(), metrics.height())
         Log.d(TAG, "Preview aspect ratio: $screenAspectRatio")
 
-        val rotation = fragmentCameraBinding.viewFinder.display.rotation
+        val rotation = viewFinder?.display?.rotation
 
         // CameraProvider
         val cameraProvider = cameraProvider
@@ -174,7 +177,7 @@ class SmartCameraFragment : Fragment() {
                 // We request aspect ratio but no resolution
                 .setTargetAspectRatio(screenAspectRatio)
                 // Set initial target rotation
-                .setTargetRotation(rotation)
+                .setTargetRotation(rotation!!)
                 .build()
 
         // Must unbind the use-cases before rebinding them
@@ -187,7 +190,7 @@ class SmartCameraFragment : Fragment() {
                     this, cameraSelector, preview)
 
             // Attach the viewfinder's surface provider to preview use case
-            preview?.setSurfaceProvider(fragmentCameraBinding.viewFinder.surfaceProvider)
+            preview?.setSurfaceProvider(viewFinder?.surfaceProvider)
         } catch (exc: Exception) {
             Log.e(TAG, "Use case binding failed", exc)
         }
@@ -215,16 +218,12 @@ class SmartCameraFragment : Fragment() {
     /** Method used to re-draw the camera UI controls, called every time configuration changes. */
     private fun updateCameraUi() {
 
-        // Remove previous UI if any
-        cameraUiContainerBinding?.root?.let {
-            fragmentCameraBinding.root.removeView(it)
-        }
+        cameraUiContainer = LayoutInflater.from(requireContext()).inflate(
+            R.layout.camera_ui_container,
+            fragmentCameraView) as ConstraintLayout
 
-        cameraUiContainerBinding = CameraUiContainerBinding.inflate(
-                LayoutInflater.from(requireContext()),
-                fragmentCameraBinding.root,
-                true
-        )
+        debugModeLayoutContainer = cameraUiContainer?.findViewById<RelativeLayout>(
+            R.id.debug_mode_layout_container)
 
     }
 
@@ -258,10 +257,10 @@ class SmartCameraFragment : Fragment() {
 
     fun updateDebugModeLayoutContainerVisibility(visible: Boolean) {
         if (visible) {
-            cameraUiContainerBinding?.debugModeLayoutContainer?.visibility =
+            debugModeLayoutContainer?.visibility =
                 View.VISIBLE
         } else {
-            cameraUiContainerBinding?.debugModeLayoutContainer?.visibility =
+            debugModeLayoutContainer?.visibility =
                 View.GONE
         }
     }
