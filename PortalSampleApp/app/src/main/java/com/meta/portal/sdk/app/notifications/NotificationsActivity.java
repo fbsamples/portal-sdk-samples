@@ -24,4 +24,7 @@ public class NotificationsActivity extends FeatureBaseActivity {
     protected void updateDebugModeLayoutContainerVisibility(boolean visible) {
     }
 
+    protected void setFeatureInfoShowing(boolean showing) {
+    }
+
 }

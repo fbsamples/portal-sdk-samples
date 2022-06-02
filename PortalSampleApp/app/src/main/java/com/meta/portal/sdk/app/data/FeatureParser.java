@@ -1,10 +1,15 @@
 package com.meta.portal.sdk.app.data;
 
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.util.Log;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
+
+import com.meta.portal.sdk.app.Utils;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -23,11 +28,13 @@ public class FeatureParser {
     private final AssetManager mAssetManager;
     private final Resources mResources;
     private final String mPackageName;
+    private final Context mContext;
     
-    public FeatureParser(AssetManager assetManager, Resources resources, String packageName) {
+    public FeatureParser(AssetManager assetManager, Resources resources, String packageName, Context context) {
         mAssetManager = assetManager;
         mResources = resources;
         mPackageName = packageName;
+        mContext = context;
     }
 
     public void parseFeatures() {
@@ -35,7 +42,14 @@ public class FeatureParser {
         try {
             parserFactory = XmlPullParserFactory.newInstance();
             XmlPullParser parser = parserFactory.newPullParser();
-            InputStream is = mAssetManager.open("featuredata.xml");
+
+            InputStream is;
+            if (!Utils.isTvDevice(mContext)) {
+                is = mAssetManager.open("featuredata.xml");
+            } else {
+                is = mAssetManager.open("featuredata_tv.xml");
+            }
+
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(is, null);
 
@@ -82,6 +96,9 @@ public class FeatureParser {
                             } else if ("backgroundresourceid".equals(eltName)) {
                                 @DrawableRes int resourceID = mResources.getIdentifier(parser.nextText(), "drawable", mPackageName);
                                 feature.setBackgroundResourceId(resourceID);
+                            } else if ("color".equals(eltName)) {
+                                @ColorInt int color = Color.parseColor(parser.nextText());
+                                feature.setBackgroundColor(color);
                             } else if ("classname".equals(eltName)) {
                                 try {
                                     Class featureClass = Class.forName(parser.nextText());

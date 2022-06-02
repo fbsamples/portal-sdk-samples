@@ -20,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.meta.portal.sdk.app.Utils;
 import com.meta.portal.sdk.app.ui.FeatureInfoAnimationController;
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.ui.TopAppBarAnimationController;
@@ -66,21 +67,28 @@ public abstract class FeatureBaseActivity extends BaseActivity {
         mFeatureInfoHeader.setText(getFeatureInfoHeaderResId());
         mFeatureInfoText.setText(getFeatureInfoTextResId());
 
-        mFeatureInfoContainerBackground.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
-                mFeatureInfoShowing = false;
-                startTopAppBarFadeOutAnimation();
-            }
-        });
+        if (!Utils.isTvDevice(this)) {
+            mFeatureInfoContainerBackground.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
+                    mFeatureInfoShowing = false;
+                    startTopAppBarFadeOutAnimation();
+                }
+            });
+        }
 
         mFeatureInfoCloseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
                 mFeatureInfoShowing = false;
-                startTopAppBarFadeOutAnimation();
+                if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
+                    startTopAppBarFadeOutAnimation();
+                }
+                if (Utils.isTvDevice(FeatureBaseActivity.this)) {
+                    setFeatureInfoShowing(mFeatureInfoShowing);
+                }
             }
         });
 
@@ -102,20 +110,22 @@ public abstract class FeatureBaseActivity extends BaseActivity {
 
         mTopAppBarBackground = (FrameLayout) findViewById(R.id.top_app_bar_container);
 
-        mTopAppBarBackground.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                mTopAppBarAnimationController.startTopAppBarViewInAnimation(
-                        new TopAppBarAnimationController.AnimationFinishedCallback() {
-                            @Override
-                            public void animationFinished() {
-                                FeatureBaseActivity.this.startTopAppBarFadeOutAnimation();
+        if (!Utils.isTvDevice(this)) {
+            mTopAppBarBackground.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    mTopAppBarAnimationController.startTopAppBarViewInAnimation(
+                            new TopAppBarAnimationController.AnimationFinishedCallback() {
+                                @Override
+                                public void animationFinished() {
+                                    FeatureBaseActivity.this.startTopAppBarFadeOutAnimation();
+                                }
                             }
-                        }
-                );
-                return false;
-            }
-        });
+                    );
+                    return false;
+                }
+            });
+        }
 
         mTopAppBarAnimationController = new TopAppBarAnimationController(mTopAppBar);
 
@@ -125,6 +135,10 @@ public abstract class FeatureBaseActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
+                mFeatureInfoShowing = true;
+                if (Utils.isTvDevice(FeatureBaseActivity.this)) {
+                    setFeatureInfoShowing(mFeatureInfoShowing);
+                }
             }
         });
 
@@ -158,8 +172,14 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (!mFeatureInfoShowing) {
-            startTopAppBarFadeOutAnimation();
+
+        if (!Utils.isTvDevice(this)) {
+            if (!mFeatureInfoShowing) {
+                startTopAppBarFadeOutAnimation();
+            }
+        }
+        if (Utils.isTvDevice(FeatureBaseActivity.this)) {
+            setFeatureInfoShowing(mFeatureInfoShowing);
         }
     }
 
@@ -180,5 +200,7 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     protected abstract @StringRes int getFeatureInfoTextResId();
 
     protected abstract void updateDebugModeLayoutContainerVisibility(boolean visible);
+
+    protected abstract void setFeatureInfoShowing(boolean showing);
 
 }

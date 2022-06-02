@@ -4,6 +4,7 @@
     android:id="@+id/header_text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingTop="@dimen/header_first_padding_top"
     android:paddingBottom="@dimen/header_first_padding_bottom"
     android:paddingLeft="@dimen/header_first_padding_left"
     android:textAppearance="?android:attr/textAppearanceLarge"

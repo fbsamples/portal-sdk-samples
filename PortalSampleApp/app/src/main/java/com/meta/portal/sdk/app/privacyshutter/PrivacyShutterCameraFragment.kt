@@ -45,6 +45,7 @@ import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 
 import com.meta.portal.sdk.app.R
+import com.meta.portal.sdk.app.Utils
 
 private const val PERMISSIONS_REQUEST_CODE_CAMERA = 10
 private const val PERMISSIONS_REQUEST_CODE_MICROPHONE = 11
@@ -275,7 +276,15 @@ class PrivacyShutterCameraFragment : Fragment() {
 
         cameraButton = privacyShutterCameraUiContainer?.findViewById(R.id.camera_button)
 
+        if (Utils.isTvDevice(activity)) {
+            cameraButton?.setEnabled(false)
+        }
+
         microphoneButton = privacyShutterCameraUiContainer?.findViewById(R.id.microphone_button)
+
+        if (Utils.isTvDevice(activity)) {
+            microphoneButton?.setEnabled(false)
+        }
 
         visualizer = privacyShutterCameraUiContainer?.findViewById(R.id.visualizer)
 
@@ -370,6 +379,16 @@ class PrivacyShutterCameraFragment : Fragment() {
         } else {
             debugModeLayoutContainer?.visibility =
                 View.GONE
+        }
+    }
+
+    fun setFeatureInfoShowing(showing: Boolean) {
+        if (showing) {
+            cameraButton?.setEnabled(false)
+            microphoneButton?.setEnabled(false)
+        } else {
+            cameraButton?.setEnabled(true)
+            microphoneButton?.setEnabled(true)
         }
     }
 

@@ -27,6 +27,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.camera.core.*
@@ -36,7 +37,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.window.WindowManager
+import com.facebook.portal.ui.view.PortalSmartCameraEditorButton
 import com.meta.portal.sdk.app.R
+import com.meta.portal.sdk.app.Utils
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
@@ -54,6 +57,7 @@ class SmartCameraFragment : Fragment() {
     private var viewFinder: PreviewView? = null
 
     private var debugModeLayoutContainer: RelativeLayout? = null
+    private var cameraButton: PortalSmartCameraEditorButton? = null
 
     private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
     private var preview: Preview? = null
@@ -225,6 +229,15 @@ class SmartCameraFragment : Fragment() {
         debugModeLayoutContainer = cameraUiContainer?.findViewById<RelativeLayout>(
             R.id.debug_mode_layout_container)
 
+        cameraButton = cameraUiContainer?.findViewById(R.id.camera_button)
+
+        if (Utils.isTvDevice(activity)) {
+            cameraButton?.setEnabled(false)
+            cameraButton?.setFocusable(false)
+            cameraButton?.setFocusableInTouchMode(false)
+            cameraButton?.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS)
+        }
+
     }
 
     /** Returns true if the device has an available back camera. False otherwise */
@@ -262,6 +275,20 @@ class SmartCameraFragment : Fragment() {
         } else {
             debugModeLayoutContainer?.visibility =
                 View.GONE
+        }
+    }
+
+    fun setFeatureInfoShowing(showing: Boolean) {
+        if (showing) {
+            cameraButton?.setEnabled(false)
+            cameraButton?.setFocusable(false)
+            cameraButton?.setFocusableInTouchMode(false)
+            cameraButton?.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS)
+        } else {
+            cameraButton?.setEnabled(true)
+            cameraButton?.setFocusable(true)
+            cameraButton?.setFocusableInTouchMode(true)
+            cameraButton?.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS)
         }
     }
 
