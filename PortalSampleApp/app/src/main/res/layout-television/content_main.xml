@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/landing_page_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/header_text_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="114dp"
+            android:paddingBottom="@dimen/header_first_padding_bottom"
+            android:paddingLeft="@dimen/header_first_padding_left_tv"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Welcome to the Reference App"
+            android:maxLines="1"
+            android:textSize="36sp"
+            android:textColor="@color/white"
+            android:background="@color/black"
+            tools:text="0"/>
+
+        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/header_2_text_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/header_second_padding_left"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Explore the SDK"
+            android:textSize="20sp"
+            android:textColor="@color/header_second_text_color"
+            android:background="@color/black"
+            tools:text="0"
+            android:layout_below="@+id/header_text_tv"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_below="@+id/header_2_text_tv"
+            />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

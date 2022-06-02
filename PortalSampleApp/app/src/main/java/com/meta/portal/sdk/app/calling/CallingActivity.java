@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import com.meta.portal.sdk.app.base.FeatureBaseActivity;
 import com.meta.portal.sdk.app.R;
+import com.meta.portal.sdk.app.privacyshutter.PrivacyShutterCameraFragment;
 
 public class CallingActivity extends FeatureBaseActivity {
 
@@ -23,6 +24,9 @@ public class CallingActivity extends FeatureBaseActivity {
     }
 
     protected void updateDebugModeLayoutContainerVisibility(boolean visible) {
+    }
+
+    protected void setFeatureInfoShowing(boolean showing) {
     }
 
 }
