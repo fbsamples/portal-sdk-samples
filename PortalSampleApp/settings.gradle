@@ -4,7 +4,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
-        maven { url "${rootDir}/portal-local-maven" }
+       // maven { url "${rootDir}/portal-local-maven" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
     }
 }
 rootProject.name = "PortalSampleApp"
