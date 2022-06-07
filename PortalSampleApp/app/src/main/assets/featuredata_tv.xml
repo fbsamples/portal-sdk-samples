@@ -38,7 +38,7 @@
         <classnametitle>Lorem_ClassName</classnametitle>
         <backgroundresourceid>ic_sce_illustration</backgroundresourceid>
         <color>#EA929D</color>
-        <classname>com.meta.portal.sdk.app.smartcamera.SmartCameraActivity</classname>
+        <classname>com.meta.portal.sdk.app.smartcameraEditor.SmartCameraEditorActivity</classname>
     </feature>
     <feature>
         <visible>true</visible>

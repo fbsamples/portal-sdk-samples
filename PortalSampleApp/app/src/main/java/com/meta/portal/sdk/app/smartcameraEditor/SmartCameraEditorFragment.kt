@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.meta.portal.sdk.app.smartcamera
+package com.meta.portal.sdk.app.smartcameraEditor
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -27,7 +27,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.camera.core.*

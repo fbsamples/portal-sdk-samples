@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ToDo Clean this Up @Nils -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item android:state_pressed="false">
+    <shape android:shape="rectangle">
+      <gradient
+        android:startColor="@color/sdksamplesButtonPrimary"
+        android:endColor="@color/sdksamplesButtonSecondary"
+        android:angle="90"
+      />
+      <corners android:radius="8dp"/>
+    </shape>
+  </item>
+
+  <item android:state_pressed="true">
+    <shape android:shape="rectangle">
+      <solid android:color="@color/sdksamplesButtonPressed"/>
+      <corners android:radius="8dp"/>
+    </shape>
+  </item>
+
+</selector>

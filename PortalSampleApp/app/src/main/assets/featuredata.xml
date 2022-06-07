@@ -30,10 +30,17 @@
     </feature>
     <feature>
         <visible>true</visible>
+        <screenname>Smart Camera </screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>card_raisehand_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.smartcamera.CameraActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
         <screenname>Smart Camera Editor</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>
         <backgroundresourceid>card_smartcameraeditor_bkg</backgroundresourceid>
-        <classname>com.meta.portal.sdk.app.smartcamera.SmartCameraActivity</classname>
+        <classname>com.meta.portal.sdk.app.smartcameraEditor.SmartCameraEditorActivity</classname>
     </feature>
     <feature>
         <visible>true</visible>

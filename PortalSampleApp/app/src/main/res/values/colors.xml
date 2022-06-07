@@ -22,4 +22,16 @@
     <color name="feature_info_text_tv">#EEEDEC</color>
 
     <color name="layout_line">#FF21BCFF</color>
+
+    <!--ToDo - Clean this up @Nils -->
+    <color name="sdksamplesButtonPrimary">#6ab7ee</color>
+    <color name="sdksamplesButtonSecondary">#005bb2</color>
+    <color name="sdksamplesButtonPressed">#2e88f7</color>
+    <color name="colorBlack">#FF000000</color>
+    <color name="dividerGrey">#E47E7E7E</color>
+    <color name="colorRed">#FFFF0000</color>
+    <color name="headboxColor">#FFFF00</color>
+    <color name="light_blue">#FF4FC3F7</color>
+    <color name="sdksamples_dark_blue">#FF0093c4</color>
+
 </resources>
