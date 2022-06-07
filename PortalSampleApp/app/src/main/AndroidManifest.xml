@@ -8,9 +8,10 @@
     <!-- Declare permissions -->
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-permission
-        android:name="com.facebook.portal.permission.SHOW_SMART_CAMERA_EDITOR" />
+    <uses-permission android:name="com.facebook.portal.permission.SHOW_SMART_CAMERA_EDITOR" />
     <uses-permission android:name="com.facebook.portal.permission.ACCESS_CAMERA_MIC_STATE" />
+    <uses-permission android:name="com.facebook.portal.permission.SMART_CAMERA_CONTROL"/>
+    <uses-permission android:name="com.facebook.portal.permission.SMART_CAMERA_METADATA"/>
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
@@ -55,7 +56,12 @@
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
-            android:name=".smartcamera.SmartCameraActivity"
+            android:name=".smartcamera.CameraActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+        <activity
+            android:name=".smartcameraEditor.SmartCameraEditorActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
