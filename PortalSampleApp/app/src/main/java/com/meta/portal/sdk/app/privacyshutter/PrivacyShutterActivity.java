@@ -28,4 +28,8 @@ public class PrivacyShutterActivity extends FeatureBaseActivity {
         ((PrivacyShutterCameraFragment) mFragment).updateDebugModeLayoutContainerVisibility(visible);
     }
 
+    protected void setFeatureInfoShowing(boolean showing) {
+        ((PrivacyShutterCameraFragment) mFragment).setFeatureInfoShowing(showing);
+    }
+
 }

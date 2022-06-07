@@ -103,10 +103,6 @@ public class FeatureCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         mFeatureCardAdapterListener = featureCardAdapterListener;
     }
 
-    public interface FeatureCardAdapterListener {
-        void onListItemClicked(final Feature feature);
-    }
-
 }
 
 

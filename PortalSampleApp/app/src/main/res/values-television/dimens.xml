@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="feature_info_margin_left">676dp</dimen>
+    <dimen name="top_app_bar_info_button_width">36dp</dimen>
+    <dimen name="top_app_bar_info_button_height">36dp</dimen>
+    <dimen name="top_app_bar_debug_mode_button_width">150dp</dimen>
+    <dimen name="privacy_shutter_camera_button_width">48dp</dimen>
+    <dimen name="privacy_shutter_camera_button_height">48dp</dimen>
+    <dimen name="privacy_shutter_microphone_button_width">48dp</dimen>
+    <dimen name="privacy_shutter_microphone_button_height">48dp</dimen>
+    <dimen name="privacy_shutter_camera_button_margin_right">14dp</dimen>
+</resources>

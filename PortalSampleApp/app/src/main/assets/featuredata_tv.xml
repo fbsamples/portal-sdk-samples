@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<features>
+    <feature>
+        <visible>true</visible>
+        <screenname>Calling</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>ic_calling_illustration</backgroundresourceid>
+        <color>#B997BA</color>
+        <classname>com.meta.portal.sdk.app.calling.CallingActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Notification</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>ic_notifs_illustration</backgroundresourceid>
+        <color>#CC6750</color>
+        <classname>com.meta.portal.sdk.app.notifications.NotificationsActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Companion</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>ic_companion_illustration</backgroundresourceid>
+        <color>#CA8945</color>
+        <classname>com.meta.portal.sdk.app.companion.CompanionActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Hand Raise</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>ic_handraise_illustration</backgroundresourceid>
+        <color>#78B594</color>
+        <classname>com.meta.portal.sdk.app.handraise.HandRaiseActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Smart Camera Editor</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>ic_sce_illustration</backgroundresourceid>
+        <color>#EA929D</color>
+        <classname>com.meta.portal.sdk.app.smartcamera.SmartCameraActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Privacy Shutter</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>ic_privacyshutter_illustration</backgroundresourceid>
+        <color>#B997BA</color>
+        <classname>com.meta.portal.sdk.app.privacyshutter.PrivacyShutterActivity</classname>
+    </feature>
+</features>
+
