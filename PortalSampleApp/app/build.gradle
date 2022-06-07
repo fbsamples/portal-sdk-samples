@@ -66,7 +66,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //Portal SDK Dependencies
-    implementation 'com.facebook.portal:ui:1.1.1'
-    implementation 'com.facebook.portal:smartcamera-editor:1.1.1'
-    implementation 'com.facebook.portal:systemstate:1.1.1'
+    implementation 'com.facebook.portal:ui:1.2.0-SNAPSHOT'
+    implementation 'com.facebook.portal:smartcamera-editor:1.2.0-SNAPSHOT'
+    implementation 'com.facebook.portal:systemstate:1.2.0-SNAPSHOT'
 }
