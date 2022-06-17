@@ -2,36 +2,37 @@
 
 package com.meta.portal.sdk.app.smartcamera;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import com.facebook.portal.smartcamera.SmartCameraEditor;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
+
 import com.meta.portal.sdk.app.R;
+import com.meta.portal.sdk.app.base.FeatureBaseActivity;
 
-public class CameraActivity extends Activity implements CameraEditorLauncher {
+public class CameraActivity extends FeatureBaseActivity {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_camera);
-    Log.i("CameraActivity", "onCreate: " + getIntent().toString());
-    if (null == savedInstanceState) {
-      getFragmentManager()
-          .beginTransaction()
-          .replace(R.id.container, new CameraFragment())
-          .commit();
-    }
+  private Fragment mFragment;
+
+  protected Fragment getFragment() {
+    mFragment = CameraFragment.newInstance();
+    return mFragment;
   }
 
-  @Override
-  protected void onNewIntent(Intent intent) {
-    super.onNewIntent(intent);
-    Log.w("CameraActivity", "onNewIntent: " + intent.toString());
+  protected @StringRes
+  int getFeatureInfoHeaderResId() {
+    return R.string.smart_camera_manual_feature_info_header;
   }
 
-  @Override
-  public void onLaunchClicked() {
-    SmartCameraEditor.launchSmartCameraEditor(getBaseContext());
+  protected @StringRes
+  int getFeatureInfoTextResId() {
+    return R.string.smart_camera_manual_feature_info_text;
   }
+
+  protected void updateDebugModeLayoutContainerVisibility(boolean visible) {
+    ((CameraFragment) mFragment).updateDebugModeLayoutContainerVisibility(visible);
+  }
+
+  protected void setFeatureInfoShowing(boolean showing) {
+    ((CameraFragment) mFragment).setFeatureInfoShowing(showing);
+  }
+
 }

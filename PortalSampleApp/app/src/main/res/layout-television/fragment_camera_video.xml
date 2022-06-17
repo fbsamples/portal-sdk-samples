@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    >
+
+    <TextureView
+        android:id="@+id/texture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/texture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <RelativeLayout
+        android:id="@+id/debug_mode_layout_container_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/layout_view_1_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hairline_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="23dp"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <View
+            android:id="@+id/layout_view_1_2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hairline_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="63dp"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <RelativeLayout
+            android:id="@+id/layout_view_1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="608dp"
+            android:layout_marginBottom="23dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="80 PX"
+                android:textSize="24sp"
+                android:textColor="@color/layout_line"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/debug_mode_layout_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/layout_view_2_1"
+            android:layout_width="52dp"
+            android:layout_height="@dimen/hairline_height"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <View
+            android:id="@+id/layout_view_2_2"
+            android:layout_width="52dp"
+            android:layout_height="@dimen/hairline_height"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="61dp"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <RelativeLayout
+            android:id="@+id/layout_view_2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="125dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="96 PX"
+                android:textSize="24sp"
+                android:textColor="@color/layout_line"/>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/layout_view_2_4"
+            android:layout_width="@dimen/hairline_height"
+            android:layout_height="52dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="12dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <View
+            android:id="@+id/layout_view_2_5"
+            android:layout_width="@dimen/hairline_height"
+            android:layout_height="52dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="12dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/done"
+        android:layout_width="86dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="19dp"
+        android:text="Done"
+        android:textSize="18sp"
+        android:textColor="@color/color_selector_tv"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:background="@drawable/button_default_mode_background_tv"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:stateListAnimator="@animator/button_bg_selector"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/modeButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="31dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="23dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        >
+
+        <Button
+            android:id="@+id/defaultMode"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:text="Smart Frame"
+            android:textSize="18sp"
+            android:textColor="@color/color_selector_tv"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:background="@drawable/button_default_mode_background_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:adjustViewBounds="true"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
+        <Button
+            android:id="@+id/deskMode"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:text="Nearview"
+            android:textSize="18sp"
+            android:textColor="@color/color_selector_tv"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:background="@drawable/button_default_mode_background_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:adjustViewBounds="true"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
+        <Button
+            android:id="@+id/manualMode"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:text="Manual"
+            android:textSize="18sp"
+            android:textColor="@color/color_selector_tv"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:background="@drawable/button_default_mode_background_tv"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/moveButtons"
+        android:layout_width="134dp"
+        android:layout_height="134dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        >
+
+        <ImageButton
+            android:id="@+id/up"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_up"
+            android:background="@drawable/button_move_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:tint="@color/color_selector_tv"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
+        <ImageButton
+            android:id="@+id/down"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_down"
+            android:background="@drawable/button_move_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:adjustViewBounds="true"
+            android:tint="@color/color_selector_tv"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
+        <ImageButton
+            android:id="@+id/left"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_left"
+            android:background="@drawable/button_move_tv"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:adjustViewBounds="true"
+            android:tint="@color/color_selector_tv"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
+        <ImageButton
+            android:id="@+id/right"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_right"
+            android:background="@drawable/button_move_tv"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:adjustViewBounds="true"
+            android:tint="@color/color_selector_tv"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/zoomButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="134dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginStart="13dp"
+        android:visibility="gone"
+        >
+
+        <ImageButton
+            android:id="@+id/zoomIn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_zoom_in"
+            android:background="@drawable/button_move_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:tint="@color/color_selector_tv"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
+        <TextView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="1×"
+            android:maxLines="1"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            tools:text="0"/>
+
+        <ImageButton
+            android:id="@+id/zoomOut"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_zoom_out"
+            android:background="@drawable/button_move_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:adjustViewBounds="true"
+            android:tint="@color/color_selector_tv"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

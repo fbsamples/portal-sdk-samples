@@ -36,17 +36,17 @@
     <string name="handraise_feature_info_header">Hand Raise</string>
     <string name="handraise_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
     <string name="smart_camera_feature_info_header">Smart Camera Editor</string>
+    <string name="smart_camera_manual_feature_info_header">Smart Camera</string>
     <string name="smart_camera_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
+    <string name="smart_camera_manual_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
     <string name="privacy_screen_feature_info_header">Privacy Shutter</string>
     <string name="privacy_screen_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
 
-    <!-- ToDo - Clean this Up @Nils  -->
     <string name="camera_error" description="Camera error message">Camera error, exiting activity.</string>
-    <string name="smart_camera" description="Start smart camera">Smart Camera</string>
-    <string name="regular_camera" description='Start regular camera'>Regular Camera</string>
-    <string name="default_mode" description="Default Mode">Default Mode</string>
-    <string name="desk_mode" description="Desk Mode">Desk Mode</string>
-    <string name="launch_editor" description="Launch Editor">Launch Editor</string>
+    <string name="default_mode" description="Default Mode">Smart Frame</string>
+    <string name="desk_mode" description="Desk Mode">Nearview</string>
+    <string name="spotlight_mode" description="Spotlight Mode">Spotlight</string>
+    <string name="manual_mode" description="Manual Mode">Manual</string>
     <string name="up" description="Manual mode up navigation">Up</string>
     <string name="down" description="Manual mode down navigation">Down</string>
     <string name="left" description="Manual mode left navigation">Left</string>

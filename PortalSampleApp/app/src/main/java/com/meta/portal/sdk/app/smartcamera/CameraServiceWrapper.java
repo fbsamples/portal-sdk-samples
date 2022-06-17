@@ -31,10 +31,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class CameraServiceWrapper {
 
-  public interface ModeChangeListener {
-    void onModeChanged(@Nullable ModeSpec modeSpec);
-  }
-
   public interface ConnectionListener {
     void onControlConnectionResult(boolean success);
 
@@ -46,7 +42,6 @@ public class CameraServiceWrapper {
   private final ReadWriteLock mDestroyedLock = new ReentrantReadWriteLock();
 
   private final ExecutorService mExecutorService = Executors.newCachedThreadPool();
-  private final ModeChangeListener mModeChangeListener;
   private final ConnectionListener mConnectionListener;
   private RectF mCropRect = new RectF();
   private float mAspectRatio = 1f;
@@ -73,21 +68,11 @@ public class CameraServiceWrapper {
 
   public CameraServiceWrapper(
       Context context,
-      ModeChangeListener modeChangeListener,
       ConnectionListener connectionListner) {
     mSmartCameraControlConnectionFactory = new SmartCameraControlConnectionFactory(context);
     mSmartCameraMetadataConnectionFactory = new SmartCameraMetadataConnectionFactory(context);
-    mModeChangeListener = modeChangeListener;
     mConnectionListener = connectionListner;
   }
-
-  private final Subscriber<ModeSpec> mModeSpecSubscriber =
-      new Subscriber<ModeSpec>() {
-        @Override
-        public void onUpdate(@Nullable ModeSpec value) {
-          mModeChangeListener.onModeChanged(value);
-        }
-      };
 
   private final Subscriber<MetadataBuffer> mFrameMetadataSubscriber =
       new Subscriber<MetadataBuffer>() {
@@ -237,7 +222,6 @@ public class CameraServiceWrapper {
                   mConnectionListener.onMetadataConnectionResult(true);
                   Log.d(TAG, "SCS metadata connection success");
                   setMetadataConnectionCloseMonitoring(result.getValue());
-                  subscribeToModeChanges(mModeSpecSubscriber);
                   subscribeToFrameMetadata(
                       mFrameTopics, Float.POSITIVE_INFINITY, mFrameMetadataSubscriber);
                 } else {

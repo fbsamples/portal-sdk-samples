@@ -13,9 +13,11 @@
     <color name="header_second_text_color">#A6FFFFFF</color>
     <color name="button_background">#F2F3F5</color>
     <color name="button_back_background">#1AFFFFFF</color>
+    <color name="button_default_tv_background">#40FFFFFF</color>
     <color name="button_back_background_pressed">#33FFFFFF</color>
     <color name="top_app_bar_background">#00FFFFFF</color>
     <color name="button_privacy_shutter_background">#33FFFFFF</color>
+    <color name="button_tv_background">#99000000</color>
     <color name="button_privacy_shutter_background_pressed">#66FFFFFF</color>
 
     <color name="feature_info_container_background_tv">#2D2D2D</color>
@@ -23,15 +25,10 @@
 
     <color name="layout_line">#FF21BCFF</color>
 
-    <!--ToDo - Clean this up @Nils -->
-    <color name="sdksamplesButtonPrimary">#6ab7ee</color>
-    <color name="sdksamplesButtonSecondary">#005bb2</color>
-    <color name="sdksamplesButtonPressed">#2e88f7</color>
     <color name="colorBlack">#FF000000</color>
     <color name="dividerGrey">#E47E7E7E</color>
     <color name="colorRed">#FFFF0000</color>
     <color name="headboxColor">#FFFF00</color>
     <color name="light_blue">#FF4FC3F7</color>
-    <color name="sdksamples_dark_blue">#FF0093c4</color>
 
 </resources>

@@ -11,6 +11,8 @@ public interface CameraPresenter {
 
   void onDeskModeClicked();
 
+  void onManualModeClicked();
+
   void onZoomInClicked();
 
   void onZoomOutClicked();
@@ -23,15 +25,4 @@ public interface CameraPresenter {
 
   void onScrollRightClicked();
 
-  void onLaunchEditorClicked();
-
-  public interface CameraView {
-    void setModeText(String modeText);
-
-    void setFailureText(String failureText);
-
-    void showFailureText(boolean show);
-
-    void showModeText(boolean show);
-  }
 }
