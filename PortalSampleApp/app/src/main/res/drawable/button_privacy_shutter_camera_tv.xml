@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-        <item android:drawable="@drawable/niu_icon_camcorder_cross_filled_tv" android:state_selected="true" />
+        <item android:drawable="@drawable/ic_camcorder_cross_filled_tv" android:state_selected="true" />
         <item android:drawable="@drawable/niu_icon_camcorder_filled_tv"
             android:state_selected="false"/>
 </selector>

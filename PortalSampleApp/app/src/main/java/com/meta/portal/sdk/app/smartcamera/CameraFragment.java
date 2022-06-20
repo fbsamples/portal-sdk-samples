@@ -5,7 +5,6 @@ package com.meta.portal.sdk.app.smartcamera;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Matrix;
@@ -31,19 +30,23 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
 
 import com.meta.portal.sdk.app.R;
+import com.meta.portal.sdk.app.Utils;
+import com.meta.portal.sdk.app.ui.ButtonAnimationControllerTv;
 
 import java.util.Collections;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 @SuppressLint({"ValidFragment", "MissingPermission"})
-public class CameraFragment extends Fragment implements CameraPresenter.CameraView {
+public class CameraFragment extends Fragment {
 
   private static final String TAG = "CameraFragment";
   private static final int REQUEST_CODE = 0;
@@ -55,6 +58,30 @@ public class CameraFragment extends Fragment implements CameraPresenter.CameraVi
 
   /** A view reference for camera preview. */
   private TextureView mTextureView;
+
+  private View mModeButtons;
+  private View mMoveButtons;
+  private View mZoomButtons;
+  private View mDoneButton;
+
+  private Button mDefaultModeButton;
+  private Button mDeskModeButton;
+  private Button mManualModeButton;
+  private ImageButton mUpButton;
+  private ImageButton mDownButton;
+  private ImageButton mLeftButton;
+  private ImageButton mRightButton;
+  private ImageButton mZoomInButton;
+  private ImageButton mZoomOutButton;
+
+  private ButtonAnimationControllerTv mButtonAnimationControllerTv;
+
+  private boolean mModeButtonsShowing = true;
+  private boolean mDebugInfoShowing = false;
+
+  RelativeLayout mDebugModeLayoutContainer;
+  RelativeLayout mDebugModeLayoutContainer1;
+  RelativeLayout mDebugModeLayoutContainer2;
 
   /** A reference to the opened Camera. */
   @Nullable private CameraDevice mCameraDevice;
@@ -75,12 +102,9 @@ public class CameraFragment extends Fragment implements CameraPresenter.CameraVi
 
   CaptureRequest.Builder mPreviewBuilder;
 
-  private CameraEditorLauncher mCameraEditorLauncher;
   private CameraPresenter mCameraPresenter;
   private int mWidth;
   private int mHeight;
-  private TextView mCurrentModeText;
-  private TextView mFailureText;
 
   /** Listener handles lifecycle events on a TextureView. */
   private final TextureView.SurfaceTextureListener mSurfaceTextureListener =
@@ -157,7 +181,7 @@ public class CameraFragment extends Fragment implements CameraPresenter.CameraVi
     return inflater.inflate(R.layout.fragment_camera_video, container, false);
   }
 
-  private final View.OnClickListener setDefaultMode =
+  private final View.OnClickListener mSetDefaultMode =
       new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -165,7 +189,7 @@ public class CameraFragment extends Fragment implements CameraPresenter.CameraVi
         }
       };
 
-  private final View.OnClickListener setDeskMode =
+  private final View.OnClickListener mSetDeskMode =
       new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -173,15 +197,22 @@ public class CameraFragment extends Fragment implements CameraPresenter.CameraVi
         }
       };
 
-  private final View.OnClickListener launchCameraEditor =
-      new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-          mCameraPresenter.onLaunchEditorClicked();
-        }
-      };
+  private final View.OnClickListener mManualMode =
+          new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              mCameraPresenter.onManualModeClicked();
+              if (Utils.isTvDevice(getActivity())) {
+                mButtonAnimationControllerTv.startMoveButtonsInAnimation();
+                mModeButtonsShowing = false;
+                if (mDebugInfoShowing) {
+                  updateDebugModeLayoutContainerModeVisibility(true);
+                }
+              }
+            }
+          };
 
-  private final View.OnClickListener scale =
+  private final View.OnClickListener mScale =
       new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -193,7 +224,7 @@ public class CameraFragment extends Fragment implements CameraPresenter.CameraVi
         }
       };
 
-  private final View.OnClickListener scroll =
+  private final View.OnClickListener mScroll =
       new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -209,81 +240,67 @@ public class CameraFragment extends Fragment implements CameraPresenter.CameraVi
         }
       };
 
-  @Override
-  public void setModeText(final String modeText) {
-    mCurrentModeText.post(
-        new Runnable() {
-          @Override
-          public void run() {
-            mCurrentModeText.setText(modeText);
-          }
-        });
-  }
-
-  @Override
-  public void setFailureText(final String failureText) {
-    mFailureText.post(
-        new Runnable() {
-          @Override
-          public void run() {
-            mFailureText.setText(failureText);
-          }
-        });
-  }
-
-  @Override
-  public void showModeText(final boolean show) {
-    mCurrentModeText.post(
-        new Runnable() {
-          @Override
-          public void run() {
-            mCurrentModeText.setVisibility(show ? View.VISIBLE : View.GONE);
-          }
-        });
-  }
-
-  @Override
-  public void showFailureText(final boolean show) {
-    mFailureText.post(
-        new Runnable() {
-          @Override
-          public void run() {
-            mFailureText.setVisibility(show ? View.VISIBLE : View.GONE);
-          }
-        });
-  }
-
-  @Override
-  public void onAttach(Activity activity) {
-    mCameraEditorLauncher = (CameraEditorLauncher) activity;
-    super.onAttach(activity);
-  }
+  private final View.OnClickListener mDone =
+          new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              mCameraPresenter.onDefaultModeClicked();
+              if (Utils.isTvDevice(getActivity())) {
+                mModeButtonsShowing = true;
+                mButtonAnimationControllerTv.startModeButtonsInAnimation();
+                if (mDebugInfoShowing) {
+                  updateDebugModeLayoutContainerModeVisibility(true);
+                }
+              }
+            }
+          };
 
   @RequiresApi(api = Build.VERSION_CODES.P)
   @Override
   public void onViewCreated(final View view, Bundle savedInstanceState) {
     mTextureView = view.findViewById(R.id.texture);
-    mCurrentModeText = view.requireViewById(R.id.currentMode);
-    mFailureText = view.requireViewById(R.id.failureText);
+
     mCameraPresenter =
-        new CameraViewPresenter(getActivity(), this, mTextureView, mCameraEditorLauncher);
-    Button defaultModeButton = view.requireViewById(R.id.defaultMode);
-    Button deskModeButton = view.requireViewById(R.id.deskMode);
-    Button upButton = view.requireViewById(R.id.up);
-    Button downButton = view.requireViewById(R.id.down);
-    Button leftButton = view.requireViewById(R.id.left);
-    Button rightButton = view.requireViewById(R.id.right);
-    Button zoomInButton = view.requireViewById(R.id.zoomIn);
-    Button zoomOutButton = view.requireViewById(R.id.zoomOut);
-    defaultModeButton.setOnClickListener(setDefaultMode);
-    deskModeButton.setOnClickListener(setDeskMode);
-    upButton.setOnClickListener(scroll);
-    downButton.setOnClickListener(scroll);
-    leftButton.setOnClickListener(scroll);
-    rightButton.setOnClickListener(scroll);
-    zoomInButton.setOnClickListener(scale);
-    zoomOutButton.setOnClickListener(scale);
-    view.requireViewById(R.id.launch_editor).setOnClickListener(launchCameraEditor);
+        new CameraViewPresenter(getActivity(), mTextureView);
+    if (Utils.isTvDevice(getActivity())) {
+      mModeButtons = view.requireViewById(R.id.modeButtons);
+      mMoveButtons = view.requireViewById(R.id.moveButtons);
+      mZoomButtons = view.requireViewById(R.id.zoomButtons);
+      mDoneButton = view.requireViewById(R.id.done);
+    }
+    mDefaultModeButton = view.requireViewById(R.id.defaultMode);
+    mDeskModeButton = view.requireViewById(R.id.deskMode);
+    mManualModeButton = view.requireViewById(R.id.manualMode);
+    mUpButton = view.requireViewById(R.id.up);
+    mDownButton = view.requireViewById(R.id.down);
+    mLeftButton = view.requireViewById(R.id.left);
+    mRightButton = view.requireViewById(R.id.right);
+    mZoomInButton = view.requireViewById(R.id.zoomIn);
+    mZoomOutButton = view.requireViewById(R.id.zoomOut);
+    mDefaultModeButton.setOnClickListener(mSetDefaultMode);
+    mDeskModeButton.setOnClickListener(mSetDeskMode);
+    mManualModeButton.setOnClickListener(mManualMode);
+    mUpButton.setOnClickListener(mScroll);
+    mDownButton.setOnClickListener(mScroll);
+    mLeftButton.setOnClickListener(mScroll);
+    mRightButton.setOnClickListener(mScroll);
+    mZoomInButton.setOnClickListener(mScale);
+    mZoomOutButton.setOnClickListener(mScale);
+    if (Utils.isTvDevice(getActivity())) {
+      mDoneButton.setOnClickListener(mDone);
+    }
+
+    if (!Utils.isTvDevice(getActivity())) {
+      mDebugModeLayoutContainer = view.requireViewById(R.id.debug_mode_layout_container);
+    } else {
+      mDebugModeLayoutContainer1 = view.requireViewById(R.id.debug_mode_layout_container_1);
+      mDebugModeLayoutContainer2 = view.requireViewById(R.id.debug_mode_layout_container_2);
+    }
+    if (Utils.isTvDevice(getActivity())) {
+      mButtonAnimationControllerTv = new ButtonAnimationControllerTv(mModeButtons,
+              mMoveButtons, mZoomButtons, mDoneButton);
+    }
+
   }
 
   @Override
@@ -303,6 +320,76 @@ public class CameraFragment extends Fragment implements CameraPresenter.CameraVi
     closeCamera();
     stopBackgroundThread();
     super.onStop();
+  }
+
+  public void updateDebugModeLayoutContainerVisibility(boolean visible) {
+    if (visible) {
+      if (!Utils.isTvDevice(getActivity())) {
+        mDebugModeLayoutContainer.setVisibility(View.VISIBLE);
+      } else {
+        mDebugInfoShowing = true;
+        if (mModeButtonsShowing) {
+          mDebugModeLayoutContainer1.setVisibility(View.VISIBLE);
+        } else {
+          mDebugModeLayoutContainer2.setVisibility(View.VISIBLE);
+        }
+      }
+    } else {
+      if (!Utils.isTvDevice(getActivity())) {
+        mDebugModeLayoutContainer.setVisibility(View.GONE);
+      } else {
+        mDebugInfoShowing = false;
+        if (mModeButtonsShowing) {
+          mDebugModeLayoutContainer1.setVisibility(View.GONE);
+        } else {
+          mDebugModeLayoutContainer2.setVisibility(View.GONE);
+        }
+      }
+    }
+  }
+
+  public void updateDebugModeLayoutContainerModeVisibility(boolean visible) {
+    if (visible) {
+      if (mModeButtonsShowing) {
+        mDebugModeLayoutContainer1.setVisibility(View.VISIBLE);
+        mDebugModeLayoutContainer2.setVisibility(View.GONE);
+      } else {
+        mDebugModeLayoutContainer2.setVisibility(View.VISIBLE);
+        mDebugModeLayoutContainer1.setVisibility(View.GONE);
+      }
+    } else {
+      if (mModeButtonsShowing) {
+        mDebugModeLayoutContainer1.setVisibility(View.GONE);
+        mDebugModeLayoutContainer2.setVisibility(View.VISIBLE);
+      } else {
+        mDebugModeLayoutContainer2.setVisibility(View.GONE);
+        mDebugModeLayoutContainer1.setVisibility(View.VISIBLE);
+      }
+    }
+  }
+
+  protected void setFeatureInfoShowing(boolean showing) {
+    if (showing) {
+      mDefaultModeButton.setEnabled(false);
+      mDeskModeButton.setEnabled(false);
+      mManualModeButton.setEnabled(false);
+      mUpButton.setEnabled(false);
+      mDownButton.setEnabled(false);
+      mLeftButton.setEnabled(false);
+      mRightButton.setEnabled(false);
+      mZoomInButton.setEnabled(false);
+      mZoomOutButton.setEnabled(false);
+    } else {
+      mDefaultModeButton.setEnabled(true);
+      mDeskModeButton.setEnabled(true);
+      mManualModeButton.setEnabled(true);
+      mUpButton.setEnabled(true);
+      mDownButton.setEnabled(true);
+      mLeftButton.setEnabled(true);
+      mRightButton.setEnabled(true);
+      mZoomInButton.setEnabled(true);
+      mZoomOutButton.setEnabled(true);
+    }
   }
 
   /** Starts a background thread and its Handler. */
@@ -485,4 +572,10 @@ public class CameraFragment extends Fragment implements CameraPresenter.CameraVi
       openCamera(mWidth, mHeight);
     }
   }
+
+  public static CameraFragment newInstance() {
+    CameraFragment cameraFragment = new CameraFragment();
+    return cameraFragment;
+  }
+
 }

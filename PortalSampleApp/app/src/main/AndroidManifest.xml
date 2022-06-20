@@ -56,6 +56,11 @@
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
+            android:name=".smartcamera.SmartCameraActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+        <activity
             android:name=".smartcamera.CameraActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">

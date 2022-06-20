@@ -42,8 +42,6 @@
 
     <dimen name="hairline_height">1dp</dimen>
 
-    <!-- ToDo - Clean this up @Nils-->
-    <dimen name="sdksamplesButtonWidth">200dp</dimen>
     <dimen name="marginLarge">48dp</dimen>
     <dimen name="marginSmall">28dp</dimen>
     <dimen name="marginTiny">16dp</dimen>
@@ -53,6 +51,5 @@
     <dimen name="fontSizeLarge">48sp</dimen>
     <dimen name="privacyStateButtonWidth">250dp</dimen>
     <dimen name="privacyStateTextWidth">300dp</dimen>
-
 
 </resources>
