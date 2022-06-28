@@ -12,6 +12,7 @@
     <color name="card_background">#2B2B2B</color>
     <color name="header_second_text_color">#A6FFFFFF</color>
     <color name="button_background">#F2F3F5</color>
+    <color name="button_ok_fbns_background">#2E85F2</color>
     <color name="button_back_background">#1AFFFFFF</color>
     <color name="button_default_tv_background">#40FFFFFF</color>
     <color name="button_back_background_pressed">#33FFFFFF</color>

@@ -15,6 +15,13 @@
         <classname>com.meta.portal.sdk.app.notifications.NotificationsActivity</classname>
     </feature>
     <feature>
+        <visible>true</visible>
+        <screenname>Fbns</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>card_notifs_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.fbns.FbnsActivity</classname>
+    </feature>
+    <feature>
         <visible>false</visible>
         <screenname>Companion</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>

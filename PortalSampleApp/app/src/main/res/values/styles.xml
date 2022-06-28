@@ -8,4 +8,8 @@
     <style name="PortalSampleApp.Button" parent="">
         <item name="android:background">@drawable/button_default_ripple</item>
     </style>
+
+    <style name="FbnsAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/popup_backround</item>
+    </style>
 </resources>

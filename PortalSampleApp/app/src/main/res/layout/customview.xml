@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="33dp"
+            android:layout_marginLeft="33dp"
+            android:text="Step 2 of 6"
+            android:textSize="26dp"
+            android:textColor="#344854"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/button_close"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="41dp"
+            android:layout_marginRight="36dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_close"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="119dp"
+            android:layout_centerHorizontal="true"
+            android:text="Key Hash Generation"
+            android:textSize="30dp"
+            android:textColor="#344854"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="310dp"
+            android:layout_centerHorizontal="true"
+            android:text="Go to \nfb.developer.com/1983737boop \nto generate a hash key."
+            android:textSize="30dp"
+            android:textColor="#344854"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="427dp"
+            android:layout_centerHorizontal="true"
+            android:text="You should receive it within 48 hours at the email you provided."
+            android:textSize="20dp"
+            android:textColor="#344854"
+            android:textAlignment="center" />
+
+        <Button
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/button_ok"
+            android:layout_width="413dp"
+            android:layout_height="72dp"
+            android:gravity="center"
+            android:layout_marginTop="572dp"
+            android:layout_centerHorizontal="true"
+            android:text="I have received the hash key"
+            android:textSize="26sp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/button_fbns_default_ripple"
+            app:backgroundTint="@null"
+            style="?android:attr/borderlessButtonStyle"/>
+
+</RelativeLayout>
