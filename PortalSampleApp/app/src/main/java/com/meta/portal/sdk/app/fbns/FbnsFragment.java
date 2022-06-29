@@ -18,13 +18,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.meta.portal.sdk.app.R;
+import com.meta.portal.sdk.app.Utils;
 import com.meta.portal.sdk.app.data.FbnsData;
 
 public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListener, Callback {
     
     private FeatureCardAdapterFbns mFeatureCardAdapter;
     
+    private FeatureCardAdapterFbnsTv mFeatureCardAdapterTv;
+
     private FbnsHelper mFbnsHelper;
+
+    RecyclerView mRecyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,20 +49,27 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        mRecyclerView = view.findViewById(R.id.recycler_view);
 
-        mFeatureCardAdapter = new FeatureCardAdapterFbns();
-        mFeatureCardAdapter.setData(mFbnsHelper.getFbnsData());
-        mFeatureCardAdapter.setFbnsDataAdapterListener(this);
-        recyclerView.setAdapter(mFeatureCardAdapter);
+        if (!Utils.isTvDevice(getActivity())) {
+            mFeatureCardAdapter = new FeatureCardAdapterFbns();
+            mFeatureCardAdapter.setData(mFbnsHelper.getFbnsData());
+            mFeatureCardAdapter.setFbnsDataAdapterListener(this);
+            mRecyclerView.setAdapter(mFeatureCardAdapter);
+        } else {
+            mFeatureCardAdapterTv = new FeatureCardAdapterFbnsTv();
+            mFeatureCardAdapterTv.setData(mFbnsHelper.getFbnsData());
+            mFeatureCardAdapterTv.setFbnsDataAdapterListener(this);
+            mRecyclerView.setAdapter(mFeatureCardAdapterTv);
+        }
 
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
-        recyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(layoutManager);
 
         SpacesItemDecorator itemDecorator = new SpacesItemDecorator(10);
-        recyclerView.addItemDecoration(itemDecorator);
+        mRecyclerView.addItemDecoration(itemDecorator);
 
     }
 
@@ -85,19 +97,37 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
             }
         });
         alertDialog.show();
-        
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(alertDialog.getWindow().getAttributes());
-        lp.width = 868;
-        lp.height = 735;
-        alertDialog.show();
-        alertDialog.getWindow().setAttributes(lp);
+
+        if (!Utils.isTvDevice(getActivity())) {
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(alertDialog.getWindow().getAttributes());
+            lp.width = 868;
+            lp.height = 735;
+            alertDialog.show();
+            alertDialog.getWindow().setAttributes(lp);
+        } else {
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(alertDialog.getWindow().getAttributes());
+            lp.width = 1085;
+            lp.height = 919;
+            alertDialog.show();
+            alertDialog.getWindow().setAttributes(lp);
+        }
     }
 
     @Override
     public void onFbnsDataChanged() {
-        mFeatureCardAdapter.setData(mFbnsHelper.getFbnsData());
-        mFeatureCardAdapter.notifyDataSetChanged();
+        if (!Utils.isTvDevice(getActivity())) {
+            mFeatureCardAdapter.setData(mFbnsHelper.getFbnsData());
+            mFeatureCardAdapter.notifyDataSetChanged();
+        } else {
+            mFeatureCardAdapterTv.setData(mFbnsHelper.getFbnsData());
+            mFeatureCardAdapterTv.notifyDataSetChanged();
+        }
+    }
+
+    protected void setFeatureInfoShowing(boolean showing) {
+
     }
     
     public static FbnsFragment newInstance() {
@@ -122,4 +152,5 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
             outRect.right = space;
         }
     }
+
 }
