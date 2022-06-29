@@ -8,8 +8,11 @@ import com.meta.portal.sdk.app.base.FeatureBaseActivity;
 
 public class FbnsActivity extends FeatureBaseActivity {
 
+    private Fragment mFragment;
+
     protected Fragment getFragment() {
-        return FbnsFragment.newInstance();
+        mFragment = FbnsFragment.newInstance();
+        return mFragment;
     }
 
     protected @StringRes
@@ -25,6 +28,7 @@ public class FbnsActivity extends FeatureBaseActivity {
     }
 
     protected void setFeatureInfoShowing(boolean showing) {
+        ((FbnsFragment) mFragment).setFeatureInfoShowing(showing);
     }
 
 }

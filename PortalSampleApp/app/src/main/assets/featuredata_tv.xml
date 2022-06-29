@@ -17,6 +17,14 @@
         <classname>com.meta.portal.sdk.app.notifications.NotificationsActivity</classname>
     </feature>
     <feature>
+        <visible>true</visible>
+        <screenname>Fbns</screenname>
+        <classnametitle>Lorem_ClassName</classnametitle>
+        <backgroundresourceid>ic_notifs_illustration</backgroundresourceid>
+        <color>#DA6048</color>
+        <classname>com.meta.portal.sdk.app.fbns.FbnsActivity</classname>
+    </feature>
+    <feature>
         <visible>false</visible>
         <screenname>Companion</screenname>
         <classnametitle>Lorem_ClassName</classnametitle>
