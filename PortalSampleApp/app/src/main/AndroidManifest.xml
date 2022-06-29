@@ -46,6 +46,11 @@
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
         <activity
+            android:name=".fbns.FbnsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+        <activity
             android:name=".companion.CompanionActivity"
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">

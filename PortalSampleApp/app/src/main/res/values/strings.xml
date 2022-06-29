@@ -17,6 +17,8 @@
     <string name="calling_class_name">Lorem_ClassName</string>
     <string name="notification_screen_name">Notification</string>
     <string name="notification_class_name">Lorem_ClassName</string>
+    <string name="fbns_screen_name">Fbns</string>
+    <string name="fbns_class_name">Lorem_ClassName</string>
     <string name="companion_screen_name">Companion</string>
     <string name="companion_class_name">Lorem_ClassName</string>
     <string name="handraise_screen_name">Hand Raise</string>
@@ -31,6 +33,8 @@
     <string name="calling_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
     <string name="notification_feature_info_header">Notification</string>
     <string name="notification_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
+    <string name="fbns_feature_info_header">Fbns</string>
+    <string name="fbns_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
     <string name="companion_feature_info_header">Companion</string>
     <string name="companion_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
     <string name="handraise_feature_info_header">Hand Raise</string>
