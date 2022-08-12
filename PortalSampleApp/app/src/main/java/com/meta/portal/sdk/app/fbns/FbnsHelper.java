@@ -34,74 +34,56 @@ public class FbnsHelper {
     }
 
     private void initFbnsData() {
-        FbnsData fbnsDataIntegrate = new FbnsData();
-        fbnsDataIntegrate.setCardTitle("Integrate with FBNS \nclient SDK");
-        fbnsDataIntegrate.setStep(0);
-        fbnsDataIntegrate.setAlertDialogTitle("Key Hash Generation");
-        fbnsDataIntegrate.setAlertDialogInformation1("Go to fb.developer.com/1983737boop to generate a hash key.");
-        fbnsDataIntegrate.setAlertDialogInformation2("You should receive it within 48 hours at the email you provided.");
-        fbnsDataIntegrate.setAlertDialogButton("I have received the hash key");
-        fbnsDataIntegrate.setFinished(FbnsStorage.getFinished(mContext, 0));
-        mFbnsData.add(fbnsDataIntegrate);
+        FbnsData fbnsDataContact = new FbnsData();
+        fbnsDataContact.setCardTitle("Contact Meta to get your app enabled for FBNS");
+        fbnsDataContact.setStep(1);
+        fbnsDataContact.setAlertDialogTitle("Key Hash Generation");
+        fbnsDataContact.setAlertDialogInformation1("Go to fb.developer.com/1983737boop to generate a hash key.");
+        fbnsDataContact.setAlertDialogInformation2("You should receive it within 48 hours at the email you provided.");
+        fbnsDataContact.setAlertDialogButton("I have received the hash key");
+        fbnsDataContact.setFinished(FbnsStorage.getFinished(mContext, 0));
+        fbnsDataContact.setInfoTitle("Contact Meta to get your app enabled for FBNS");
+        fbnsDataContact.setInfoText("lorem Ipsum, more details on how to integrate right here.");
+        fbnsDataContact.setInfoLink("Learn more at developers.meta.com/19918829");
+        mFbnsData.add(fbnsDataContact);
 
-        FbnsData fbnsDataKeyHashGeneration = new FbnsData();
-        fbnsDataKeyHashGeneration.setCardTitle("Key hash generation");
-        fbnsDataKeyHashGeneration.setStep(1);
-        fbnsDataKeyHashGeneration.setAlertDialogTitle("Key Hash Generation");
-        fbnsDataKeyHashGeneration.setAlertDialogInformation1("Go to fb.developer.com/1983737boop to generate a hash key.");
-        fbnsDataKeyHashGeneration.setAlertDialogInformation2("You should receive it within 48 hours at the email you provided.");
-        fbnsDataKeyHashGeneration.setAlertDialogButton("I have received the hash key");
-        fbnsDataKeyHashGeneration.setFinished(FbnsStorage.getFinished(mContext, 1));
-        mFbnsData.add(fbnsDataKeyHashGeneration);
+        FbnsData fbnsDataKeyHashIntegrate = new FbnsData();
+        fbnsDataKeyHashIntegrate.setCardTitle("Integrate with FBNS client SDK");
+        fbnsDataKeyHashIntegrate.setStep(2);
+        fbnsDataKeyHashIntegrate.setAlertDialogTitle("Key Hash Generation");
+        fbnsDataKeyHashIntegrate.setAlertDialogInformation1("Go to fb.developer.com/1983737boop to generate a hash key.");
+        fbnsDataKeyHashIntegrate.setAlertDialogInformation2("You should receive it within 48 hours at the email you provided.");
+        fbnsDataKeyHashIntegrate.setAlertDialogButton("I have received the hash key");
+        fbnsDataKeyHashIntegrate.setFinished(FbnsStorage.getFinished(mContext, 1));
+        fbnsDataKeyHashIntegrate.setInfoTitle("Integrate with FBNS client SDK");
+        fbnsDataKeyHashIntegrate.setInfoText("lorem Ipsum, more details on how to integrate right here.");
+        fbnsDataKeyHashIntegrate.setInfoLink("Learn more at developers.meta.com/19918829");
+        mFbnsData.add(fbnsDataKeyHashIntegrate);
 
         FbnsData fbnsDataRegister = new FbnsData();
-        fbnsDataRegister.setCardTitle("Register and obtain \nbackend token");
-        fbnsDataRegister.setStep(2);
+        fbnsDataRegister.setCardTitle("Register a push token");
+        fbnsDataRegister.setStep(3);
         fbnsDataRegister.setAlertDialogTitle("Key Hash Generation");
         fbnsDataRegister.setAlertDialogInformation1("Go to fb.developer.com/1983737boop to generate a hash key.");
         fbnsDataRegister.setAlertDialogInformation2("You should receive it within 48 hours at the email you provided.");
         fbnsDataRegister.setAlertDialogButton("I have received the hash key");
         fbnsDataRegister.setFinished(FbnsStorage.getFinished(mContext, 2));
+        fbnsDataRegister.setInfoTitle("Register a push token");
+        fbnsDataRegister.setInfoText("lorem Ipsum, more details on how to integrate right here.");
+        fbnsDataRegister.setInfoLink("Learn more at developers.meta.com/19918829");
         mFbnsData.add(fbnsDataRegister);
 
         FbnsData fbnsDataReceivePushToken = new FbnsData();
-        fbnsDataReceivePushToken.setCardTitle("Receive push token \nand add it to app \ncode");
-        fbnsDataReceivePushToken.setStep(3);
+        fbnsDataReceivePushToken.setCardTitle("Send a test message:");
+        fbnsDataReceivePushToken.setStep(4);
         fbnsDataReceivePushToken.setAlertDialogTitle("Key Hash Generation");
         fbnsDataReceivePushToken.setAlertDialogInformation1("Go to fb.developer.com/1983737boop to generate a hash key.");
         fbnsDataReceivePushToken.setAlertDialogInformation2("You should receive it within 48 hours at the email you provided.");
         fbnsDataReceivePushToken.setAlertDialogButton("I have received the hash key");
         fbnsDataReceivePushToken.setFinished(FbnsStorage.getFinished(mContext, 3));
+        fbnsDataReceivePushToken.setInfoTitle("Send a test message:");
+        fbnsDataReceivePushToken.setInfoText("lorem Ipsum, more details on how to integrate right here.");
+        fbnsDataReceivePushToken.setInfoLink("Learn more at developers.meta.com/19918829");
         mFbnsData.add(fbnsDataReceivePushToken);
-
-        FbnsData fbnsDataAuthenticate = new FbnsData();
-        fbnsDataAuthenticate.setCardTitle("Authenticate the \ntoken with \nFB.developer.com \nservice");
-        fbnsDataAuthenticate.setStep(4);
-        fbnsDataAuthenticate.setAlertDialogTitle("Key Hash Generation");
-        fbnsDataAuthenticate.setAlertDialogInformation1("Go to fb.developer.com/1983737boop to generate a hash key.");
-        fbnsDataAuthenticate.setAlertDialogInformation2("You should receive it within 48 hours at the email you provided.");
-        fbnsDataAuthenticate.setAlertDialogButton("I have received the hash key");
-        fbnsDataAuthenticate.setFinished(FbnsStorage.getFinished(mContext, 4));
-        mFbnsData.add(fbnsDataAuthenticate);
-
-        FbnsData fbnsDataReceivePushSippet = new FbnsData();
-        fbnsDataReceivePushSippet.setCardTitle("Receive a push with code sippet to add");
-        fbnsDataReceivePushSippet.setStep(5);
-        fbnsDataReceivePushSippet.setAlertDialogTitle("Key Hash Generation");
-        fbnsDataReceivePushSippet.setAlertDialogInformation1("Go to fb.developer.com/1983737boop to generate a hash key.");
-        fbnsDataReceivePushSippet.setAlertDialogInformation2("You should receive it within 48 hours at the email you provided.");
-        fbnsDataReceivePushSippet.setAlertDialogButton("I have received the hash key");
-        fbnsDataReceivePushSippet.setFinished(FbnsStorage.getFinished(mContext, 5));
-        mFbnsData.add(fbnsDataReceivePushSippet);
-
-        FbnsData fbnsDataReceivePushSetup = new FbnsData();
-        fbnsDataReceivePushSetup.setCardTitle("Voila! Receive a \npush to confirm \nsetup of service!");
-        fbnsDataReceivePushSetup.setStep(6);
-        fbnsDataReceivePushSetup.setAlertDialogTitle("Key Hash Generation");
-        fbnsDataReceivePushSetup.setAlertDialogInformation1("Go to fb.developer.com/1983737boop to generate a hash key.");
-        fbnsDataReceivePushSetup.setAlertDialogInformation2("You should receive it within 48 hours at the email you provided.");
-        fbnsDataReceivePushSetup.setAlertDialogButton("I have received the hash key");
-        fbnsDataReceivePushSetup.setFinished(FbnsStorage.getFinished(mContext, 6));
-        mFbnsData.add(fbnsDataReceivePushSetup);
     }
 }

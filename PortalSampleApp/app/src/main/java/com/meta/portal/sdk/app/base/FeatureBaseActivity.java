@@ -21,11 +21,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.meta.portal.sdk.app.Utils;
+import com.meta.portal.sdk.app.data.FbnsData;
 import com.meta.portal.sdk.app.ui.FeatureInfoAnimationController;
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.ui.TopAppBarAnimationController;
 
-public abstract class FeatureBaseActivity extends BaseActivity {
+public abstract class FeatureBaseActivity extends BaseActivity implements ActivityCallback {
 
     private static final int TOP_APP_BAR_FADE_OUT_DELAY = 3000;
     
@@ -34,10 +35,19 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     TextView mFeatureInfoHeader;
     TextView mFeatureInfoText;
     Button mFeatureInfoCloseButton;
+
+    FrameLayout mFeatureInfoContainerListBackground;
+    RelativeLayout mFeatureInfoListContainer;
+    TextView mFeatureInfoListHeader;
+    TextView mFeatureInfoListText;
+    Button mFeatureInfoListCloseButton;
+    TextView mFeatureInfoListLink;
+
     Toolbar mTopAppBar;
     FrameLayout mTopAppBarBackground;
 
     private FeatureInfoAnimationController mFeatureInfoAnimationController;
+    private FeatureInfoAnimationController mFeatureInfoListAnimationController;
     
     private TopAppBarAnimationController mTopAppBarAnimationController;
 
@@ -51,6 +61,7 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     };
 
     private boolean mFeatureInfoShowing = true;
+    private boolean mFeatureInfoListShowing = false;
 
     private boolean mDebugModeOn = false;
 
@@ -64,6 +75,13 @@ public abstract class FeatureBaseActivity extends BaseActivity {
         mFeatureInfoHeader = (TextView) findViewById(R.id.feature_info_header);
         mFeatureInfoText = (TextView) findViewById(R.id.feature_info_text);
 
+        mFeatureInfoContainerListBackground = (FrameLayout) findViewById(R.id.feature_container_list_background);
+        mFeatureInfoListCloseButton = (Button) findViewById(R.id.feature_info_list_close_button);
+        mFeatureInfoListContainer = (RelativeLayout) findViewById(R.id.feature_info_list_container);
+        mFeatureInfoListHeader = (TextView) findViewById(R.id.feature_info_list_header);
+        mFeatureInfoListText = (TextView) findViewById(R.id.feature_info_list_text);
+        mFeatureInfoListLink = (TextView) findViewById(R.id.feature_info_list_link);
+
         mFeatureInfoHeader.setText(getFeatureInfoHeaderResId());
         mFeatureInfoText.setText(getFeatureInfoTextResId());
 
@@ -74,6 +92,14 @@ public abstract class FeatureBaseActivity extends BaseActivity {
                     mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
                     mFeatureInfoShowing = false;
                     startTopAppBarFadeOutAnimation();
+                }
+            });
+
+            mFeatureInfoContainerListBackground.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
+                    mFeatureInfoListShowing = false;
                 }
             });
         }
@@ -92,8 +118,22 @@ public abstract class FeatureBaseActivity extends BaseActivity {
             }
         });
 
+        mFeatureInfoListCloseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
+                mFeatureInfoListShowing = false;
+                if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
+                    startTopAppBarFadeOutAnimation();
+                }
+            }
+        });
+
         mFeatureInfoAnimationController = new FeatureInfoAnimationController(mFeatureInfoContainer, 
                 mFeatureInfoContainerBackground);
+
+        mFeatureInfoListAnimationController = new FeatureInfoAnimationController(mFeatureInfoListContainer,
+                mFeatureInfoContainerListBackground);
 
         mFeatureInfoContainer.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -167,6 +207,8 @@ public abstract class FeatureBaseActivity extends BaseActivity {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, getFragment()).commit();
+
+        setActivityCallback(this);
     }
 
     @Override
@@ -189,6 +231,19 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     }
 
     @Override
+    public void onInfoButtonClicked(FbnsData fbnsData) {
+        mFeatureInfoListHeader.setText(fbnsData.getInfoTitle());
+        mFeatureInfoListText.setText(fbnsData.getInfoText());
+        mFeatureInfoListLink.setText(fbnsData.getInfoLink());
+
+        mFeatureInfoContainerListBackground.setVisibility(View.VISIBLE);
+        mFeatureInfoListContainer.setVisibility(View.VISIBLE);
+
+        mFeatureInfoListAnimationController.startFeatureInfoViewInAnimation();
+        mFeatureInfoListShowing = true;
+    }
+
+    @Override
     public void updateSystemUiVisibility() {
         return;
     }
@@ -202,5 +257,7 @@ public abstract class FeatureBaseActivity extends BaseActivity {
     protected abstract void updateDebugModeLayoutContainerVisibility(boolean visible);
 
     protected abstract void setFeatureInfoShowing(boolean showing);
+
+    protected abstract void setActivityCallback(ActivityCallback activityCallback);
 
 }

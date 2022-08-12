@@ -3,6 +3,7 @@ package com.meta.portal.sdk.app.privacyshutter;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
+import com.meta.portal.sdk.app.base.ActivityCallback;
 import com.meta.portal.sdk.app.base.FeatureBaseActivity;
 import com.meta.portal.sdk.app.R;
 
@@ -30,6 +31,9 @@ public class PrivacyShutterActivity extends FeatureBaseActivity {
 
     protected void setFeatureInfoShowing(boolean showing) {
         ((PrivacyShutterCameraFragment) mFragment).setFeatureInfoShowing(showing);
+    }
+
+    protected void setActivityCallback(ActivityCallback activityCallback) {
     }
 
 }

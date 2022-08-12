@@ -12,6 +12,10 @@ public class FbnsData {
     private String mAlertDialogInformation2;
     private String mAlertDialogButton;
 
+    private String mInfoTitle;
+    private String mInfoText;
+    private String mInfoLink;
+
     public void setCardTitle(final String screenName) {
         mCardTitle = screenName;
     }
@@ -40,6 +44,18 @@ public class FbnsData {
         mAlertDialogButton = alertDialogButton;
     }
 
+    public void setInfoTitle(final String infoTitle) {
+        mInfoTitle = infoTitle;
+    }
+
+    public void setInfoText(final String infoText) {
+        mInfoText = infoText;
+    }
+
+    public void setInfoLink(final String infoLink) {
+        mInfoLink = infoLink;
+    }
+
     public String getCardTitle() {
         return mCardTitle;
     }
@@ -66,6 +82,18 @@ public class FbnsData {
 
     public String getAlertDialogButton() {
         return mAlertDialogButton;
+    }
+
+    public String getInfoTitle() {
+        return mInfoTitle;
+    }
+
+    public String getInfoText() {
+        return mInfoText;
+    }
+
+    public String getInfoLink() {
+        return mInfoLink;
     }
 
 }

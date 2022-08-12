@@ -4,6 +4,7 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
 import com.meta.portal.sdk.app.R;
+import com.meta.portal.sdk.app.base.ActivityCallback;
 import com.meta.portal.sdk.app.base.FeatureBaseActivity;
 
 public class FbnsActivity extends FeatureBaseActivity {
@@ -29,6 +30,10 @@ public class FbnsActivity extends FeatureBaseActivity {
 
     protected void setFeatureInfoShowing(boolean showing) {
         ((FbnsFragment) mFragment).setFeatureInfoShowing(showing);
+    }
+
+    protected void setActivityCallback(ActivityCallback activityCallback) {
+        ((FbnsFragment) mFragment).setActivityCallback(activityCallback);
     }
 
 }
