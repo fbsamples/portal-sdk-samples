@@ -19,9 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.Utils;
+import com.meta.portal.sdk.app.base.ActivityCallback;
 import com.meta.portal.sdk.app.data.FbnsData;
 
-public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListener, Callback {
+public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListener, InfoButtonClickedListener, Callback {
     
     private FeatureCardAdapterFbns mFeatureCardAdapter;
     
@@ -30,6 +31,8 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
     private FbnsHelper mFbnsHelper;
 
     RecyclerView mRecyclerView;
+
+    private ActivityCallback mActivityCallback;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,9 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
             mFeatureCardAdapter = new FeatureCardAdapterFbns();
             mFeatureCardAdapter.setData(mFbnsHelper.getFbnsData());
             mFeatureCardAdapter.setFbnsDataAdapterListener(this);
+            mFeatureCardAdapter.setInfoButtonClickedListener(this);
+            mFeatureCardAdapter.setHeaderFirst(getString(R.string.fbns_header_first_title));
+            mFeatureCardAdapter.setHeaderSecond(getString(R.string.fbns_header_second_title));
             mRecyclerView.setAdapter(mFeatureCardAdapter);
         } else {
             mFeatureCardAdapterTv = new FeatureCardAdapterFbnsTv();
@@ -64,7 +70,7 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
         }
 
         LinearLayoutManager layoutManager
-                = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
 
@@ -116,6 +122,11 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
     }
 
     @Override
+    public void onInfoButtonClicked(FbnsData fbnsData) {
+        mActivityCallback.onInfoButtonClicked(fbnsData);
+    }
+
+    @Override
     public void onFbnsDataChanged() {
         if (!Utils.isTvDevice(getActivity())) {
             mFeatureCardAdapter.setData(mFbnsHelper.getFbnsData());
@@ -128,6 +139,10 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
 
     protected void setFeatureInfoShowing(boolean showing) {
 
+    }
+
+    public void setActivityCallback(ActivityCallback activityCallback) {
+        mActivityCallback = activityCallback;
     }
     
     public static FbnsFragment newInstance() {

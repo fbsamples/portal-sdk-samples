@@ -6,6 +6,7 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
 import com.meta.portal.sdk.app.R;
+import com.meta.portal.sdk.app.base.ActivityCallback;
 import com.meta.portal.sdk.app.base.FeatureBaseActivity;
 
 public class CameraActivity extends FeatureBaseActivity {
@@ -33,6 +34,9 @@ public class CameraActivity extends FeatureBaseActivity {
 
   protected void setFeatureInfoShowing(boolean showing) {
     ((CameraFragment) mFragment).setFeatureInfoShowing(showing);
+  }
+
+  protected void setActivityCallback(ActivityCallback activityCallback) {
   }
 
 }

@@ -3,6 +3,7 @@ package com.meta.portal.sdk.app.notifications;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
+import com.meta.portal.sdk.app.base.ActivityCallback;
 import com.meta.portal.sdk.app.base.FeatureBaseActivity;
 import com.meta.portal.sdk.app.R;
 
@@ -25,6 +26,9 @@ public class NotificationsActivity extends FeatureBaseActivity {
     }
 
     protected void setFeatureInfoShowing(boolean showing) {
+    }
+
+    protected void setActivityCallback(ActivityCallback activityCallback) {
     }
 
 }

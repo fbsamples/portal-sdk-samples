@@ -58,4 +58,7 @@
     <string name="zoom_in" description="Manual mode zoom in">Zoom In</string>
     <string name="zoom_out" description="Manual mode zoom out">Zoom Out</string>
 
+    <string name="fbns_header_first_title">FBNS</string>
+    <string name="fbns_header_second_title">Complete the following steps to authenticate \n your app with Facebook Notification systems</string>
+
 </resources>
