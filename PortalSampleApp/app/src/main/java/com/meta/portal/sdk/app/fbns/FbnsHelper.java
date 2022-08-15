@@ -1,7 +1,12 @@
 package com.meta.portal.sdk.app.fbns;
 
 import android.content.Context;
+import android.graphics.Color;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
+
+import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.data.FbnsData;
 
 import java.util.ArrayList;
@@ -13,6 +18,7 @@ public class FbnsHelper {
     
     private final Context mContext;
     private Callback mCallback;
+    private boolean mSendSuccess = true;
 
     public FbnsHelper(Context context) {
         mContext = context.getApplicationContext();
@@ -31,6 +37,46 @@ public class FbnsHelper {
 
     public void setCallback(final Callback callback) {
         mCallback = callback;
+    }
+
+    public String getKeyHash() {
+        return "Key hash appears here";
+    }
+
+    public boolean getSendSuccess() {
+        return mSendSuccess;
+    }
+
+    public String getSendStatus() {
+        if (mSendSuccess) {
+            return "Success";
+        } else {
+            return "Test Failed";
+        }
+    }
+
+    public @DrawableRes int getSendStatusIcon() {
+        if (mSendSuccess) {
+            return R.drawable.ic_checked;
+        } else {
+            return R.drawable.ic_close_fbns;
+        }
+    }
+
+    public int getSendStatusColor() {
+        if (mSendSuccess) {
+            return R.color.colorSuccess;
+        } else {
+            return R.color.colorFailure;
+        }
+    }
+
+    public void registerRequestTokenButtonClicked() {
+
+    }
+
+    public void sendMessageButtonClicked(String message) {
+
     }
 
     private void initFbnsData() {

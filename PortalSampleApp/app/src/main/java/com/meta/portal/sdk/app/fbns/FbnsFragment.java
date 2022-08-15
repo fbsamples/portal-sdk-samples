@@ -57,6 +57,7 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
         if (!Utils.isTvDevice(getActivity())) {
             mFeatureCardAdapter = new FeatureCardAdapterFbns();
             mFeatureCardAdapter.setData(mFbnsHelper.getFbnsData());
+            mFeatureCardAdapter.setFbnsHelper(mFbnsHelper);
             mFeatureCardAdapter.setFbnsDataAdapterListener(this);
             mFeatureCardAdapter.setInfoButtonClickedListener(this);
             mFeatureCardAdapter.setHeaderFirst(getString(R.string.fbns_header_first_title));

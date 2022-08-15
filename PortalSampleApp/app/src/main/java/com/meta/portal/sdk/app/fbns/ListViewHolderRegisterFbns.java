@@ -18,8 +18,10 @@ public class ListViewHolderRegisterFbns extends RecyclerView.ViewHolder {
     private final TextView mFeatureTitle;
     private final ImageButton mInfoButton;
     private final Button mRequestButton;
+    private final TextView mKeyHash;
     
     private FbnsData mFeature;
+    private FbnsHelper mFbnsHelper;
 
     private final ListViewHolderFbns.OnInfoButtonClickedListener mOnInfoButtonClickedListener;
     
@@ -31,6 +33,7 @@ public class ListViewHolderRegisterFbns extends RecyclerView.ViewHolder {
         mFeatureTitle = (TextView) view.findViewById(R.id.feature_title);
         mInfoButton = (ImageButton) view.findViewById(R.id.info_button);
         mRequestButton = (Button) view.findViewById(R.id.request_token_button);
+        mKeyHash = (TextView) view.findViewById(R.id.key_hash);
 
         mInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,25 +46,19 @@ public class ListViewHolderRegisterFbns extends RecyclerView.ViewHolder {
         mRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mFbnsHelper.registerRequestTokenButtonClicked();
             }
         });
 
     }
     
-    public void bind(FbnsData fbnsData) {
+    public void bind(FbnsData fbnsData, FbnsHelper fbnsHelper) {
         mFeature = fbnsData;
+        mFbnsHelper = fbnsHelper;
         mFeatureNumber.setText(String.valueOf(fbnsData.getStep()));
         mFeatureTitle.setText(fbnsData.getCardTitle());
+        mKeyHash.setText(fbnsHelper.getKeyHash());
     }
-    
-    private @DrawableRes int getBackgroundResource(boolean finished) {
-        if (finished) {
-            return R.drawable.ic_checked;
-        } else {
-            return R.drawable.ic_unchecked;
-        }
-    } 
     
     public interface OnListItemClickedListener {
         void onListItemClicked(final FbnsData feature);

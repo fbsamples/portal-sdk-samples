@@ -57,14 +57,6 @@ public class ListViewHolderFbns extends RecyclerView.ViewHolder {
         mFeatureTitle.setText(fbnsData.getCardTitle());
     }
     
-    private @DrawableRes int getBackgroundResource(boolean finished) {
-        if (finished) {
-            return R.drawable.ic_checked;
-        } else {
-            return R.drawable.ic_unchecked;
-        }
-    }
-    
     public interface OnListItemClickedListener {
         void onListItemClicked(final FbnsData feature);
     }

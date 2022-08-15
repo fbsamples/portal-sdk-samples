@@ -48,7 +48,7 @@
         android:layout_height="72dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="75dp"
-        android:text="Key hash appears here"
+        android:text=""
         android:background="@drawable/rounded_corner"
         android:textSize="18sp"
         android:textColor="@color/white"
