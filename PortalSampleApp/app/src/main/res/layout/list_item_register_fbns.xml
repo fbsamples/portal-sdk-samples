@@ -43,12 +43,12 @@
         android:layout_toRightOf="@+id/feature_number"/>
 
     <TextView
-        android:id="@+id/key_hash"
+        android:id="@+id/push_token"
         android:layout_width="603dp"
         android:layout_height="72dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="75dp"
-        android:text="Key hash appears here"
+        android:text="FBNS Push Token"
         android:background="@drawable/rounded_corner"
         android:textSize="18sp"
         android:textColor="@color/white"
@@ -59,13 +59,13 @@
 
     <Button
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/request_token_button"
+        android:id="@+id/request_push_token_button"
         android:layout_width="250dp"
         android:layout_height="72dp"
         android:layout_marginTop="132dp"
         android:layout_marginLeft="14dp"
         android:gravity="center"
-        android:layout_toRightOf="@+id/key_hash"
+        android:layout_toRightOf="@+id/push_token"
         android:text="Request Token"
         android:textSize="26sp"
         android:textAllCaps="false"

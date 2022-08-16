@@ -36,11 +36,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.Utils;
 import com.meta.portal.sdk.app.ui.ButtonAnimationControllerTv;
-
 import java.util.Collections;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
@@ -198,19 +196,19 @@ public class CameraFragment extends Fragment {
       };
 
   private final View.OnClickListener mManualMode =
-          new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              mCameraPresenter.onManualModeClicked();
-              if (Utils.isTvDevice(getActivity())) {
-                mButtonAnimationControllerTv.startMoveButtonsInAnimation();
-                mModeButtonsShowing = false;
-                if (mDebugInfoShowing) {
-                  updateDebugModeLayoutContainerModeVisibility(true);
-                }
-              }
+      new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          mCameraPresenter.onManualModeClicked();
+          if (Utils.isTvDevice(getActivity())) {
+            mButtonAnimationControllerTv.startMoveButtonsInAnimation();
+            mModeButtonsShowing = false;
+            if (mDebugInfoShowing) {
+              updateDebugModeLayoutContainerModeVisibility(true);
             }
-          };
+          }
+        }
+      };
 
   private final View.OnClickListener mScale =
       new View.OnClickListener() {
@@ -241,27 +239,26 @@ public class CameraFragment extends Fragment {
       };
 
   private final View.OnClickListener mDone =
-          new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              mCameraPresenter.onDefaultModeClicked();
-              if (Utils.isTvDevice(getActivity())) {
-                mModeButtonsShowing = true;
-                mButtonAnimationControllerTv.startModeButtonsInAnimation();
-                if (mDebugInfoShowing) {
-                  updateDebugModeLayoutContainerModeVisibility(true);
-                }
-              }
+      new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          mCameraPresenter.onDefaultModeClicked();
+          if (Utils.isTvDevice(getActivity())) {
+            mModeButtonsShowing = true;
+            mButtonAnimationControllerTv.startModeButtonsInAnimation();
+            if (mDebugInfoShowing) {
+              updateDebugModeLayoutContainerModeVisibility(true);
             }
-          };
+          }
+        }
+      };
 
   @RequiresApi(api = Build.VERSION_CODES.P)
   @Override
   public void onViewCreated(final View view, Bundle savedInstanceState) {
     mTextureView = view.findViewById(R.id.texture);
 
-    mCameraPresenter =
-        new CameraViewPresenter(getActivity(), mTextureView);
+    mCameraPresenter = new CameraViewPresenter(getActivity(), mTextureView);
     if (Utils.isTvDevice(getActivity())) {
       mModeButtons = view.requireViewById(R.id.modeButtons);
       mMoveButtons = view.requireViewById(R.id.moveButtons);
@@ -297,10 +294,9 @@ public class CameraFragment extends Fragment {
       mDebugModeLayoutContainer2 = view.requireViewById(R.id.debug_mode_layout_container_2);
     }
     if (Utils.isTvDevice(getActivity())) {
-      mButtonAnimationControllerTv = new ButtonAnimationControllerTv(mModeButtons,
-              mMoveButtons, mZoomButtons, mDoneButton);
+      mButtonAnimationControllerTv =
+          new ButtonAnimationControllerTv(mModeButtons, mMoveButtons, mZoomButtons, mDoneButton);
     }
-
   }
 
   @Override
@@ -577,5 +573,4 @@ public class CameraFragment extends Fragment {
     CameraFragment cameraFragment = new CameraFragment();
     return cameraFragment;
   }
-
 }

@@ -7,7 +7,6 @@ import android.graphics.RectF;
 import android.util.Log;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
-
 import com.facebook.portal.smartcamera.client.base.api.common.ModeSpec;
 import com.facebook.portal.smartcamera.client.base.api.common.SmartCameraAccessException;
 import com.facebook.portal.smartcamera.client.base.api.common.base.Subscriber;
@@ -27,7 +26,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-
 
 public class CameraServiceWrapper {
 
@@ -66,9 +64,7 @@ public class CameraServiceWrapper {
       new AtomicReference<>(
           Result.<MetadataConnection>failure(new IllegalStateException("uninitialized")));
 
-  public CameraServiceWrapper(
-      Context context,
-      ConnectionListener connectionListner) {
+  public CameraServiceWrapper(Context context, ConnectionListener connectionListner) {
     mSmartCameraControlConnectionFactory = new SmartCameraControlConnectionFactory(context);
     mSmartCameraMetadataConnectionFactory = new SmartCameraMetadataConnectionFactory(context);
     mConnectionListener = connectionListner;

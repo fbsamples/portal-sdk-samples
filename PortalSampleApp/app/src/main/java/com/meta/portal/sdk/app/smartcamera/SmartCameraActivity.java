@@ -25,35 +25,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SmartCameraActivity extends BaseActivity {
-    
-    Button mWithUIButton;
-    Button mWithoutUIButton;
-    
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_smart_camera);
+  Button mWithUIButton;
+  Button mWithoutUIButton;
 
-        mWithUIButton = (Button) findViewById(R.id.with_ui_button);
-        mWithoutUIButton = (Button) findViewById(R.id.without_ui_button);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        mWithUIButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SmartCameraActivity.this, SmartCameraEditorActivity.class);
-                startActivity(intent);
-            }
+    setContentView(R.layout.activity_smart_camera);
+
+    mWithUIButton = (Button) findViewById(R.id.with_ui_button);
+    mWithoutUIButton = (Button) findViewById(R.id.without_ui_button);
+
+    mWithUIButton.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Intent intent = new Intent(SmartCameraActivity.this, SmartCameraEditorActivity.class);
+            startActivity(intent);
+          }
         });
 
-        mWithoutUIButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SmartCameraActivity.this, CameraActivity.class);
-                startActivity(intent);
-            }
+    mWithoutUIButton.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Intent intent = new Intent(SmartCameraActivity.this, CameraActivity.class);
+            startActivity(intent);
+          }
         });
-
-    }
-
+  }
 }

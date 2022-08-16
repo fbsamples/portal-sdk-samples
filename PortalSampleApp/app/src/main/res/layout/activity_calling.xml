@@ -1,0 +1,186 @@
+<!--
+  ~ (c) Facebook, Inc. and its affiliates. Confidential and proprietary.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.facebook.aloha.sample.sdksamples.calling.CallingActivity"
+    tools:ignore="HardcodedText"
+    android:clipChildren="false"
+    >
+
+  <!-- Buttons to create an outgoing/incoming call -->
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/marginTiny"
+      >
+    <Button
+        android:id="@+id/create_outgoing_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginTiny"
+        android:padding="@dimen/marginTiny"
+        android:text="Create outgoing call"
+        />
+
+    <Button
+        android:id="@+id/create_incoming_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginTiny"
+        android:padding="@dimen/marginTiny"
+        android:text="Create incoming call"
+        />
+
+    <Button
+        android:id="@+id/update_extras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginTiny"
+        android:padding="@dimen/marginTiny"
+        android:visibility="gone"
+        android:text="Update Extras"
+        />
+  </LinearLayout>
+
+  <!-- device state -->
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/marginTiny"
+      android:orientation="vertical"
+      >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Device state: "
+        />
+    <TextView
+        android:id="@+id/device_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+  </LinearLayout>
+
+  <!-- call information -->
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/marginTiny"
+      android:orientation="vertical"
+      >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call info: "
+        />
+    <TextView
+        android:id="@+id/call_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+  </LinearLayout>
+
+
+  <LinearLayout
+      android:id="@+id/incoming_call_controls"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      >
+
+    <Button
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginTiny"
+        android:padding="@dimen/marginTiny"
+        android:text="Answer"
+        />
+
+    <Button
+        android:id="@+id/reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginTiny"
+        android:padding="@dimen/marginTiny"
+        android:text="Reject"
+        />
+  </LinearLayout>
+
+  <Space
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/marginTiny"
+      />
+
+  <com.facebook.portal.ui.view.PortalCallingBar
+      android:id="@+id/calling_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      />
+
+  <Space
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/marginTiny"
+      />
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:clipChildren="false"
+      >
+
+    <com.facebook.portal.ui.view.PortalSmartCameraEditorButton
+        android:id="@+id/smart_camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/marginTiny"
+        />
+
+    <com.facebook.portal.ui.view.PortalCallingCameraButton
+        android:id="@+id/camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/marginTiny"
+        />
+
+    <com.facebook.portal.ui.view.PortalCallingMicrophoneButton
+        android:id="@+id/microphone_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/marginTiny"
+        />
+
+    <com.facebook.portal.ui.view.PortalCallingHangupButton
+        android:id="@+id/hangup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+  </LinearLayout>
+
+</LinearLayout>

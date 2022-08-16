@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.meta.portal.sdk.app.Utils;
-import com.meta.portal.sdk.app.data.FbnsData;
+import com.meta.portal.sdk.app.fbns.FbnsData;
 import com.meta.portal.sdk.app.ui.FeatureInfoAnimationController;
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.ui.TopAppBarAnimationController;
@@ -29,7 +29,7 @@ import com.meta.portal.sdk.app.ui.TopAppBarAnimationController;
 public abstract class FeatureBaseActivity extends BaseActivity implements ActivityCallback {
 
     private static final int TOP_APP_BAR_FADE_OUT_DELAY = 3000;
-    
+
     FrameLayout mFeatureInfoContainerBackground;
     RelativeLayout mFeatureInfoContainer;
     TextView mFeatureInfoHeader;
@@ -48,7 +48,7 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
 
     private FeatureInfoAnimationController mFeatureInfoAnimationController;
     private FeatureInfoAnimationController mFeatureInfoListAnimationController;
-    
+
     private TopAppBarAnimationController mTopAppBarAnimationController;
 
     private final Handler mHandler = new Handler();
@@ -129,7 +129,7 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
             }
         });
 
-        mFeatureInfoAnimationController = new FeatureInfoAnimationController(mFeatureInfoContainer, 
+        mFeatureInfoAnimationController = new FeatureInfoAnimationController(mFeatureInfoContainer,
                 mFeatureInfoContainerBackground);
 
         mFeatureInfoListAnimationController = new FeatureInfoAnimationController(mFeatureInfoListContainer,
@@ -247,9 +247,9 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
     public void updateSystemUiVisibility() {
         return;
     }
-    
+
     protected abstract Fragment getFragment();
-    
+
     protected abstract @StringRes int getFeatureInfoHeaderResId();
 
     protected abstract @StringRes int getFeatureInfoTextResId();

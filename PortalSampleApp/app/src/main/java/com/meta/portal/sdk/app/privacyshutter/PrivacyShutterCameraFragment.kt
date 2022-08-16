@@ -27,7 +27,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
@@ -42,6 +41,10 @@ import android.media.AudioManager
 import android.util.DisplayMetrics
 import android.widget.ImageButton
 import android.widget.RelativeLayout
+import androidx.camera.core.AspectRatio
+import androidx.camera.core.Camera
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.Preview
 import androidx.constraintlayout.widget.ConstraintLayout
 
 import com.meta.portal.sdk.app.R

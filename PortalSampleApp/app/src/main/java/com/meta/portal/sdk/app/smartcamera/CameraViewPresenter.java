@@ -26,9 +26,7 @@ public class CameraViewPresenter
   private final TextureView mTextureView;
   private final ViewLocationProvider mViewLocationProvider;
 
-  public CameraViewPresenter(
-      Context context,
-      TextureView textureView) {
+  public CameraViewPresenter(Context context, TextureView textureView) {
     mCameraServiceWrapper = new CameraServiceWrapper(context, this);
     mManualExperienceController = new ManualExperienceController(textureView, true, this);
     mTextureView = textureView;
@@ -107,8 +105,7 @@ public class CameraViewPresenter
     RectF oldRect = mViewLocationProvider.getViewRect();
     RectF cropRect = getCropRect();
     ModeSpec.Fixed mode =
-            FixedModeUtil.getFixedMode(
-                    cropRect, oldRect, new Pair<Float, Float>(0f, 0f), 1f, true);
+        FixedModeUtil.getFixedMode(cropRect, oldRect, new Pair<Float, Float>(0f, 0f), 1f, true);
     setFixedMode(mode);
   }
 
@@ -141,5 +138,4 @@ public class CameraViewPresenter
   public void onScrollRightClicked() {
     mManualExperienceController.scrollRight();
   }
-
 }

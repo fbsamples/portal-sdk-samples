@@ -24,5 +24,4 @@ public interface CameraPresenter {
   void onScrollLeftClicked();
 
   void onScrollRightClicked();
-
 }

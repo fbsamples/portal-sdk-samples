@@ -34,13 +34,13 @@
         android:textAlignment="textStart"
         android:layout_toRightOf="@+id/feature_number"/>
 
-    <TextView
-        android:id="@+id/send_message"
+    <EditText
+        android:id="@+id/send_message_text"
         android:layout_width="594dp"
         android:layout_height="134dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="75dp"
-        android:text="{\n    &quot;msg&quot;:This is an FBNS Test Msg&quot; \n}"
+        android:text="{&quot;msg&quot;:&quot;This is an FBNS Test Msg&quot;}"
         android:background="@drawable/rounded_corner"
         android:textSize="18sp"
         android:textColor="@color/white"
@@ -57,7 +57,7 @@
         android:layout_marginTop="152dp"
         android:layout_marginLeft="14dp"
         android:gravity="center"
-        android:layout_toRightOf="@+id/send_message"
+        android:layout_toRightOf="@+id/send_message_text"
         android:text="Send Message"
         android:textSize="26sp"
         android:textAllCaps="false"

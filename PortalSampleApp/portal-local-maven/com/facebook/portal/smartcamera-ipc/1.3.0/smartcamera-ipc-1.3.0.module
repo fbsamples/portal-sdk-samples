@@ -1,0 +1,83 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.facebook.portal",
+    "module": "smartcamera-ipc",
+    "version": "1.3.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "smartcamera-ipc-1.3.0.aar",
+          "url": "smartcamera-ipc-1.3.0.aar",
+          "size": 87173,
+          "sha512": "1d23a9c696edcf7a096235cbd44816e9c993e922d829ba22c697e9a5d6da0a917fd8527df11ecde782ce7e7f3762069aa5aae1b904e4cba9e556ef6c93cb1fa2",
+          "sha256": "e8bbae2503f5033e72380fe96016f2098d19b9abe4ed4bb2e9b7301d9abddd1b",
+          "sha1": "b46d9eb8bd7438c2958ff49752457cd1b0846cc5",
+          "md5": "a83ab5dd14060de075f1489d84a1f2b5"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.21"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.3.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "smartcamera-ipc-1.3.0.aar",
+          "url": "smartcamera-ipc-1.3.0.aar",
+          "size": 87173,
+          "sha512": "1d23a9c696edcf7a096235cbd44816e9c993e922d829ba22c697e9a5d6da0a917fd8527df11ecde782ce7e7f3762069aa5aae1b904e4cba9e556ef6c93cb1fa2",
+          "sha256": "e8bbae2503f5033e72380fe96016f2098d19b9abe4ed4bb2e9b7301d9abddd1b",
+          "sha1": "b46d9eb8bd7438c2958ff49752457cd1b0846cc5",
+          "md5": "a83ab5dd14060de075f1489d84a1f2b5"
+        }
+      ]
+    }
+  ]
+}

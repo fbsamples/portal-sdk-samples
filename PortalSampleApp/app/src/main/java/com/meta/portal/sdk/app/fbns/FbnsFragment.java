@@ -1,44 +1,58 @@
 package com.meta.portal.sdk.app.fbns;
 
+import android.content.Context;
+import android.content.IntentFilter;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.portal.fbns.AbstractFbnsBroadcastReceiver;
+import com.facebook.portal.fbns.FbnsTokenManager;
+import com.facebook.portal.fbns.exception.FbnsRegisterException;
 import com.meta.portal.sdk.app.R;
-import com.meta.portal.sdk.app.Utils;
 import com.meta.portal.sdk.app.base.ActivityCallback;
-import com.meta.portal.sdk.app.data.FbnsData;
+import com.meta.portal.sdk.app.fbns.ui.FeatureCardAdapterFbns;
+import com.meta.portal.sdk.app.fbns.ui.FbnsUiListener;
 
-public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListener, InfoButtonClickedListener, Callback {
-    
+import org.json.JSONObject;
+
+public class FbnsFragment extends Fragment implements FbnsUiListener {
+
+    private static final String TAG = "FbnsFragment";
+
     private FeatureCardAdapterFbns mFeatureCardAdapter;
-    
-    private FeatureCardAdapterFbnsTv mFeatureCardAdapterTv;
 
-    private FbnsHelper mFbnsHelper;
+    private FbnsDataHelper mFbnsDataHelper;
 
     RecyclerView mRecyclerView;
 
     private ActivityCallback mActivityCallback;
 
+    private FbnsTokenManager mFbnsTokenManager;
+
+    FbnsMsgSender mMsgSender;
+
+    FBNSNotificationsReceiver fbnsNotificationsReceiver;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mFbnsHelper = new FbnsHelper(getActivity());
-        mFbnsHelper.setCallback(this);
+        mFbnsDataHelper = new FbnsDataHelper(getActivity());
+        mFbnsTokenManager = new FbnsTokenManager(
+                        getActivity().getApplicationContext(), FBNSConstants.APP_ID, FBNSConstants.ACCESS_TOKEN);
+        mMsgSender = new FbnsMsgSender(getActivity()
+                .getSharedPreferences(FBNSConstants.APP_ID,Context.MODE_PRIVATE));
     }
     
     @Override
@@ -52,22 +66,20 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
 
+        fbnsNotificationsReceiver = new FBNSNotificationsReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addCategory("com.meta.portal.sdk.app");
+        filter.addAction("com.facebook.rti.fbns.intent.RECEIVE");
+        getActivity().registerReceiver(fbnsNotificationsReceiver, filter);
+
         mRecyclerView = view.findViewById(R.id.recycler_view);
 
-        if (!Utils.isTvDevice(getActivity())) {
-            mFeatureCardAdapter = new FeatureCardAdapterFbns();
-            mFeatureCardAdapter.setData(mFbnsHelper.getFbnsData());
-            mFeatureCardAdapter.setFbnsDataAdapterListener(this);
-            mFeatureCardAdapter.setInfoButtonClickedListener(this);
-            mFeatureCardAdapter.setHeaderFirst(getString(R.string.fbns_header_first_title));
-            mFeatureCardAdapter.setHeaderSecond(getString(R.string.fbns_header_second_title));
-            mRecyclerView.setAdapter(mFeatureCardAdapter);
-        } else {
-            mFeatureCardAdapterTv = new FeatureCardAdapterFbnsTv();
-            mFeatureCardAdapterTv.setData(mFbnsHelper.getFbnsData());
-            mFeatureCardAdapterTv.setFbnsDataAdapterListener(this);
-            mRecyclerView.setAdapter(mFeatureCardAdapterTv);
-        }
+        mFeatureCardAdapter = new FeatureCardAdapterFbns();
+        mFeatureCardAdapter.setData(mFbnsDataHelper.getFbnsData());
+        mFeatureCardAdapter.setInfoButtonClickedListener(this);
+        mFeatureCardAdapter.setHeaderFirst(getString(R.string.fbns_header_first_title));
+        mFeatureCardAdapter.setHeaderSecond(getString(R.string.fbns_header_second_title));
+        mRecyclerView.setAdapter(mFeatureCardAdapter);
 
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -76,49 +88,12 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
 
         SpacesItemDecorator itemDecorator = new SpacesItemDecorator(10);
         mRecyclerView.addItemDecoration(itemDecorator);
-
     }
 
     @Override
-    public void onListItemClicked(final FbnsData fbnsData) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.FbnsAlertDialog);
-        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.customview, null, false);
-        Button buttonOk = dialogView.findViewById(R.id.button_ok);
-        ImageView buttonClose = dialogView.findViewById(R.id.button_close);
-        TextView step = dialogView.findViewById(R.id.step);
-        step.setText("Step " + String.valueOf(fbnsData.getStep() + 1) + " of 7");
-        builder.setView(dialogView, 0, 0, 0, 0);
-        final AlertDialog alertDialog = builder.create();
-        buttonOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-                mFbnsHelper.setFinished(fbnsData.getStep(), true);
-            }
-        });
-        buttonClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-        alertDialog.show();
-
-        if (!Utils.isTvDevice(getActivity())) {
-            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-            lp.copyFrom(alertDialog.getWindow().getAttributes());
-            lp.width = 868;
-            lp.height = 735;
-            alertDialog.show();
-            alertDialog.getWindow().setAttributes(lp);
-        } else {
-            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-            lp.copyFrom(alertDialog.getWindow().getAttributes());
-            lp.width = 1085;
-            lp.height = 919;
-            alertDialog.show();
-            alertDialog.getWindow().setAttributes(lp);
-        }
+    public void onDestroyView() {
+        super.onDestroyView();
+        getActivity().unregisterReceiver(fbnsNotificationsReceiver);
     }
 
     @Override
@@ -127,13 +102,11 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
     }
 
     @Override
-    public void onFbnsDataChanged() {
-        if (!Utils.isTvDevice(getActivity())) {
-            mFeatureCardAdapter.setData(mFbnsHelper.getFbnsData());
-            mFeatureCardAdapter.notifyDataSetChanged();
-        } else {
-            mFeatureCardAdapterTv.setData(mFbnsHelper.getFbnsData());
-            mFeatureCardAdapterTv.notifyDataSetChanged();
+    public void onActionButtonClicked(FbnsData fbnsData) {
+        if(fbnsData.getStepType() == FbnsData.STEP_TYPE.REGISTER_TOKEN){
+            requestAndRegisterPushToken();
+        }else if(fbnsData.getStepType() == FbnsData.STEP_TYPE.SEND_MSG){
+            simulateSendPushMessage(fbnsData.getValueText().toString());
         }
     }
 
@@ -148,6 +121,27 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
     public static FbnsFragment newInstance() {
         FbnsFragment fbnsFragment = new FbnsFragment();
         return fbnsFragment;
+    }
+
+    public void requestAndRegisterPushToken() {
+        try {
+            mFbnsTokenManager.register();
+        } catch (Exception e) {
+            Toast.makeText(getContext(),"Push Token Registration Failed", Toast.LENGTH_SHORT);
+            Log.i(TAG, "Register failed.", e);
+        }
+    }
+
+    public void simulateSendPushMessage(String msg) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mMsgSender.sendNotificationAsync(msg
+                        , getActivity().getSharedPreferences(FBNSConstants.APP_ID,Context.MODE_PRIVATE)
+                                .getString(FBNSConstants.PREF_TOKEN, ""));
+
+            }
+        }).run();
     }
 
     public class SpacesItemDecorator extends RecyclerView.ItemDecoration {
@@ -165,6 +159,50 @@ public class FbnsFragment extends Fragment implements FbnsDataCardAdapterListene
             outRect.bottom = space;
             outRect.left = space;
             outRect.right = space;
+        }
+    }
+
+    public class FBNSNotificationsReceiver extends AbstractFbnsBroadcastReceiver {
+
+        public FBNSNotificationsReceiver() {
+            super(FBNSConstants.ACCESS_TOKEN, FBNSConstants.APP_ID);
+        }
+
+        @Override
+        protected void onMessage(Context context, @Nullable String payload) {
+            Log.i(TAG, "onMessage: " + payload);
+            mFbnsDataHelper.updateReceivedMessage(payload);
+            mFeatureCardAdapter.setData(mFbnsDataHelper.getFbnsData());
+            mFeatureCardAdapter.notifyDataSetChanged();
+        }
+
+        @Override
+        protected void onRegisterSuccess(Context context, String token) {
+            Log.i(TAG, "onRegistered: " + token);
+            context.getSharedPreferences(FBNSConstants.APP_ID, Context.MODE_PRIVATE)
+                    .edit()
+                    .putString(FBNSConstants.PREF_TOKEN, token)
+                    .apply();
+            mFbnsDataHelper.updatePushToken(token);
+            mFeatureCardAdapter.setData(mFbnsDataHelper.getFbnsData());
+            mFeatureCardAdapter.notifyDataSetChanged();
+        }
+
+        @Override
+        protected void onRegisterFailed(Context context, String traceId) {
+            Log.e(TAG, "Error trace id: " + traceId);
+            Toast.makeText(getContext(), "Push Token Registration Failed", Toast.LENGTH_SHORT);
+        }
+
+        @Override
+        protected void onUnregistered(Context context) {
+            Log.d(TAG, "onUnregistered");
+        }
+
+        @Override
+        protected void onRegistrationError(Context context, String error) {
+            Log.e(TAG, "onRegistrationError");
+            Toast.makeText(getContext(), "Push Token Registration Failed", Toast.LENGTH_SHORT);
         }
     }
 

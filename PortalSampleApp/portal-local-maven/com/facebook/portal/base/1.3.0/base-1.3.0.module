@@ -1,0 +1,97 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.facebook.portal",
+    "module": "base",
+    "version": "1.3.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "context",
+          "version": {
+            "requires": "1.3.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "base-1.3.0.aar",
+          "url": "base-1.3.0.aar",
+          "size": 42034,
+          "sha512": "17db3f8ae8593c4e2fc163a6a375c6e44d6957d5da1c4aceff866e7a61ff303cb90c97523e29e75dcfd148692a0abdd7acbd4e536009dc72034d32ca418956d2",
+          "sha256": "f53a97cb9cd8882b7910b0ceb6d4546d3564d1c351f6ff9c864066a45b195ea5",
+          "sha1": "16f4ffa1540db35730e0d064db8f9b7b300c64fc",
+          "md5": "5c8fc1823168aa607f05a880b3b0e6c6"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.facebook.portal",
+          "module": "context",
+          "version": {
+            "requires": "1.3.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.21"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.3.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "base-1.3.0.aar",
+          "url": "base-1.3.0.aar",
+          "size": 42034,
+          "sha512": "17db3f8ae8593c4e2fc163a6a375c6e44d6957d5da1c4aceff866e7a61ff303cb90c97523e29e75dcfd148692a0abdd7acbd4e536009dc72034d32ca418956d2",
+          "sha256": "f53a97cb9cd8882b7910b0ceb6d4546d3564d1c351f6ff9c864066a45b195ea5",
+          "sha1": "16f4ffa1540db35730e0d064db8f9b7b300c64fc",
+          "md5": "5c8fc1823168aa607f05a880b3b0e6c6"
+        }
+      ]
+    }
+  ]
+}
