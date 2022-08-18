@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -44,6 +45,9 @@ public class FbnsFragment extends Fragment implements FbnsUiListener {
     FbnsMsgSender mMsgSender;
 
     FBNSNotificationsReceiver fbnsNotificationsReceiver;
+
+    private boolean mSendSuccess = true;
+    private boolean mMessageSent = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -142,6 +146,37 @@ public class FbnsFragment extends Fragment implements FbnsUiListener {
 
             }
         }).run();
+    }
+
+    public boolean getMessageSent() {
+        return mMessageSent;
+    }
+
+    @Override
+    public String getSendStatus() {
+        if (mSendSuccess) {
+            return "Success";
+        } else {
+            return "Test Failed";
+        }
+    }
+
+    @Override
+    public @DrawableRes int getSendStatusIcon() {
+        if (mSendSuccess) {
+            return R.drawable.ic_checked;
+        } else {
+            return R.drawable.ic_close_fbns;
+        }
+    }
+
+    @Override
+    public int getSendStatusColor() {
+        if (mSendSuccess) {
+            return R.color.colorSuccess;
+        } else {
+            return R.color.colorFailure;
+        }
     }
 
     public class SpacesItemDecorator extends RecyclerView.ItemDecoration {

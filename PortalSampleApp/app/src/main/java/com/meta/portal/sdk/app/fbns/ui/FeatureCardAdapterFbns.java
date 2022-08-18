@@ -77,7 +77,7 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
                 ((ListViewHolderRegisterFbns) holder).bind(mFbnsData.get(position - 2));
                 break;
             case ITEM_VIEW_TYPE_ITEM_SEND:
-                ((ListViewHolderSendFbns) holder).bind(mFbnsData.get(position - 2));
+                ((ListViewHolderSendFbns) holder).bind(mFbnsData.get(position - 2), mFbnsUiListener);
                 break;
         }
     }

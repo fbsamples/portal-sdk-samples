@@ -34,6 +34,27 @@
         android:textAlignment="textStart"
         android:layout_toRightOf="@+id/feature_number"/>
 
+    <ImageView
+        android:id="@+id/send_icon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/feature_title"/>
+
+    <TextView
+        android:id="@+id/send_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="40dp"
+        android:text="Success"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textAlignment="textStart"
+        android:layout_toRightOf="@+id/send_icon"/>
+
     <EditText
         android:id="@+id/send_message_text"
         android:layout_width="594dp"

@@ -32,4 +32,7 @@
     <color name="headboxColor">#FFFF00</color>
     <color name="light_blue">#FF4FC3F7</color>
 
+    <color name="colorSuccess">#6CD64F</color>
+    <color name="colorFailure">#FA484E</color>
+
 </resources>
