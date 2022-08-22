@@ -30,13 +30,13 @@ class FbnsMsgSender(private val sp: SharedPreferences) {
   @Throws(GraphException::class)
   suspend fun sendNotification(payload: String, tokenId: String) =
       withContext(Dispatchers.Main) {
-        val prevToken = sp.getString(FBNSConstants.PREF_SENDER_ACCESS_TOKEN, null)
+        val prevToken = sp.getString(FbnsConstants.PREF_SENDER_ACCESS_TOKEN, null)
         val accessToken =
             if (prevToken != null) {
               prevToken
             } else {
               val tmpToken = genAccessToken()
-              sp.edit().putString(FBNSConstants.PREF_SENDER_ACCESS_TOKEN, tmpToken).apply()
+              sp.edit().putString(FbnsConstants.PREF_SENDER_ACCESS_TOKEN, tmpToken).apply()
               tmpToken
             }
 
@@ -66,8 +66,8 @@ class FbnsMsgSender(private val sp: SharedPreferences) {
         val connection = openHttpsConnection(GRAPH_URL_CREATE_ACCESS_TOKEN_BASE_FORMAT, "GET")
         val params =
             ArrayList<String>().apply {
-              addKeyValueString(FIELD_CLIENT_ID, FBNSConstants.APP_ID)
-              addKeyValueString(FIELD_CLIENT_SECRET, FBNSConstants.APP_SECRET)
+              addKeyValueString(FIELD_CLIENT_ID, FbnsConstants.APP_ID)
+              addKeyValueString(FIELD_CLIENT_SECRET, FbnsConstants.APP_SECRET)
               addKeyValueString("grant_type", "client_credentials")
             }
         connection.writeParamsToConnection(params)

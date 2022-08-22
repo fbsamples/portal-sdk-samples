@@ -70,9 +70,13 @@ android {
             minifyEnabled false
             crunchPngs false
             signingConfig signingConfigs.release
+            buildConfigField "String", "APP_ID", "\""+config.app_id+"\""
+            buildConfigField "String", "CLIENT_TOKEN", "\""+config.client_token+"\""
+            buildConfigField "String", "APP_SECRET", "\""+config.app_secret+"\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        all {
+
+        debug {
             buildConfigField "String", "APP_ID", "\""+config.app_id+"\""
             buildConfigField "String", "CLIENT_TOKEN", "\""+config.client_token+"\""
             buildConfigField "String", "APP_SECRET", "\""+config.app_secret+"\""

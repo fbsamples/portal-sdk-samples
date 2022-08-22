@@ -7,6 +7,8 @@
     android:id="@+id/card_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="XMLRelativeLayout"
     android:layout_width="299dp"
     android:layout_height="255dp"
     app:cardCornerRadius="32dp"

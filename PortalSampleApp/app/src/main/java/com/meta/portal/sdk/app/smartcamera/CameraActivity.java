@@ -33,7 +33,5 @@ public class CameraActivity extends FeatureBaseActivity {
     ((CameraFragment) mFragment).setFeatureInfoShowing(showing);
   }
 
-  protected void setActivityCallback(ActivityCallback activityCallback) {
-  }
-
+  protected void setActivityCallback(ActivityCallback activityCallback) {}
 }

@@ -79,15 +79,9 @@
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
 
-        <activity
-            android:name="com.meta.portal.sdk.app.fbns.DemoLauncherActivity"
-            android:exported="true"
-            android:theme="@style/Theme.PortalSampleApp">
-        </activity>
-
         <!-- Receivers -->
         <receiver
-            android:name="com.meta.portal.sdk.app.fbns.FBNSNotificationsReceiverGlobal"
+            android:name="com.meta.portal.sdk.app.fbns.FbnsNotificationsReceiverGlobal"
             android:exported="true">
             <intent-filter>
                 <category android:name="com.meta.portal.sdk.app" />

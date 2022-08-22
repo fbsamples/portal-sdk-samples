@@ -2,7 +2,6 @@ package com.meta.portal.sdk.app.privacyshutter;
 
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
-
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.base.ActivityCallback;
 import com.meta.portal.sdk.app.base.FeatureBaseActivity;
@@ -28,11 +27,9 @@ public class PrivacyShutterActivity extends FeatureBaseActivity {
     ((PrivacyShutterCameraFragment) mFragment).updateDebugModeLayoutContainerVisibility(visible);
   }
 
-    protected void setFeatureInfoShowing(boolean showing) {
-        ((PrivacyShutterCameraFragment) mFragment).setFeatureInfoShowing(showing);
-    }
+  protected void setFeatureInfoShowing(boolean showing) {
+    ((PrivacyShutterCameraFragment) mFragment).setFeatureInfoShowing(showing);
+  }
 
-    protected void setActivityCallback(ActivityCallback activityCallback) {
-    }
-
+  protected void setActivityCallback(ActivityCallback activityCallback) {}
 }

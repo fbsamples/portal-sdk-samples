@@ -2,8 +2,8 @@
 <features>
     <feature>
         <visible>true</visible>
-        <screenname>Fbns</screenname>
-        <classnametitle>Lorem_ClassName</classnametitle>
+        <screenname>FBNS</screenname>
+        <classnametitle></classnametitle>
         <backgroundresourceid>ic_notifs_illustration</backgroundresourceid>
         <color>#DA6048</color>
         <classname>com.meta.portal.sdk.app.fbns.FbnsActivity</classname>
@@ -11,7 +11,7 @@
     <feature>
         <visible>true</visible>
         <screenname>Smart Camera </screenname>
-        <classnametitle>Lorem_ClassName</classnametitle>
+        <classnametitle></classnametitle>
         <backgroundresourceid>ic_sce_illustration</backgroundresourceid>
         <color>#EA929D</color>
         <classname>com.meta.portal.sdk.app.smartcamera.SmartCameraActivity</classname>
@@ -19,7 +19,7 @@
     <feature>
         <visible>true</visible>
         <screenname>Privacy Shutter</screenname>
-        <classnametitle>Lorem_ClassName</classnametitle>
+        <classnametitle></classnametitle>
         <backgroundresourceid>ic_privacyshutter_illustration</backgroundresourceid>
         <color>#B997BA</color>
         <classname>com.meta.portal.sdk.app.privacyshutter.PrivacyShutterActivity</classname>

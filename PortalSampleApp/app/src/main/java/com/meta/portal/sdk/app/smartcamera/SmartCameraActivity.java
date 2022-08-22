@@ -1,28 +1,12 @@
 package com.meta.portal.sdk.app.smartcamera;
 
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.meta.portal.sdk.app.R;
-import com.meta.portal.sdk.app.Utils;
 import com.meta.portal.sdk.app.base.BaseActivity;
-import com.meta.portal.sdk.app.base.FeatureBaseActivity;
-import com.meta.portal.sdk.app.data.Feature;
-import com.meta.portal.sdk.app.data.FeatureParser;
 import com.meta.portal.sdk.app.smartcameraEditor.SmartCameraEditorActivity;
-import com.meta.portal.sdk.app.ui.FeatureCardAdapter;
-import com.meta.portal.sdk.app.ui.FeatureCardAdapterListener;
-import com.meta.portal.sdk.app.ui.FeatureCardAdapterTv;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SmartCameraActivity extends BaseActivity {
 

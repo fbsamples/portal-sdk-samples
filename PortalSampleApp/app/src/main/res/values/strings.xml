@@ -7,8 +7,8 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="header_first_title">Welcome to the \nReference App</string>
-    <string name="header_second_title">Explore the SDK</string>
+    <string name="header_first_title">Portal SDK Components </string>
+    <string name="header_second_title">Portal SDK consist of mutiple feature components that enables your App to integrate Portal specific features into your App.</string>
 
     <string name="calling_screen_name">Calling</string>
     <string name="calling_class_name">Lorem_ClassName</string>
@@ -30,8 +30,8 @@
     <string name="calling_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
     <string name="notification_feature_info_header">Notification</string>
     <string name="notification_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
-    <string name="fbns_feature_info_header">Fbns</string>
-    <string name="fbns_feature_info_text">FBNS enables you to integrate with Meta \'s Push Notification Service</string>
+    <string name="fbns_feature_info_header">FBNS</string>
+    <string name="fbns_feature_info_text">FBNS SDK enables you to integrate with Meta \'s Push Notification Service</string>
     <string name="companion_feature_info_header">Companion</string>
     <string name="companion_feature_info_text">Portal Calling offers standard implementations for various VC functionalities and scalable solutions to enrich VC apps with Portal experiences. It assists in areas ranging from Android telephony service integration, to device states handling, to consistent Portal Call Control UX across the platform.</string>
     <string name="handraise_feature_info_header">Hand Raise</string>
@@ -39,9 +39,9 @@
     <string name="smart_camera_feature_info_header">Smart Camera Editor</string>
     <string name="smart_camera_manual_feature_info_header">Smart Camera</string>
     <string name="smart_camera_feature_info_text">Smart Camera Editor abstracts the complexity of integrating Smart Camera Controls into your Application. You can invoke the Smart Camera Editor from you Camera based App to enable users to change Camera modes</string>
-    <string name="smart_camera_manual_feature_info_text">Smart Camera SDK enables you to integrate with Portal\'s Smart Camera implementation</string>
+    <string name="smart_camera_manual_feature_info_text">Smart Camera SDK enables you to integrate with Portal\'s Smart Camera implementation \n \n. Your Camera based Apps can access different Smart Camera modes of Portal Smart Camera using Smart Camera SDK </string>
     <string name="privacy_screen_feature_info_header">Privacy State</string>
-    <string name="privacy_screen_feature_info_text">Privacy State SDK enables you to integrate with Privacy specific feaures of POrtal Device</string>
+    <string name="privacy_screen_feature_info_text">Privacy State SDK enables you to integrate with Privacy specific feaures such as accessing Camera Shutter and Privacy button states of the Portal Device</string>
 
     <string name="camera_error" description="Camera error message">Camera error, exiting activity.</string>
     <string name="default_mode" description="Default Mode">Smart Frame</string>
@@ -55,7 +55,7 @@
     <string name="zoom_in" description="Manual mode zoom in">Zoom In</string>
     <string name="zoom_out" description="Manual mode zoom out">Zoom Out</string>
 
-    <string name="fbns_header_first_title">FBNS</string>
-    <string name="fbns_header_second_title">Complete the following steps to authenticate \n your app with Facebook Notification systems</string>
+    <string name="fbns_header_first_title">Facebook Notifications Service (FBNS)</string>
+    <string name="fbns_header_second_title">Following is the high-level workflow for your App to integrate with FBNS</string>
 
 </resources>

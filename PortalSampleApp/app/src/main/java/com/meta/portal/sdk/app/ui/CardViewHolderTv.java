@@ -1,7 +1,5 @@
 package com.meta.portal.sdk.app.ui;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,24 +7,22 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.data.Feature;
 
 public class CardViewHolderTv extends RecyclerView.ViewHolder {
-    private final CardView mCardView;
-    private final TextView mFeatureName;
-    private final TextView mClassNameTitle;
+  private final CardView mCardView;
+  private final TextView mFeatureName;
+  private final TextView mClassNameTitle;
 
-    private final FrameLayout mBorderView;
-    private final FrameLayout mFeatureIcon;
+  private final FrameLayout mBorderView;
+  private final FrameLayout mFeatureIcon;
 
-    private Feature mFeature;
+  private Feature mFeature;
 
-    private final OnListItemClickedListener mOnListItemClickedListener;
+  private final OnListItemClickedListener mOnListItemClickedListener;
 
   public CardViewHolderTv(
       final View view, final OnListItemClickedListener onListItemClickedListener) {
