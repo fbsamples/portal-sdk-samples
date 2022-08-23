@@ -17,12 +17,15 @@
     <color name="button_default_tv_background">#40FFFFFF</color>
     <color name="button_back_background_pressed">#33FFFFFF</color>
     <color name="top_app_bar_background">#00FFFFFF</color>
+    <color name="top_app_bar_background_fbns">#FF000000</color>
     <color name="button_privacy_shutter_background">#33FFFFFF</color>
     <color name="button_tv_background">#99000000</color>
     <color name="button_privacy_shutter_background_pressed">#66FFFFFF</color>
 
     <color name="feature_info_container_background_tv">#2D2D2D</color>
     <color name="feature_info_text_tv">#EEEDEC</color>
+    <color name="header_fbns_tv">#B3EEEDEC</color>
+    <color name="button_fbns_tv">#40EEEDEC</color>
 
     <color name="layout_line">#FF21BCFF</color>
 

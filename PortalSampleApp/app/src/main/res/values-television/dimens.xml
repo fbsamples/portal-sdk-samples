@@ -1,5 +1,7 @@
 <resources>
     <dimen name="feature_info_margin_left">676dp</dimen>
+    <dimen name="top_app_bar_back_button_width">24dp</dimen>
+    <dimen name="top_app_bar_back_button_height">24dp</dimen>
     <dimen name="top_app_bar_info_button_width">36dp</dimen>
     <dimen name="top_app_bar_info_button_height">36dp</dimen>
     <dimen name="top_app_bar_debug_mode_button_width">150dp</dimen>

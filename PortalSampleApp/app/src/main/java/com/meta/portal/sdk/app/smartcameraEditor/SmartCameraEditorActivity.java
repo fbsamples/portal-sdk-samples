@@ -32,4 +32,9 @@ public class SmartCameraEditorActivity extends FeatureBaseActivity {
   }
 
   protected void setActivityCallback(ActivityCallback activityCallback) {}
+
+  protected boolean topAppBarTransparent() {
+    return true;
+  }
+
 }

@@ -16,13 +16,29 @@
         android:layout_height="match_parent"
         android:paddingStart="15dp">
 
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="@dimen/top_app_bar_back_button_width"
+            android:layout_height="@dimen/top_app_bar_back_button_height"
+            android:src="@drawable/ic_back"
+            android:background="@drawable/button_back_tv"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:layout_marginStart="24dp"
+            android:layout_alignParentStart="true"
+            android:tint="@color/color_selector_tv"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
         <TextView
             android:id="@+id/feature_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:text="Leave demo"
             android:textSize="18dp"
             android:textColor="@color/white"
             android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/back_button"
             android:paddingStart="16dp"/>
 
         <ImageButton

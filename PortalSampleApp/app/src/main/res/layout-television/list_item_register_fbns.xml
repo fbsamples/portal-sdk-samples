@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ (c) Facebook, Inc. and its affiliates. Confidential and proprietary.
+  -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="135dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hairline_height"
+        android:layout_alignParentTop="true"
+        android:background="#26FFFFFF"
+        android:focusable="false"
+        android:clickable="false"/>
+
+    <TextView
+        android:id="@+id/feature_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textAlignment="textStart"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/feature_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginLeft="21dp"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textAlignment="textStart"
+        android:layout_toRightOf="@+id/feature_number"/>
+
+    <TextView
+        android:id="@+id/push_token"
+        android:layout_width="422dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="45dp"
+        android:text="FBNS Push Token"
+        android:background="@drawable/rounded_corner"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:paddingLeft="14dp"
+        android:gravity="center_vertical|start"
+        android:layout_below="@+id/feature_title"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/request_push_token_button"
+        android:layout_width="154dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginLeft="23dp"
+        android:gravity="center"
+        android:text="Request Token"
+        android:textSize="17sp"
+        android:textAllCaps="false"
+        android:textColor="@color/color_selector_tv"
+        android:background="@drawable/button_fbns_tv"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_toRightOf="@+id/push_token"
+        android:layout_alignParentTop="true"
+        android:stateListAnimator="@animator/button_bg_selector"/>
+
+    <ImageButton
+        android:id="@+id/info_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/ic_info"
+        android:background="@drawable/button_back_tv"
+        android:adjustViewBounds="true"
+        android:layout_alignParentEnd="true"
+        android:tint="@color/color_selector_tv"
+        android:stateListAnimator="@animator/button_bg_selector"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hairline_height"
+        android:layout_alignParentBottom="true"
+        android:background="#26FFFFFF"
+        android:focusable="false"
+        android:clickable="false"/>
+
+</RelativeLayout>

@@ -34,4 +34,9 @@ public class CameraActivity extends FeatureBaseActivity {
   }
 
   protected void setActivityCallback(ActivityCallback activityCallback) {}
+
+  protected boolean topAppBarTransparent() {
+    return true;
+  }
+
 }

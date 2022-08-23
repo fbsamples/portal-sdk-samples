@@ -32,4 +32,9 @@ public class PrivacyShutterActivity extends FeatureBaseActivity {
   }
 
   protected void setActivityCallback(ActivityCallback activityCallback) {}
+
+  protected boolean topAppBarTransparent() {
+    return true;
+  }
+
 }

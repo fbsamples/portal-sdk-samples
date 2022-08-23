@@ -32,4 +32,9 @@ public class FbnsActivity extends FeatureBaseActivity {
   protected void setActivityCallback(ActivityCallback activityCallback) {
     ((FbnsFragment) mFragment).setActivityCallback(activityCallback);
   }
+
+  protected boolean topAppBarTransparent() {
+    return false;
+  }
+
 }

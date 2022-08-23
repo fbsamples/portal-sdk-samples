@@ -5,21 +5,102 @@
     tools:ignore="XMLRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".base.FeatureBaseActivity">
+    tools:context=".base.FeatureBaseActivity"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <com.meta.portal.sdk.app.ui.TopAppBar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="XMLRelativeLayout"
+        android:id="@+id/top_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/top_app_bar_background"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="15dp">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="@dimen/top_app_bar_back_button_width"
+                android:layout_height="@dimen/top_app_bar_back_button_height"
+                android:src="@drawable/ic_back"
+                android:background="@drawable/button_back_tv"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:layout_marginStart="24dp"
+                android:layout_alignParentStart="true"
+                android:tint="@color/color_selector_tv"
+                android:stateListAnimator="@animator/button_bg_selector"/>
+
+            <TextView
+                android:id="@+id/feature_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:text="Leave demo"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/back_button"
+                android:paddingStart="16dp"/>
+
+            <ImageButton
+                android:id="@+id/info_button"
+                android:layout_width="@dimen/top_app_bar_info_button_width"
+                android:layout_height="@dimen/top_app_bar_info_button_height"
+                android:src="@drawable/ic_info"
+                android:background="@drawable/button_back_tv"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:layout_marginEnd="28dp"
+                android:layout_toStartOf="@+id/debug_mode_button"
+                android:tint="@color/color_selector_tv"
+                android:stateListAnimator="@animator/button_bg_selector"/>
+
+            <Button
+                android:id="@+id/debug_mode_button"
+                android:layout_width="@dimen/top_app_bar_debug_mode_button_width"
+                android:layout_height="@dimen/top_app_bar_info_button_height"
+                android:text="Debug mode: OFF"
+                android:textSize="14sp"
+                android:textColor="@color/color_selector_tv"
+                android:textAllCaps="false"
+                android:gravity="start|center_vertical"
+                android:paddingStart="16dp"
+                android:background="@drawable/button_debug_tv"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:layout_marginEnd="30dp"
+                android:layout_alignParentEnd="true"
+                android:stateListAnimator="@animator/button_bg_selector"/>
+
+        </RelativeLayout>
+
+    </com.meta.portal.sdk.app.ui.TopAppBar>
 
     <FrameLayout
         android:id="@+id/top_app_bar_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_app_bar"/>
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/card_background"/>
+        android:background="@color/card_background"
+        android:layout_below="@+id/top_app_bar"/>
 
-    <include
-        layout="@layout/toolbar"/>
+<!--    <include-->
+<!--        layout="@layout/toolbar"/>-->
 
     <FrameLayout
         android:id="@+id/feature_container_background"
@@ -83,7 +164,8 @@
         android:id="@+id/feature_container_list_background"
         android:layout_width="@dimen/feature_info_margin_left"
         android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:layout_below="@+id/top_app_bar"/>
 
     <RelativeLayout
         android:id="@+id/feature_info_list_container"
