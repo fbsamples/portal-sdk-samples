@@ -92,25 +92,27 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
     mFeatureInfoText.setText(getFeatureInfoTextResId());
 
     if (!Utils.isTvDevice(this)) {
-      mFeatureInfoContainerBackground.setOnClickListener(
-          new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
-              mFeatureInfoShowing = false;
-              startTopAppBarFadeOutAnimation();
-            }
-          });
-
-      mFeatureInfoContainerListBackground.setOnClickListener(
-          new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
-              mFeatureInfoListShowing = false;
-            }
-          });
+        mFeatureInfoContainerBackground.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
+                        mFeatureInfoShowing = false;
+                        startTopAppBarFadeOutAnimation();
+                    }
+                });
     }
+
+      if (Utils.isTvDevice(this)) {
+          mFeatureInfoContainerListBackground.setOnClickListener(
+                  new View.OnClickListener() {
+                      @Override
+                      public void onClick(View view) {
+                          mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
+                          mFeatureInfoListShowing = false;
+                      }
+                  });
+      }
 
     mFeatureInfoCloseButton.setOnClickListener(
         new View.OnClickListener() {

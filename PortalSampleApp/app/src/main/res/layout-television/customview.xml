@@ -27,7 +27,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginRight="24dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_close"/>
+            android:src="@drawable/ic_close_white"/>
 
         <TextView
             android:layout_width="wrap_content"
