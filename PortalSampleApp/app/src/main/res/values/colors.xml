@@ -28,6 +28,12 @@
     <color name="header_fbns_tv">#B3EEEDEC</color>
     <color name="button_fbns_tv">#40EEEDEC</color>
 
+    <color name="incoming_call_person_name_text">#FDFDFC</color>
+    <color name="incoming_call_person_info_text">#B3FFFFFF</color>
+    <color name="incoming_call_button_not_now_text">#1C1E21</color>
+    <color name="incoming_call_button_default">#1C1E21</color>
+    <color name="incoming_call_answer_button_background">#2E85F2</color>
+
     <color name="layout_line">#FF21BCFF</color>
 
     <color name="colorBlack">#FF000000</color>

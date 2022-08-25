@@ -35,7 +35,8 @@ public class CallingActivity extends BaseActivity {
         mIncomingCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(CallingActivity.this, IncomingCallActivity.class);
+                startActivity(intent);
             }
         });
 

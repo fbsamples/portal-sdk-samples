@@ -37,7 +37,6 @@ public class ListViewHolderRegisterFbns extends RecyclerView.ViewHolder {
         new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-            System.out.println("ReferenceApp ListViewHolderFbns onInfoButtonClicked");
             mFbnsUiListener.onInfoButtonClicked(mFeature);
           }
         });
