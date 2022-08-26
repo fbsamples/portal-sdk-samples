@@ -282,7 +282,7 @@
                 android:id="@+id/hang_up_button"
                 android:layout_width="@dimen/privacy_shutter_camera_button_width"
                 android:layout_height="@dimen/privacy_shutter_camera_button_height"
-                android:src="@drawable/ic_close_white"
+                android:src="@drawable/ic_close_large"
                 android:background="@drawable/button_hang_up"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/privacy_shutter_camera_button_margin_right"
