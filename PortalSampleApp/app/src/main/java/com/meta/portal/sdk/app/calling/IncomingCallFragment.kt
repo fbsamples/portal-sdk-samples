@@ -314,10 +314,12 @@ class IncomingCallFragment : Fragment() {
                 val cameraProvider = cameraProvider
                     ?: throw IllegalStateException("Camera initialization failed.")
                 cameraProvider.unbindAll()
+                viewFinder?.visibility = View.GONE
             } else {
                 //Handle de-select state change
                 // Rebind the camera with the updated display metrics
                 bindCameraUseCases()
+                viewFinder?.visibility = View.VISIBLE
             }
 
         }
@@ -344,8 +346,7 @@ class IncomingCallFragment : Fragment() {
             it.setSelected(!it.isSelected())
 
             if (it.isSelected()) {
-                incomingCallActive = false
-                updateVisibility()
+                activity!!.finish()
             } else {
 
             }
@@ -356,7 +357,7 @@ class IncomingCallFragment : Fragment() {
             it.setSelected(!it.isSelected())
 
             if (it.isSelected()) {
-
+                activity!!.finish()
             } else {
 
             }
