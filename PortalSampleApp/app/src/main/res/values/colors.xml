@@ -33,6 +33,7 @@
     <color name="incoming_call_button_not_now_text">#1C1E21</color>
     <color name="incoming_call_button_default">#1C1E21</color>
     <color name="incoming_call_answer_button_background">#2E85F2</color>
+    <color name="incoming_call_answer_button_background_pressed">#1C80DE</color>
 
     <color name="layout_line">#FF21BCFF</color>
 
