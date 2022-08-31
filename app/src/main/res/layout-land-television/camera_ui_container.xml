@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2020 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="XMLRelativeLayout"
+    android:id="@+id/camera_ui_container"
+    android:layoutDirection="ltr"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <RelativeLayout
+        android:id="@+id/design_mode_layout_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/layout_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hairline_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="88dp"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <View
+            android:id="@+id/layout_view_2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hairline_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="18dp"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <RelativeLayout
+            android:id="@+id/layout_view_3"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="390dp"
+            android:layout_marginBottom="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="140 PX"
+                android:textSize="14sp"
+                android:textColor="@color/layout_line"/>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/layout_view_4"
+            android:layout_width="@dimen/hairline_height"
+            android:layout_height="85dp"
+            android:layout_marginStart="445dp"
+            android:layout_marginBottom="23dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <View
+            android:id="@+id/layout_view_5"
+            android:layout_width="@dimen/hairline_height"
+            android:layout_height="85dp"
+            android:layout_marginStart="514dp"
+            android:layout_marginBottom="23dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/layout_line"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <RelativeLayout
+            android:id="@+id/layout_view_7"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="455dp"
+            android:layout_marginBottom="88dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="140 PX"
+                android:textSize="14sp"
+                android:textColor="@color/layout_line"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.facebook.portal.ui.view.PortalSmartCameraEditorButton
+        android:id="@+id/camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_centerInParent="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,12 @@
+/*
+Important - Do not Upload this file to Github.
+
+This is to ensure that builds are successful internally.
+
+* */
+ext.config = [
+        app_id: "<APP_ID_FROM_META_DEV_PORTAL>",
+        client_token : "<CLIENT_TOKEN_FROM_META_DEV_PORTAL>",
+        /* This is just for running the demo, You should not include App secret in your APK */
+        app_secret  : "<APP_SECRET_FROM_META_DEV_PORTAL>"
+]

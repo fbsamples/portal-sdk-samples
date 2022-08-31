@@ -1,0 +1,35 @@
+/*
+ * Copyright 2022-present, Meta Platforms, Inc. and affiliates
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        if (System.getenv('USE_NEXUS_CACHE') == "1") {
+            maven { url "https://maven.thefacebook.com/nexus/content/repositories/central/" }
+            maven { url "https://maven.thefacebook.com/nexus/content/repositories/maven.google.com/" }
+        } else {
+            mavenCentral()
+            google()
+            jcenter() // Warning: this repository is going to shut down soon
+        }
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.3"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

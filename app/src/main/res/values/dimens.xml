@@ -1,0 +1,55 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="landing_page_horizontal_padding">120dp</dimen>
+    <dimen name="card_width">496dp</dimen>
+    <dimen name="card_height">280dp</dimen>
+    <dimen name="feature_name_margin_left">24dp</dimen>
+    <dimen name="feature_name_margin_bottom">24dp</dimen>
+    <dimen name="feature_name_padding_bottom">4dp</dimen>
+    <dimen name="header_first_padding_top">159dp</dimen>
+    <dimen name="header_first_padding_bottom">60dp</dimen>
+    <dimen name="header_first_padding_left">10dp</dimen>
+    <dimen name="header_first_padding_left_tv">20dp</dimen>
+    <dimen name="header_second_padding_left">10dp</dimen>
+    <dimen name="feature_name_height">32dp</dimen>
+    <dimen name="feature_name_height_tv">28dp</dimen>
+    <dimen name="class_name_title_height">32dp</dimen>
+    <dimen name="class_name_title_height_tv">21dp</dimen>
+    <dimen name="feature_info_margin_left">819dp</dimen>
+    <dimen name="top_app_bar_back_button_width">48dp</dimen>
+    <dimen name="top_app_bar_back_button_height">48dp</dimen>
+    <dimen name="top_app_bar_info_button_width">72dp</dimen>
+    <dimen name="top_app_bar_info_button_height">72dp</dimen>
+    <dimen name="top_app_bar_design_mode_button_width">299dp</dimen>
+    <dimen name="top_app_bar_info_button_margin_end">16dp</dimen>
+    <dimen name="privacy_shutter_camera_button_width">96dp</dimen>
+    <dimen name="privacy_shutter_camera_button_height">96dp</dimen>
+    <dimen name="privacy_shutter_microphone_button_width">96dp</dimen>
+    <dimen name="privacy_shutter_microphone_button_height">96dp</dimen>
+    <dimen name="privacy_shutter_camera_button_margin_right">18dp</dimen>
+
+    <dimen name="margin_xlarge">92dp</dimen>
+    <dimen name="margin_small">32dp</dimen>
+
+    <dimen name="privacy_state_icon_size">40dp</dimen>
+
+    <dimen name="spacing_xsmall">2dp</dimen>
+    <dimen name="spacing_small">4dp</dimen>
+    <dimen name="spacing_medium">8dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+
+    <dimen name="hairline_height">1dp</dimen>
+
+    <dimen name="marginLarge">48dp</dimen>
+    <dimen name="marginSmall">28dp</dimen>
+    <dimen name="marginTiny">16dp</dimen>
+    <dimen name="fixedButtonWidth">100dp</dimen>
+    <dimen name="fontSizeSmall">20sp</dimen>
+    <dimen name="fontSizeMedium">36sp</dimen>
+    <dimen name="fontSizeLarge">48sp</dimen>
+    <dimen name="privacyStateButtonWidth">250dp</dimen>
+    <dimen name="privacyStateTextWidth">300dp</dimen>
+
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<features>
+    <feature>
+        <visible>true</visible>
+        <screenname>FBNS</screenname>
+        <classnametitle></classnametitle>
+        <backgroundresourceid>card_notifs_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.fbns.FbnsActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Calling</screenname>
+        <classnametitle></classnametitle>
+        <backgroundresourceid>card_calling_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.calling.CallingLaunchActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Smart Camera</screenname>
+        <classnametitle></classnametitle>
+        <backgroundresourceid>card_smartcameraeditor_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.smartcamera.SmartCameraActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Privacy Shutter</screenname>
+        <classnametitle></classnametitle>
+        <backgroundresourceid>card_privacy_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.privacyshutter.PrivacyShutterActivity</classname>
+    </feature>
+</features>

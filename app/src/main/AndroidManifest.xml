@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.meta.portal.sdk.app"
+    android:versionCode="1"
+    android:versionName="1.0.0.0.0">
+
+
+    <uses-sdk android:minSdkVersion="26"
+        android:targetSdkVersion="31"/>
+
+    <!-- Declare features -->
+    <uses-feature android:name="android.hardware.camera" />
+
+    <!-- Declare permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.facebook.portal.permission.SHOW_SMART_CAMERA_EDITOR" />
+    <uses-permission android:name="com.facebook.portal.permission.ACCESS_CAMERA_MIC_STATE" />
+    <uses-permission android:name="com.facebook.portal.permission.SMART_CAMERA_CONTROL"/>
+    <uses-permission android:name="com.facebook.portal.permission.SMART_CAMERA_METADATA"/>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <uses-permission android:name="com.facebook.portal.permission.REGISTER_PORTAL_FBNS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="com.facebook.alohaservices.presence.permission.RECEIVE_START_USER_SERVICES" />
+
+    <uses-permission android:name="com.facebook.portal.permission.BIND_PORTAL_VC_SERVICE" />
+    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PortalSampleApp"
+        android:debuggable="true"
+        tools:ignore="HardcodedDebugMode">
+        <activity
+            android:name="com.meta.portal.sdk.app.MainActivity"
+            android:exported="true"
+            android:banner="@drawable/banner"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.PortalSampleApp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.meta.portal.sdk.app.smartcamera.SmartCameraActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+        <activity
+            android:name="com.meta.portal.sdk.app.smartcamera.CameraActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+        <activity
+            android:name="com.meta.portal.sdk.app.smartcameraEditor.SmartCameraEditorActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+        <activity
+            android:name="com.meta.portal.sdk.app.privacyshutter.PrivacyShutterActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+        <activity
+            android:name="com.meta.portal.sdk.app.fbns.FbnsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+
+        <!-- Receivers -->
+        <receiver
+            android:name="com.meta.portal.sdk.app.fbns.FbnsNotificationsReceiverGlobal"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="com.meta.portal.sdk.app" />
+                <action android:name="com.facebook.rti.fbns.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.meta.portal.sdk.app.calling.CallingLaunchActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+
+        <activity
+            android:name="com.meta.portal.sdk.app.calling.CallManagementActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
+
+        <service
+            android:name="com.meta.portal.sdk.app.calling.SampleVoipConnectionService"
+            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.telecom.ConnectionService" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.meta.portal.sdk.app.smartcamera.SmartCameraActivity">
+
+    <TextView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/smart_camera_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="268dp"
+        android:paddingLeft="109dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Smart Camera"
+        android:maxLines="1"
+        android:textSize="72sp"
+        android:textColor="@color/white"
+        tools:text="0"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="222dp"
+        android:layout_marginLeft="776dp">
+
+    <TextView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/smart_camera_button_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Implementations"
+        android:maxLines="1"
+        android:textSize="22sp"
+        android:textColor="#64EEEDEC"
+        android:layout_marginBottom="29dp"
+        tools:text="0"/>
+
+        <Button
+            android:id="@+id/with_ui_button"
+            android:layout_width="404dp"
+            android:layout_height="72dp"
+            android:text="Smart Camera Editor Mode"
+            android:textSize="26sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:gravity="start|center_vertical"
+            android:paddingStart="32dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/button_design"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"/>
+
+        <Button
+            android:id="@+id/without_ui_button"
+            android:layout_width="234dp"
+            android:layout_height="72dp"
+            android:text="Manual Mode"
+            android:textSize="26sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:gravity="start|center_vertical"
+            android:paddingStart="32dp"
+            android:background="@drawable/button_design"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"/>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

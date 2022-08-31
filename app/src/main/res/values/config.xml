@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="press_scale_factor_button" format="float" type="dimen">1.1</item>
+    <item name="focus_scale_factor_button" format="float" type="dimen">1.2</item>
+    <dimen name="press_elevation">4dp</dimen>
+    <dimen name="focus_elevation">6dp</dimen>
+</resources>

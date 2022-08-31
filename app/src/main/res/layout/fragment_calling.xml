@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/call_launch_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.meta.portal.sdk.app.calling.CallingLaunchActivity">
+
+    <TextView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/calling_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="268dp"
+        android:paddingLeft="109dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Start a\nDemo Call"
+        android:textSize="72sp"
+        android:textColor="@color/white"
+        tools:text="0"/>
+
+    <LinearLayout
+        android:layout_width="258dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="222dp"
+        android:layout_marginLeft="776dp">
+
+        <TextView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/calling_button_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Choose a calling method"
+            android:maxLines="1"
+            android:textSize="22sp"
+            android:textColor="#64EEEDEC"
+            android:layout_marginBottom="29dp"
+            tools:text="0"/>
+
+        <Button
+            android:id="@+id/outgoing_call_button"
+            android:layout_width="233dp"
+            android:layout_height="72dp"
+            android:text="Outgoing Call"
+            android:textSize="26sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:gravity="start|center_vertical"
+            android:paddingStart="32dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/button_design"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"/>
+
+        <Button
+            android:id="@+id/incoming_call_button"
+            android:layout_width="234dp"
+            android:layout_height="72dp"
+            android:text="Incoming Call"
+            android:textSize="26sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:gravity="start|center_vertical"
+            android:paddingStart="32dp"
+            android:background="@drawable/button_design"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"/>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

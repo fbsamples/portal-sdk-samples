@@ -1,0 +1,25 @@
+Copyright (c), Meta Platforms, Inc. All rights reserved.
+
+You are hereby granted a limited, revocable (at-will), non-exclusive, non-transferable, non-sublicensable
+license to (a) use internally the Meta Portal SDK and Reference Application as provided solely to develop
+one or more end user applications for use on Meta’s Portal Platform (the “Developer Applications”) and
+(b) solely upon written approval from Meta (which approval may be subject to additional terms and conditions
+and may be given or withheld in Meta’s sole discretion), distribute the Meta Portal SDK to end users only as
+incorporated into the executable form of the Developer Application(s) for use on the Meta Portal platform.
+
+As with any software that integrates with the Meta platform, your use of this software is subject to the
+Meta Platform Terms at https://developers.facebook.com/terms/dfc_platform_terms/. This copyright notice
+and license shall be included in all copies or substantial portions of the software.
+
+
+The Portal SDK and Reference Application may contain open source software that is subject to separate licenses.
+Such open source licenses may provide you with additional rights and may limit the restrictions that Meta is permitted
+to impose with respect to such open source software. In such event, the applicable open source license will take
+precedence over the licenses (and any limitations and restrictions) otherwise set forth in this license document,
+but solely with respect to the applicable open source and solely to the extent required by the applicable open source license.
+You are solely responsible for complying with the provisions of such open source licenses.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

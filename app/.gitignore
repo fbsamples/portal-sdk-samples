@@ -1,0 +1,11 @@
+# Gradle files
+/build
+/.idea
+local.properties
+
+# Android Studio/IntelliJ
+*.iml
+.idea/
+
+# Android Profiling
+*.hprof

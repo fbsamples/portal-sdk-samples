@@ -1,0 +1,35 @@
+/*
+ * Copyright 2022-present, Meta Platforms, Inc. and affiliates
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        if (System.getenv('USE_NEXUS_CACHE') == "1") {
+            maven { url "https://maven.thefacebook.com/nexus/content/repositories/central/" }
+            maven { url "https://maven.thefacebook.com/nexus/content/repositories/maven.google.com/" }
+            maven { url "${rootDir}/portal-local-maven" }
+        } else {
+            mavenCentral()
+            google()
+            jcenter() // Warning: this repository is going to shut down soon
+
+            def local_sdk = new File("${rootDir}/portal-local-maven")
+            if (local_sdk.exists()) {
+                println 'Local SDK Repositry exist'
+                maven { url "${rootDir}/portal-local-maven" }
+            } else {
+                println 'Local SDK Repository not detected, if you intended to use the local SDK version' +
+                        'please make sure to generate it and then try to compile again'
+            }
+        }
+    }
+}
+
+rootProject.name = "PortalSdkReferenceApp"
+include ':app'

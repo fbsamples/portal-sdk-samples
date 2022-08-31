@@ -1,0 +1,14 @@
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/header_text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="116dp"
+    android:paddingBottom="14dp"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text=""
+    android:textSize="72sp"
+    android:textColor="#FDFDFC"
+    android:background="@color/black"
+    tools:text="0"/>
