@@ -10,6 +10,13 @@
     </feature>
     <feature>
         <visible>true</visible>
+        <screenname>Calling</screenname>
+        <backgroundresourceid>ic_calling_illustration</backgroundresourceid>
+        <color>#B997BA</color>
+        <classname>com.meta.portal.sdk.app.calling.CallingLaunchActivity</classname>
+    </feature>
+    <feature>
+        <visible>true</visible>
         <screenname>Smart Camera </screenname>
         <classnametitle></classnametitle>
         <backgroundresourceid>ic_sce_illustration</backgroundresourceid>

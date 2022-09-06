@@ -301,15 +301,7 @@ class CallFragment : Fragment() {
 
         cameraButton = callUiContainer?.findViewById(R.id.camera_button)
 
-        if (Utils.isTvDevice(activity)) {
-            cameraButton?.setEnabled(false)
-        }
-
         microphoneButton = callUiContainer?.findViewById(R.id.microphone_button)
-
-        if (Utils.isTvDevice(activity)) {
-            microphoneButton?.setEnabled(false)
-        }
 
         hangUpButton = callUiContainer?.findViewById(R.id.hang_up_button)
 
@@ -437,6 +429,14 @@ class CallFragment : Fragment() {
         } else {
             cameraButton?.setEnabled(true)
             microphoneButton?.setEnabled(true)
+        }
+    }
+
+    fun onBackPressed() {
+        if (isCallActive) {
+            isCallActive = false
+            callingManager.endCall()
+            callingManager.deinit()
         }
     }
 

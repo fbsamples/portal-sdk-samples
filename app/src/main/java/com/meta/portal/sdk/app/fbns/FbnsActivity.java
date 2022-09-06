@@ -51,4 +51,12 @@ public class FbnsActivity extends FeatureBaseActivity {
     }
   }
 
+  protected boolean infoButtonShowing() {
+    return true;
+  }
+
+  protected boolean designModeButtonShowing() {
+    return true;
+  }
+
 }

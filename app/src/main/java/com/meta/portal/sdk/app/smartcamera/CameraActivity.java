@@ -46,4 +46,12 @@ public class CameraActivity extends FeatureBaseActivity {
     return true;
   }
 
+  protected boolean infoButtonShowing() {
+    return true;
+  }
+
+  protected boolean designModeButtonShowing() {
+    return true;
+  }
+
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="XMLRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.meta.portal.sdk.app.smartcamera.SmartCameraActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/smart_camera_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="160dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="49dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Start a Demo Call"
+            android:maxLines="1"
+            android:textSize="28sp"
+            android:textColor="@color/white"
+            tools:text="0"/>
+
+            <TextView
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/calling_button_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Choose a calling method"
+                android:maxLines="1"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="244dp"
+                android:layout_marginBottom="18dp"
+                android:layout_centerHorizontal="true"
+                tools:text="0"/>
+
+            <Button
+                android:id="@+id/outgoing_call_button"
+                android:layout_width="264dp"
+                android:layout_height="44dp"
+                android:text="Outgoing Call"
+                android:textSize="18sp"
+                android:textColor="@color/color_selector_tv"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:background="@drawable/button_default_mode_background_tv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="283dp"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"
+                android:stateListAnimator="@animator/button_bg_selector"/>
+
+        <Button
+            android:id="@+id/incoming_call_button"
+            android:layout_below="@+id/outgoing_call_button"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:text="Incoming Call"
+            android:textSize="18sp"
+            android:textColor="@color/color_selector_tv"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:background="@drawable/button_default_mode_background_tv"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:stateListAnimator="@animator/button_bg_selector"/>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

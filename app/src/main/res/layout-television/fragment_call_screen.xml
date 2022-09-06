@@ -34,10 +34,10 @@
 
     <androidx.camera.view.PreviewView
         android:id="@+id/view_finder"
-        android:layout_width="426dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="109dp"
-        android:layout_marginLeft="16dp"
+        android:layout_width="212dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="328dp"
+        android:layout_marginLeft="716dp"
         android:visibility="gone"/>
 
 </RelativeLayout>

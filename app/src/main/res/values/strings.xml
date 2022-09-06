@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Portal SDK Sample App</string>
+    <string name="app_name">Portal SDK Reference Application</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -7,8 +7,8 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="header_first_title">Portal SDK Components </string>
-    <string name="header_second_title">Portal SDK consist of mutiple feature components that enables your App to integrate Portal specific features into your App.</string>
+    <string name="header_first_title">Portal SDK Components</string>
+    <string name="header_second_title">Portal SDK consists of multiple feature components that enable you to integrate Portal specific features into your App.</string>
 
     <string name="calling_screen_name">Calling</string>
     <string name="calling_class_name">Lorem_ClassName</string>

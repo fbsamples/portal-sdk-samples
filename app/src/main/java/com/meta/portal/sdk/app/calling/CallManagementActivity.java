@@ -9,35 +9,57 @@
 
 package com.meta.portal.sdk.app.calling;
 
-import android.os.Bundle;
-
-import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
 
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.base.ActivityCallback;
-import com.meta.portal.sdk.app.base.BaseActivity;
 import com.meta.portal.sdk.app.base.FeatureBaseActivity;
 
-public class CallManagementActivity extends BaseActivity {
+public class CallManagementActivity extends FeatureBaseActivity {
 
     private Fragment mFragment;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_call_mgmt);
+    protected Fragment getFragment() {
         mFragment = CallFragment.Companion.newInstance();
+        return mFragment;
+    }
+
+    protected @StringRes
+    int getFeatureInfoHeaderResId() {
+        return R.string.calling_feature_info_header;
+    }
+
+    protected @StringRes int getFeatureInfoTextResId() {
+        return R.string.calling_feature_info_text;
+    }
+
+    protected void updateDesignModeLayoutContainerVisibility(boolean visible) {
+        ((CallFragment) mFragment).updateDesignModeLayoutContainerVisibility(visible);
+    }
+
+    protected void setFeatureInfoShowing(boolean showing) {
+
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        getSupportFragmentManager().beginTransaction()
-                .setReorderingAllowed(true)
-                .add(R.id.fragment_container_view, mFragment, null)
-                .commit();
+    public void onBackPressed() {
+        ((CallFragment) mFragment).onBackPressed();
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void setActivityCallback(ActivityCallback activityCallback) { }
+
+    protected boolean topAppBarTransparent() {
+        return true;
+    }
+
+    protected boolean infoButtonShowing() {
+        return false;
+    }
+
+    protected boolean designModeButtonShowing() {
+        return true;
     }
 }

@@ -100,57 +100,60 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
     mFeatureInfoHeader.setText(getFeatureInfoHeaderResId());
     mFeatureInfoText.setText(getFeatureInfoTextResId());
 
-    if (!Utils.isTvDevice(this)) {
+    if (infoButtonShowing()) {
+      if (!Utils.isTvDevice(this)) {
         mFeatureInfoContainerBackground.setOnClickListener(
                 new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
-                        mFeatureInfoShowing = false;
-                        startTopAppBarFadeOutAnimation();
-                    }
+                  @Override
+                  public void onClick(View view) {
+                    mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
+                    mFeatureInfoShowing = false;
+                    startTopAppBarFadeOutAnimation();
+                  }
                 });
+      }
     }
 
-      if (Utils.isTvDevice(this)) {
-          mFeatureInfoContainerListBackground.setOnClickListener(
-                  new View.OnClickListener() {
-                      @Override
-                      public void onClick(View view) {
-                          mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
-                          mFeatureInfoListShowing = false;
-                      }
-                  });
-      }
+    if (Utils.isTvDevice(this)) {
+      mFeatureInfoContainerListBackground.setOnClickListener(
+              new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                  mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
+                  mFeatureInfoListShowing = false;
+                }
+              });
+    }
+    if (infoButtonShowing()) {
+      mFeatureInfoCloseButton.setOnClickListener(
+              new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                  mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
+                  mFeatureInfoShowing = false;
+                  if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
+                    startTopAppBarFadeOutAnimation();
+                  }
+                  if (Utils.isTvDevice(FeatureBaseActivity.this)) {
+                    setFeatureInfoShowing(mFeatureInfoShowing);
+                  }
+                }
+              });
+    }
 
-    mFeatureInfoCloseButton.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
-            mFeatureInfoShowing = false;
-            if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
-              startTopAppBarFadeOutAnimation();
-            }
-            if (Utils.isTvDevice(FeatureBaseActivity.this)) {
-              setFeatureInfoShowing(mFeatureInfoShowing);
-            }
-          }
-        });
-
-      if (mFeatureInfoListCloseButton != null) {
-          mFeatureInfoListCloseButton.setOnClickListener(
-                  new View.OnClickListener() {
-                      @Override
-                      public void onClick(View view) {
-                          mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
-                          mFeatureInfoListShowing = false;
-                          if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
-                              startTopAppBarFadeOutAnimation();
-                          }
-                      }
-                  });
-      }
+    if (mFeatureInfoListCloseButton != null) {
+      mFeatureInfoListCloseButton.setOnClickListener(
+              new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                  mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
+                  mFeatureInfoListShowing = false;
+                  if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
+                    startTopAppBarFadeOutAnimation();
+                  }
+                }
+              });
+    }
 
     mFeatureInfoAnimationController =
         new FeatureInfoAnimationController(mFeatureInfoContainer, mFeatureInfoContainerBackground);
@@ -159,16 +162,18 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
         new FeatureInfoAnimationController(
             mFeatureInfoListContainer, mFeatureInfoContainerListBackground);
 
-    mFeatureInfoContainer
-        .getViewTreeObserver()
-        .addOnGlobalLayoutListener(
-            new ViewTreeObserver.OnGlobalLayoutListener() {
-              @Override
-              public void onGlobalLayout() {
-                mFeatureInfoContainer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
-              }
-            });
+    if (infoButtonShowing()) {
+      mFeatureInfoContainer
+              .getViewTreeObserver()
+              .addOnGlobalLayoutListener(
+                      new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                          mFeatureInfoContainer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                          mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
+                        }
+                      });
+    }
 
     mTopAppBar = (Toolbar) findViewById(R.id.top_app_bar);
     setSupportActionBar(mTopAppBar);
@@ -202,19 +207,32 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
 
     ImageButton infoButton = (ImageButton) findViewById(R.id.info_button);
 
-    infoButton.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
-            mFeatureInfoShowing = true;
-            if (Utils.isTvDevice(FeatureBaseActivity.this)) {
-              setFeatureInfoShowing(mFeatureInfoShowing);
-            }
-          }
-        });
+    if (!infoButtonShowing()) {
+        infoButton.setVisibility(View.INVISIBLE);
+        mFeatureInfoContainer.setVisibility(View.INVISIBLE);
+        mFeatureInfoContainerBackground.setVisibility(View.INVISIBLE);
+        startTopAppBarFadeOutAnimation();
+    }
+
+    if (infoButtonShowing()) {
+      infoButton.setOnClickListener(
+              new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                  mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
+                  mFeatureInfoShowing = true;
+                  if (Utils.isTvDevice(FeatureBaseActivity.this)) {
+                    setFeatureInfoShowing(mFeatureInfoShowing);
+                  }
+                }
+              });
+    }
 
     Button designModeButton = (Button) findViewById(R.id.design_mode_button);
+
+    if (!designModeButtonShowing()) {
+        designModeButton.setVisibility(View.INVISIBLE);
+    }
 
     designModeButton.setOnClickListener(
         new View.OnClickListener() {
@@ -223,7 +241,7 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
             if (!mDesignModeOn) {
               Spannable designModeText = new SpannableString("Design mode: ON");
               designModeText.setSpan(
-                  new ForegroundColorSpan(Color.GREEN), 12, 14, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                  new ForegroundColorSpan(Color.GREEN), 12, 15, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
               designModeButton.setText(designModeText);
               mDesignModeOn = true;
               updateDesignModeLayoutContainerVisibility(true);
@@ -305,4 +323,8 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
   protected abstract void setActivityCallback(ActivityCallback activityCallback);
 
   protected abstract boolean topAppBarTransparent();
+
+  protected abstract boolean infoButtonShowing();
+
+  protected abstract boolean designModeButtonShowing();
 }
