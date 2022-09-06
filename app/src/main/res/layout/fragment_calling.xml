@@ -37,7 +37,7 @@
             android:text="Choose a calling method"
             android:maxLines="1"
             android:textSize="22sp"
-            android:textColor="#64EEEDEC"
+            android:textColor="#66EEEDEC"
             android:layout_marginBottom="29dp"
             tools:text="0"/>
 

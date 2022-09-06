@@ -54,4 +54,12 @@ public class CallingLaunchActivity extends FeatureBaseActivity {
         return true;
     }
 
+    protected boolean infoButtonShowing() {
+        return true;
+    }
+
+    protected boolean designModeButtonShowing() {
+        return false;
+    }
+
 }
