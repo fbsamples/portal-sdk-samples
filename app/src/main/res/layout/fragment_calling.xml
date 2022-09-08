@@ -37,7 +37,7 @@
             android:text="Choose a calling method"
             android:maxLines="1"
             android:textSize="22sp"
-            android:textColor="#66EEEDEC"
+            android:textColor="#80EEEDEC"
             android:layout_marginBottom="29dp"
             tools:text="0"/>
 
@@ -52,7 +52,7 @@
             android:gravity="start|center_vertical"
             android:paddingStart="32dp"
             android:layout_marginBottom="28dp"
-            android:background="@drawable/button_design"
+            android:background="@drawable/button_calling"
             android:layout_centerVertical="true"
             android:adjustViewBounds="true"/>
 
@@ -66,7 +66,7 @@
             android:textAllCaps="false"
             android:gravity="start|center_vertical"
             android:paddingStart="32dp"
-            android:background="@drawable/button_design"
+            android:background="@drawable/button_calling"
             android:layout_centerVertical="true"
             android:adjustViewBounds="true"/>
 

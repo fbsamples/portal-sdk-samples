@@ -14,8 +14,10 @@
     <color name="button_background">#F2F3F5</color>
     <color name="button_ok_fbns_background">#2E85F2</color>
     <color name="button_back_background">#1AFFFFFF</color>
+    <color name="button_calling_background">#33FFFFFF</color>
     <color name="button_default_tv_background">#40FFFFFF</color>
     <color name="button_back_background_pressed">#33FFFFFF</color>
+    <color name="button_calling_background_pressed">#4DFFFFFF</color>
     <color name="top_app_bar_background">#00FFFFFF</color>
     <color name="top_app_bar_background_fbns">#FF000000</color>
     <color name="button_privacy_shutter_background">#33FFFFFF</color>
