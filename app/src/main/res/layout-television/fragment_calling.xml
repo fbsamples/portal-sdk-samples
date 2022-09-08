@@ -14,7 +14,7 @@
 
         <TextView
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/smart_camera_title"
+            android:id="@+id/calling_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="160dp"
@@ -44,8 +44,8 @@
 
             <Button
                 android:id="@+id/outgoing_call_button"
-                android:layout_width="264dp"
-                android:layout_height="44dp"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
                 android:text="Outgoing Call"
                 android:textSize="18sp"
                 android:textColor="@color/color_selector_tv"
