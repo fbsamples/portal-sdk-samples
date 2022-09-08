@@ -9,57 +9,45 @@
 
 package com.meta.portal.sdk.app.calling;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
-
+import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.base.ActivityCallback;
 import com.meta.portal.sdk.app.base.FeatureBaseActivity;
-import com.meta.portal.sdk.app.R;
 
 public class CallingLaunchActivity extends FeatureBaseActivity {
 
-    private Fragment mFragment;
+  private Fragment mFragment;
 
-    protected Fragment getFragment() {
-        mFragment = CallLaunchFragment.Companion.newInstance();
-        return mFragment;
-    }
+  protected Fragment getFragment() {
+    mFragment = CallLaunchFragment.Companion.newInstance();
+    return mFragment;
+  }
 
-    protected @StringRes
-    int getFeatureInfoHeaderResId() {
-        return R.string.calling_feature_info_header;
-    }
+  protected @StringRes int getFeatureInfoHeaderResId() {
+    return R.string.calling_feature_info_header;
+  }
 
-    protected @StringRes int getFeatureInfoTextResId() {
-        return R.string.calling_feature_info_text;
-    }
+  protected @StringRes int getFeatureInfoTextResId() {
+    return R.string.calling_feature_info_text;
+  }
 
-    protected void updateDesignModeLayoutContainerVisibility(boolean visible) {
+  protected void updateDesignModeLayoutContainerVisibility(boolean visible) {}
 
-    }
+  protected void setFeatureInfoShowing(boolean showing) {}
 
-    protected void setFeatureInfoShowing(boolean showing) {
+  @Override
+  protected void setActivityCallback(ActivityCallback activityCallback) {}
 
-    }
+  protected boolean topAppBarTransparent() {
+    return true;
+  }
 
-    @Override
-    protected void setActivityCallback(ActivityCallback activityCallback) { }
+  protected boolean infoButtonShowing() {
+    return true;
+  }
 
-    protected boolean topAppBarTransparent() {
-        return true;
-    }
-
-    protected boolean infoButtonShowing() {
-        return true;
-    }
-
-    protected boolean designModeButtonShowing() {
-        return false;
-    }
-
+  protected boolean designModeButtonShowing() {
+    return false;
+  }
 }

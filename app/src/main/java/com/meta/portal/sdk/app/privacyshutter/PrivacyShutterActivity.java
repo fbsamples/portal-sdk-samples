@@ -53,5 +53,4 @@ public class PrivacyShutterActivity extends FeatureBaseActivity {
   protected boolean designModeButtonShowing() {
     return true;
   }
-
 }
