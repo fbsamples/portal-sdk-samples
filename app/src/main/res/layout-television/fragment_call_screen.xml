@@ -30,7 +30,7 @@
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
         android:visibility="invisible"
-        android:src="@drawable/avatar_8"/>
+        android:src="@drawable/avatar_9"/>
 
     <androidx.camera.view.PreviewView
         android:id="@+id/view_finder"
