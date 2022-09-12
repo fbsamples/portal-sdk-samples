@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/feature_title"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/fbns_feature_title_width"
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
         android:text=""

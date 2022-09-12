@@ -10,11 +10,19 @@
     android:layout_width="match_parent"
     android:layout_height="250dp">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hairline_height"
+        android:layout_alignParentTop="true"
+        android:background="#26FFFFFF"
+        android:focusable="false"
+        android:clickable="false"/>
+
     <TextView
         android:id="@+id/feature_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="82dp"
         android:layout_marginLeft="10dp"
         android:text=""
         android:textSize="32sp"
@@ -27,7 +35,7 @@
         android:id="@+id/feature_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="82dp"
         android:layout_marginLeft="45dp"
         android:text=""
         android:textSize="32sp"
@@ -37,28 +45,53 @@
         android:layout_toRightOf="@+id/feature_number"/>
 
     <TextView
-        android:id="@+id/rcvd_message_text"
-        android:layout_width="594dp"
-        android:layout_height="134dp"
-        android:layout_below="@+id/feature_title"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="75dp"
+        android:id="@+id/push_token"
+        android:layout_width="603dp"
+        android:layout_height="72dp"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="75dp"
+        android:text="FBNS Push Token"
         android:background="@drawable/rounded_corner"
-        android:gravity="center_vertical|start"
-        android:paddingLeft="29dp"
-        android:text="Received message will appear here"
+        android:textSize="18sp"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:paddingLeft="29dp"
+        android:gravity="center_vertical|start"
+        android:layout_below="@+id/feature_title"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/request_push_token_button"
+        android:layout_width="250dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginLeft="14dp"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/push_token"
+        android:text="Request Token"
+        android:textSize="26sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:background="@drawable/button_fbns_default_ripple"
+        app:backgroundTint="@null"
+        style="?android:attr/borderlessButtonStyle"/>
 
     <ImageButton
         android:id="@+id/info_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="82dp"
         android:src="@drawable/ic_info"
         android:background="#00000000"
         android:adjustViewBounds="true"
         android:layout_alignParentEnd="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hairline_height"
+        android:layout_alignParentBottom="true"
+        android:background="#26FFFFFF"
+        android:focusable="false"
+        android:clickable="false"/>
 
 </RelativeLayout>

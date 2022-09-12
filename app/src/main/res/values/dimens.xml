@@ -16,7 +16,7 @@
     <dimen name="feature_name_height_tv">28dp</dimen>
     <dimen name="class_name_title_height">32dp</dimen>
     <dimen name="class_name_title_height_tv">21dp</dimen>
-    <dimen name="feature_info_margin_left">819dp</dimen>
+    <dimen name="feature_info_margin_left">400dp</dimen>
     <dimen name="top_app_bar_back_button_width">48dp</dimen>
     <dimen name="top_app_bar_back_button_height">48dp</dimen>
     <dimen name="top_app_bar_info_button_width">72dp</dimen>
@@ -28,6 +28,9 @@
     <dimen name="privacy_shutter_microphone_button_width">96dp</dimen>
     <dimen name="privacy_shutter_microphone_button_height">96dp</dimen>
     <dimen name="privacy_shutter_camera_button_margin_right">18dp</dimen>
+    <dimen name="fbns_feature_title_width">500dp</dimen>
+    <dimen name="fbns_push_token_width">350dp</dimen>
+
 
     <dimen name="margin_xlarge">92dp</dimen>
     <dimen name="margin_small">32dp</dimen>

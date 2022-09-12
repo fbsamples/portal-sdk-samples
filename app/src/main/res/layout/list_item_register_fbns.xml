@@ -46,7 +46,7 @@
 
     <TextView
         android:id="@+id/push_token"
-        android:layout_width="603dp"
+        android:layout_width="@dimen/fbns_push_token_width"
         android:layout_height="72dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="75dp"
