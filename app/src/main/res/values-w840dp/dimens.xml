@@ -1,5 +1,0 @@
-<resources>
-    <dimen name="fab_margin">48dp</dimen>
-    <dimen name="fbns_feature_title_width">800dp</dimen>
-    <dimen name="fbns_push_token_width">603dp</dimen>
-</resources>
