@@ -38,7 +38,7 @@
 
     <EditText
         android:id="@+id/send_message_text"
-        android:layout_width="@dimen/fbns_push_token_width"
+        android:layout_width="594dp"
         android:layout_height="134dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="75dp"
