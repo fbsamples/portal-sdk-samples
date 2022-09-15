@@ -7,7 +7,7 @@
  *
  */
 
-package com.meta.portal.sdk.app.fbns.ui;
+package com.meta.portal.sdk.app.accessibility.ui;
 
 import com.meta.portal.sdk.app.data.ListData;
 

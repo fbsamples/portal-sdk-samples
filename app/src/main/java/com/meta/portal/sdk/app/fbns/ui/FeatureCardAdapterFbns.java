@@ -12,7 +12,7 @@ package com.meta.portal.sdk.app.fbns.ui;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.meta.portal.sdk.app.fbns.FbnsData;
+import com.meta.portal.sdk.app.data.ListData;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
 
   private FbnsUiListener mFbnsUiListener;
 
-  private List<FbnsData> mFbnsData = new ArrayList<>();
+  private List<ListData> mFbnsData = new ArrayList<>();
 
   private String mHeaderFirst;
   private String mHeaderSecond;
@@ -125,7 +125,7 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
     mHeaderSecond = headerSecond;
   }
 
-  public void setData(List<FbnsData> features) {
+  public void setData(List<ListData> features) {
     mFbnsData.clear();
     mFbnsData.addAll(features);
     notifyDataSetChanged();

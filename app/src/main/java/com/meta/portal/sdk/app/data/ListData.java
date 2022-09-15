@@ -7,9 +7,9 @@
  *
  */
 
-package com.meta.portal.sdk.app.fbns;
+package com.meta.portal.sdk.app.data;
 
-public class FbnsData {
+public class ListData {
   private String mCardTitle;
   private int mStep;
 

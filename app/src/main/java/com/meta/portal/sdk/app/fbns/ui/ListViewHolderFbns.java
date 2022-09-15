@@ -17,14 +17,14 @@ import android.widget.TextView;
 import androidx.annotation.DrawableRes;
 import androidx.recyclerview.widget.RecyclerView;
 import com.meta.portal.sdk.app.R;
-import com.meta.portal.sdk.app.fbns.FbnsData;
+import com.meta.portal.sdk.app.data.ListData;
 
 public class ListViewHolderFbns extends RecyclerView.ViewHolder {
   private final TextView mFeatureNumber;
   private final TextView mFeatureTitle;
   private final ImageButton mInfoButton;
 
-  private FbnsData mFeature;
+  private ListData mFeature;
 
   private final FbnsUiListener mFbnsUiListener;
 
@@ -44,7 +44,7 @@ public class ListViewHolderFbns extends RecyclerView.ViewHolder {
         });
   }
 
-  public void bind(FbnsData fbnsData) {
+  public void bind(ListData fbnsData) {
     mFeature = fbnsData;
     mFeatureNumber.setText(String.valueOf(fbnsData.getStepIndex()));
     mFeatureTitle.setText(fbnsData.getCardTitle());

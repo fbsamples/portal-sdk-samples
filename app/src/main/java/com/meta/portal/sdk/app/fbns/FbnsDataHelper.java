@@ -10,12 +10,15 @@
 package com.meta.portal.sdk.app.fbns;
 
 import android.content.Context;
+
+import com.meta.portal.sdk.app.data.ListData;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class FbnsDataHelper {
 
-  final List<FbnsData> mFbnsData = new ArrayList<>();
+  final List<ListData> mFbnsData = new ArrayList<>();
   private final Context mContext;
 
   public FbnsDataHelper(Context context) {
@@ -23,28 +26,28 @@ public class FbnsDataHelper {
     initFbnsData();
   }
 
-  public List<FbnsData> getFbnsData() {
+  public List<ListData> getFbnsData() {
     return mFbnsData;
   }
 
   public void updatePushToken(String token) {
-    for (FbnsData data : mFbnsData) {
-      if (data.getStepType() == FbnsData.STEP_TYPE.REGISTER_TOKEN) {
+    for (ListData data : mFbnsData) {
+      if (data.getStepType() == ListData.STEP_TYPE.REGISTER_TOKEN) {
         data.setValueText(token);
       }
     }
   }
 
   public void updateReceivedMessage(String msg) {
-    for (FbnsData data : mFbnsData) {
-      if (data.getStepType() == FbnsData.STEP_TYPE.RECEIVED_MSG) {
+    for (ListData data : mFbnsData) {
+      if (data.getStepType() == ListData.STEP_TYPE.RECEIVED_MSG) {
         data.setValueText(msg);
       }
     }
   }
 
   private void initFbnsData() {
-    FbnsData fbnsDataContact = new FbnsData();
+    ListData fbnsDataContact = new ListData();
     fbnsDataContact.setCardTitle("Contact Meta to get your app enabled for FBNS");
     fbnsDataContact.setStep(1);
     fbnsDataContact.setInfoTitle("Contact Meta to get your app enabled for FBNS");
@@ -53,10 +56,10 @@ public class FbnsDataHelper {
             + "In order for your App to use FBNS, please reach out to your Meta contact to enable FBNS for your App."
             + " You would need to provide your App's signature hash and package name.  ");
     fbnsDataContact.setInfoLink("Learn more at developers.facebook.com");
-    fbnsDataContact.setType(FbnsData.STEP_TYPE.DEFAULT);
+    fbnsDataContact.setType(ListData.STEP_TYPE.DEFAULT);
     mFbnsData.add(fbnsDataContact);
 
-    FbnsData fbnsDataIntegrateSDK = new FbnsData();
+    ListData fbnsDataIntegrateSDK = new ListData();
     fbnsDataIntegrateSDK.setCardTitle("Integrate with FBNS client SDK");
     fbnsDataIntegrateSDK.setStep(2);
     fbnsDataIntegrateSDK.setInfoTitle("Integrate with FBNS client SDK");
@@ -66,10 +69,10 @@ public class FbnsDataHelper {
             + "a)Obtain and Register a Push token;"
             + "and b)Provide Callbacks to receive Push messages from your cloud servers through FBNS");
     fbnsDataIntegrateSDK.setInfoLink("Learn more at developers.facebook.com");
-    fbnsDataIntegrateSDK.setType(FbnsData.STEP_TYPE.DEFAULT);
+    fbnsDataIntegrateSDK.setType(ListData.STEP_TYPE.DEFAULT);
     mFbnsData.add(fbnsDataIntegrateSDK);
 
-    FbnsData fbnsDataRegisterToken = new FbnsData();
+    ListData fbnsDataRegisterToken = new ListData();
     fbnsDataRegisterToken.setCardTitle("Obtain and Register a push token");
     fbnsDataRegisterToken.setStep(3);
     fbnsDataRegisterToken.setInfoTitle("Obtain and Register a push token");
@@ -78,10 +81,10 @@ public class FbnsDataHelper {
             + "\nFBNS SDK enables you to obtain and register a push token for an App instance.");
     fbnsDataRegisterToken.setInfoLink("Learn more at developers.facebook.com");
     fbnsDataRegisterToken.setValueText("");
-    fbnsDataRegisterToken.setType(FbnsData.STEP_TYPE.REGISTER_TOKEN);
+    fbnsDataRegisterToken.setType(ListData.STEP_TYPE.REGISTER_TOKEN);
     mFbnsData.add(fbnsDataRegisterToken);
 
-    FbnsData fbnsDataSendMsg = new FbnsData();
+    ListData fbnsDataSendMsg = new ListData();
     fbnsDataSendMsg.setCardTitle("Send Push messages (JSON Formatted)");
     fbnsDataSendMsg.setStep(4);
     fbnsDataSendMsg.setInfoTitle("Send Push Messages");
@@ -90,10 +93,10 @@ public class FbnsDataHelper {
             + "\nPush Messages needs to be JSON formatted for them to be delivered through FBNS. \n"
             + "\nWe have implemented sending push messages from this App to demo the workflow that would typically be implemented on Server");
     fbnsDataSendMsg.setInfoLink("Learn more at developers.facebook.com");
-    fbnsDataSendMsg.setType(FbnsData.STEP_TYPE.SEND_MSG);
+    fbnsDataSendMsg.setType(ListData.STEP_TYPE.SEND_MSG);
     mFbnsData.add(fbnsDataSendMsg);
 
-    FbnsData fbnsDataRcvdMsg = new FbnsData();
+    ListData fbnsDataRcvdMsg = new ListData();
     fbnsDataRcvdMsg.setCardTitle("Receive a Push Message");
     fbnsDataRcvdMsg.setStep(5);
     fbnsDataRcvdMsg.setInfoTitle("Receive a Push Message");
@@ -101,7 +104,7 @@ public class FbnsDataHelper {
         "FBNS Client SDK delivers the Server orginated Push messages to your App through Broadcast Receivers.");
     fbnsDataRcvdMsg.setInfoLink("Learn more at developers.facebook.com");
     fbnsDataRcvdMsg.setValueText("Received message will appear here..");
-    fbnsDataRcvdMsg.setType(FbnsData.STEP_TYPE.RECEIVED_MSG);
+    fbnsDataRcvdMsg.setType(ListData.STEP_TYPE.RECEIVED_MSG);
     mFbnsData.add(fbnsDataRcvdMsg);
   }
 }

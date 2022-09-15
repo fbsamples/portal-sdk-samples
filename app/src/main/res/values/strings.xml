@@ -42,6 +42,9 @@
     <string name="smart_camera_manual_feature_info_text">Smart Camera SDK enables you to integrate with Portal\'s Smart Camera implementation \n \n. Your Camera based Apps can access different Smart Camera modes of Portal Smart Camera using Smart Camera SDK </string>
     <string name="privacy_screen_feature_info_header">Privacy State</string>
     <string name="privacy_screen_feature_info_text">Privacy State SDK enables you to integrate with Privacy specific feaures such as accessing Camera Shutter and Privacy button states of the Portal Device</string>
+    <string name="accessibility_feature_info_header">Accessibility</string>
+    <string name="accessibility_feature_info_text">Meta is committed to building experiences that everyone can use, which includes people with disabilities along with the tools and technology they rely on.</string>
+
 
     <string name="camera_error" description="Camera error message">Camera error, exiting activity.</string>
     <string name="default_mode" description="Default Mode">Smart Frame</string>
@@ -57,5 +60,9 @@
 
     <string name="fbns_header_first_title">Facebook Notifications Service (FBNS)</string>
     <string name="fbns_header_second_title">Following is the high-level workflow for your App to integrate with FBNS</string>
+    <string name="accessibility_header_first_title">Accessibility</string>
+    <string name="accessibility_header_second_title">Meta is committed to building experiences that everyone can use, which includes people with disabilities along with the tools and technology they rely on. \n \nWe anticipate our partners to do the same by ensuring the following accessibility guidelines are met:</string>
+    <string name="accessibility_footer">Review the Portal Design Guides by going to</string>
+    <string name="accessibility_link"><a href="http://developers.facebook.com/docs/portal/design-guides">developers.facebook.com/docs/portal/design-guides</a></string>
 
 </resources>

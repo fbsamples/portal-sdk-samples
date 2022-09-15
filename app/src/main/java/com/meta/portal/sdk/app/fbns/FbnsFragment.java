@@ -28,6 +28,7 @@ import com.facebook.portal.fbns.AbstractFbnsBroadcastReceiver;
 import com.facebook.portal.fbns.FbnsTokenManager;
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.base.ActivityCallback;
+import com.meta.portal.sdk.app.data.ListData;
 import com.meta.portal.sdk.app.fbns.ui.FbnsUiListener;
 import com.meta.portal.sdk.app.fbns.ui.FeatureCardAdapterFbns;
 
@@ -105,15 +106,15 @@ public class FbnsFragment extends Fragment implements FbnsUiListener {
   }
 
   @Override
-  public void onInfoButtonClicked(FbnsData fbnsData) {
+  public void onInfoButtonClicked(ListData fbnsData) {
     mActivityCallback.onInfoButtonClicked(fbnsData);
   }
 
   @Override
-  public void onActionButtonClicked(FbnsData fbnsData) {
-    if (fbnsData.getStepType() == FbnsData.STEP_TYPE.REGISTER_TOKEN) {
+  public void onActionButtonClicked(ListData fbnsData) {
+    if (fbnsData.getStepType() == ListData.STEP_TYPE.REGISTER_TOKEN) {
       requestAndRegisterPushToken();
-    } else if (fbnsData.getStepType() == FbnsData.STEP_TYPE.SEND_MSG) {
+    } else if (fbnsData.getStepType() == ListData.STEP_TYPE.SEND_MSG) {
       simulateSendPushMessage(fbnsData.getValueText().toString());
     }
   }

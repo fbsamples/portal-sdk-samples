@@ -18,7 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.DrawableRes;
 import androidx.recyclerview.widget.RecyclerView;
 import com.meta.portal.sdk.app.R;
-import com.meta.portal.sdk.app.fbns.FbnsData;
+import com.meta.portal.sdk.app.data.ListData;
 
 public class ListViewHolderRegisterFbns extends RecyclerView.ViewHolder {
   private static final String TAG = "ListViewHolderRegisterFBNS";
@@ -29,7 +29,7 @@ public class ListViewHolderRegisterFbns extends RecyclerView.ViewHolder {
   private final Button mRequestButton;
   private final TextView mPushToken;
 
-  private FbnsData mFeature;
+  private ListData mFeature;
 
   private final FbnsUiListener mFbnsUiListener;
 
@@ -59,7 +59,7 @@ public class ListViewHolderRegisterFbns extends RecyclerView.ViewHolder {
         });
   }
 
-  public void bind(FbnsData fbnsData) {
+  public void bind(ListData fbnsData) {
     mFeature = fbnsData;
     mFeatureNumber.setText(String.valueOf(fbnsData.getStepIndex()));
     mFeatureTitle.setText(fbnsData.getCardTitle());
