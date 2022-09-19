@@ -208,10 +208,12 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
     ImageButton infoButton = (ImageButton) findViewById(R.id.info_button);
 
     if (!infoButtonShowing()) {
-        infoButton.setVisibility(View.INVISIBLE);
-        mFeatureInfoContainer.setVisibility(View.INVISIBLE);
-        mFeatureInfoContainerBackground.setVisibility(View.INVISIBLE);
+      infoButton.setVisibility(View.INVISIBLE);
+      mFeatureInfoContainer.setVisibility(View.INVISIBLE);
+      mFeatureInfoContainerBackground.setVisibility(View.INVISIBLE);
+      if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
         startTopAppBarFadeOutAnimation();
+      }
     }
 
     if (infoButtonShowing()) {
