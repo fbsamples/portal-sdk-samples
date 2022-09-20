@@ -10,6 +10,14 @@
     android:layout_width="match_parent"
     android:layout_height="250dp">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hairline_height"
+        android:layout_alignParentTop="true"
+        android:background="@color/list_divider"
+        android:focusable="false"
+        android:clickable="false"/>
+
     <TextView
         android:id="@+id/feature_number"
         android:layout_width="wrap_content"

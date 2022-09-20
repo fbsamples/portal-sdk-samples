@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/hairline_height"
         android:layout_alignParentTop="true"
-        android:background="#26FFFFFF"
+        android:background="@color/list_divider"
         android:focusable="false"
         android:clickable="false"/>
 
@@ -93,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/hairline_height"
         android:layout_alignParentBottom="true"
-        android:background="#26FFFFFF"
+        android:background="@color/list_divider"
         android:focusable="false"
         android:clickable="false"/>
 
