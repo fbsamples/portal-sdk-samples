@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.facebook.portal.fbns.AbstractFbnsBroadcastReceiver;
 import com.facebook.portal.fbns.FbnsTokenManager;
 import com.meta.portal.sdk.app.R;
+import com.meta.portal.sdk.app.Utils;
 import com.meta.portal.sdk.app.base.ActivityCallback;
 import com.meta.portal.sdk.app.data.ListData;
 import com.meta.portal.sdk.app.fbns.ui.FbnsUiListener;
@@ -83,7 +84,7 @@ public class FbnsFragment extends Fragment implements FbnsUiListener {
 
     mRecyclerView = view.findViewById(R.id.recycler_view);
 
-    mFeatureCardAdapter = new FeatureCardAdapterFbns();
+    mFeatureCardAdapter = new FeatureCardAdapterFbns(Utils.isTvDevice(getActivity()));
     mFeatureCardAdapter.setData(mFbnsDataHelper.getFbnsData());
     mFeatureCardAdapter.setInfoButtonClickedListener(this);
     mFeatureCardAdapter.setHeaderFirst(getString(R.string.fbns_header_first_title));
