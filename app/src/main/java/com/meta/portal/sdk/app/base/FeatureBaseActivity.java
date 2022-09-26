@@ -103,56 +103,56 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
     if (infoButtonShowing()) {
       if (!Utils.isTvDevice(this)) {
         mFeatureInfoContainerBackground.setOnClickListener(
-                new View.OnClickListener() {
-                  @Override
-                  public void onClick(View view) {
-                    mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
-                    mFeatureInfoShowing = false;
-                    startTopAppBarFadeOutAnimation();
-                  }
-                });
+            new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
+                mFeatureInfoShowing = false;
+                startTopAppBarFadeOutAnimation();
+              }
+            });
       }
     }
 
     if (Utils.isTvDevice(this)) {
       mFeatureInfoContainerListBackground.setOnClickListener(
-              new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                  mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
-                  mFeatureInfoListShowing = false;
-                }
-              });
+          new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
+              mFeatureInfoListShowing = false;
+            }
+          });
     }
     if (infoButtonShowing()) {
       mFeatureInfoCloseButton.setOnClickListener(
-              new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                  mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
-                  mFeatureInfoShowing = false;
-                  if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
-                    startTopAppBarFadeOutAnimation();
-                  }
-                  if (Utils.isTvDevice(FeatureBaseActivity.this)) {
-                    setFeatureInfoShowing(mFeatureInfoShowing);
-                  }
-                }
-              });
+          new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              mFeatureInfoAnimationController.startFeatureInfoViewOutAnimation();
+              mFeatureInfoShowing = false;
+              if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
+                startTopAppBarFadeOutAnimation();
+              }
+              if (Utils.isTvDevice(FeatureBaseActivity.this)) {
+                setFeatureInfoShowing(mFeatureInfoShowing);
+              }
+            }
+          });
     }
 
     if (mFeatureInfoListCloseButton != null) {
       mFeatureInfoListCloseButton.setOnClickListener(
-              new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                  mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
-                  mFeatureInfoListShowing = false;
-                  if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
-                    startTopAppBarFadeOutAnimation();
-                  }
-                }
-              });
+          new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              mFeatureInfoListAnimationController.startFeatureInfoViewOutAnimation();
+              mFeatureInfoListShowing = false;
+              if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
+                startTopAppBarFadeOutAnimation();
+              }
+            }
+          });
     }
 
     mFeatureInfoAnimationController =
@@ -164,15 +164,15 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
 
     if (infoButtonShowing()) {
       mFeatureInfoContainer
-              .getViewTreeObserver()
-              .addOnGlobalLayoutListener(
-                      new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @Override
-                        public void onGlobalLayout() {
-                          mFeatureInfoContainer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                          mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
-                        }
-                      });
+          .getViewTreeObserver()
+          .addOnGlobalLayoutListener(
+              new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                  mFeatureInfoContainer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                  mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
+                }
+              });
     }
 
     mTopAppBar = (Toolbar) findViewById(R.id.top_app_bar);
@@ -214,26 +214,27 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
       if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
         startTopAppBarFadeOutAnimation();
       }
+
     }
 
     if (infoButtonShowing()) {
       infoButton.setOnClickListener(
-              new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                  mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
-                  mFeatureInfoShowing = true;
-                  if (Utils.isTvDevice(FeatureBaseActivity.this)) {
-                    setFeatureInfoShowing(mFeatureInfoShowing);
-                  }
-                }
-              });
+          new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              mFeatureInfoAnimationController.startFeatureInfoViewInAnimation();
+              mFeatureInfoShowing = true;
+              if (Utils.isTvDevice(FeatureBaseActivity.this)) {
+                setFeatureInfoShowing(mFeatureInfoShowing);
+              }
+            }
+          });
     }
 
     Button designModeButton = (Button) findViewById(R.id.design_mode_button);
 
     if (!designModeButtonShowing()) {
-        designModeButton.setVisibility(View.INVISIBLE);
+      designModeButton.setVisibility(View.INVISIBLE);
     }
 
     designModeButton.setOnClickListener(
@@ -261,12 +262,13 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
     }
 
     if (Utils.isTvDevice(this)) {
-      mBackButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-          finish();
-        }
-      });
+      mBackButton.setOnClickListener(
+          new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              finish();
+            }
+          });
     }
 
     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

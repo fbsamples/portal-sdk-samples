@@ -58,5 +58,4 @@ public class FbnsActivity extends FeatureBaseActivity {
   protected boolean designModeButtonShowing() {
     return false;
   }
-
 }
