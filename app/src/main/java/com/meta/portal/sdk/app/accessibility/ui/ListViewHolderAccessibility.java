@@ -7,50 +7,49 @@
  *
  */
 
-package com.meta.portal.sdk.app.fbns.ui;
+package com.meta.portal.sdk.app.accessibility.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import androidx.annotation.DrawableRes;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.data.ListData;
 
-public class ListViewHolderRcvdFbns extends RecyclerView.ViewHolder {
+public class ListViewHolderAccessibility extends RecyclerView.ViewHolder {
   private final TextView mFeatureNumber;
   private final TextView mFeatureTitle;
   private final ImageButton mInfoButton;
-  private final TextView mMsgText;
 
   private ListData mFeature;
 
-  private final FbnsUiListener mFbnsUiListener;
+  private final AccessibilityUiListener mAccessibilityUiListener;
 
-  public ListViewHolderRcvdFbns(final View view, final FbnsUiListener fbnsUiListener) {
+  public ListViewHolderAccessibility(final View view, final AccessibilityUiListener accessibilityUiListener) {
     super(view);
-    mFbnsUiListener = fbnsUiListener;
+    mAccessibilityUiListener = accessibilityUiListener;
     mFeatureNumber = (TextView) view.findViewById(R.id.feature_number);
     mFeatureTitle = (TextView) view.findViewById(R.id.feature_title);
     mInfoButton = (ImageButton) view.findViewById(R.id.info_button);
-    mMsgText = (TextView) view.findViewById(R.id.rcvd_message_text);
 
     mInfoButton.setOnClickListener(
         new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-            mFbnsUiListener.onInfoButtonClicked(mFeature);
+            mAccessibilityUiListener.onInfoButtonClicked(mFeature);
           }
         });
   }
 
-  public void bind(ListData fbnsData) {
-    mFeature = fbnsData;
-    mFeatureNumber.setText(String.valueOf(fbnsData.getStepIndex()));
-    mFeatureTitle.setText(fbnsData.getCardTitle());
-    mMsgText.setText(fbnsData.getValueText().toString());
+  public void bind(ListData accessibilityData) {
+    mFeature = accessibilityData;
+    mFeatureNumber.setText(String.valueOf(accessibilityData.getStepIndex()));
+    mFeatureTitle.setText(accessibilityData.getCardTitle());
   }
 
   private @DrawableRes int getBackgroundResource(boolean finished) {
@@ -61,11 +60,10 @@ public class ListViewHolderRcvdFbns extends RecyclerView.ViewHolder {
     }
   }
 
-  public static ListViewHolderRcvdFbns newInstance(
-      final ViewGroup parent, final FbnsUiListener fbnsUiListener) {
-    return new ListViewHolderRcvdFbns(
-        LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.list_item_rcvd_fbns, parent, false),
-        fbnsUiListener);
+  public static ListViewHolderAccessibility newInstance(
+      final ViewGroup parent, final AccessibilityUiListener accessibilityUiListener) {
+    return new ListViewHolderAccessibility(
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_accessibility, parent, false),
+            accessibilityUiListener);
   }
 }

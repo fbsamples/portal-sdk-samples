@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ (c) Facebook, Inc. and its affiliates. Confidential and proprietary.
+  -->
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="XMLRelativeLayout"
     android:layout_width="match_parent"
-    android:layout_height="135dp">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/hairline_height"
-        android:layout_alignParentTop="true"
-        android:background="@color/list_divider"
-        android:focusable="false"
-        android:clickable="false"/>
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <TextView
         android:id="@+id/feature_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="10dp"
         android:text=""
         android:textSize="20sp"
@@ -29,9 +27,10 @@
 
     <TextView
         android:id="@+id/feature_title"
-        android:layout_width="wrap_content"
+        android:layout_width="600dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
         android:layout_marginLeft="21dp"
         android:text=""
         android:textSize="20sp"
@@ -40,31 +39,24 @@
         android:textAlignment="textStart"
         android:layout_toRightOf="@+id/feature_number"/>
 
-    <TextView
-        android:id="@+id/rcvd_message_text"
-        android:layout_width="422dp"
-        android:layout_height="96dp"
-        android:layout_below="@+id/feature_title"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"
-        android:layout_marginLeft="45dp"
-        android:background="@drawable/rounded_corner"
-        android:gravity="center_vertical|start"
-        android:paddingLeft="14dp"
-        android:text="Received message will appear here"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
-
     <ImageButton
         android:id="@+id/info_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="25dp"
         android:src="@drawable/ic_info"
         android:background="@drawable/button_back_tv"
         android:adjustViewBounds="true"
         android:layout_alignParentEnd="true"
         android:tint="@color/color_selector_tv"
         android:stateListAnimator="@animator/button_bg_selector"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hairline_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/list_divider"
+        android:focusable="false"
+        android:clickable="false"/>
 
 </RelativeLayout>

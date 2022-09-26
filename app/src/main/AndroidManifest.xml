@@ -78,6 +78,11 @@
             android:exported="true"
             android:theme="@style/Theme.PortalSampleApp">
         </activity>
+        <activity
+            android:name="com.meta.portal.sdk.app.accessibility.AccessibilityActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PortalSampleApp">
+        </activity>
 
         <!-- Receivers -->
         <receiver

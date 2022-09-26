@@ -28,4 +28,11 @@
         <backgroundresourceid>card_privacy_bkg</backgroundresourceid>
         <classname>com.meta.portal.sdk.app.privacyshutter.PrivacyShutterActivity</classname>
     </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Accessibility</screenname>
+        <classnametitle></classnametitle>
+        <backgroundresourceid>card_notifs_bkg</backgroundresourceid>
+        <classname>com.meta.portal.sdk.app.accessibility.AccessibilityActivity</classname>
+    </feature>
 </features>

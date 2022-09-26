@@ -29,6 +29,7 @@
     <color name="feature_info_text_tv">#EEEDEC</color>
     <color name="header_fbns_tv">#B3EEEDEC</color>
     <color name="button_fbns_tv">#40EEEDEC</color>
+    <color name="list_divider">#33FFFFFF</color>
 
     <color name="incoming_call_person_name_text">#FDFDFC</color>
     <color name="incoming_call_person_info_text">#B3FFFFFF</color>

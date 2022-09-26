@@ -12,7 +12,8 @@ package com.meta.portal.sdk.app.fbns.ui;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.meta.portal.sdk.app.fbns.FbnsData;
+
+import com.meta.portal.sdk.app.data.ListData;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,15 +24,19 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
   private static final int ITEM_VIEW_TYPE_ITEM_REGISTER = 3;
   private static final int ITEM_VIEW_TYPE_ITEM_SEND = 4;
   private static final int ITEM_VIEW_TYPE_ITEM_RCV = 5;
+  private static final int ITEM_VIEW_TYPE_FOOTER = 6;
 
   private static final int HEADER_COUNT = 2;
+  private static final int FOOTER_COUNT = 1;
 
   private FbnsUiListener mFbnsUiListener;
 
-  private List<FbnsData> mFbnsData = new ArrayList<>();
+  private List<ListData> mFbnsData = new ArrayList<>();
 
   private String mHeaderFirst;
   private String mHeaderSecond;
+
+  private boolean mIsTvDevice;
 
   private boolean isHeader1(int position) {
     return position == 0;
@@ -53,7 +58,21 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
     return position == 6;
   }
 
-  public FeatureCardAdapterFbns() {}
+  private boolean isFooter(int position) {
+    return position == 7;
+  }
+
+  private int getFooterCount() {
+    if (mIsTvDevice) {
+      return FOOTER_COUNT;
+    } else {
+      return 0;
+    }
+  }
+
+  public FeatureCardAdapterFbns(boolean isTvDevice) {
+    mIsTvDevice = isTvDevice;
+  }
 
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == ITEM_VIEW_TYPE_HEADER_1) {
@@ -66,6 +85,8 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
       return ListViewHolderSendFbns.newInstance(parent, mFbnsUiListener);
     } else if (viewType == ITEM_VIEW_TYPE_ITEM_RCV) {
       return ListViewHolderRcvdFbns.newInstance(parent, mFbnsUiListener);
+    } else if (viewType == ITEM_VIEW_TYPE_FOOTER) {
+      return FbnsFooterViewHolder.newInstance(parent);
     } else {
       return ListViewHolderFbns.newInstance(parent, mFbnsUiListener);
     }
@@ -92,6 +113,9 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
       case ITEM_VIEW_TYPE_ITEM_RCV:
         ((ListViewHolderRcvdFbns) holder).bind(mFbnsData.get(position - 2));
         break;
+      case ITEM_VIEW_TYPE_FOOTER:
+        ((FbnsFooterViewHolder) holder).bind();
+        break;
     }
   }
 
@@ -107,6 +131,8 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
       return ITEM_VIEW_TYPE_ITEM_SEND;
     } else if (isRcvdListItem(position)) {
       return ITEM_VIEW_TYPE_ITEM_RCV;
+    } else if (isFooter(position)) {
+      return ITEM_VIEW_TYPE_FOOTER;
     } else {
       return ITEM_VIEW_TYPE_ITEM;
     }
@@ -114,7 +140,7 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
 
   @Override
   public int getItemCount() {
-    return mFbnsData.size() + HEADER_COUNT;
+    return mFbnsData.size() + HEADER_COUNT + getFooterCount();
   }
 
   public void setHeaderFirst(final String headerFirst) {
@@ -125,7 +151,7 @@ public class FeatureCardAdapterFbns extends RecyclerView.Adapter<RecyclerView.Vi
     mHeaderSecond = headerSecond;
   }
 
-  public void setData(List<FbnsData> features) {
+  public void setData(List<ListData> features) {
     mFbnsData.clear();
     mFbnsData.addAll(features);
     notifyDataSetChanged();

@@ -7,12 +7,12 @@
  *
  */
 
-package com.meta.portal.sdk.app.fbns.ui;
+package com.meta.portal.sdk.app.accessibility.ui;
 
 import com.meta.portal.sdk.app.data.ListData;
 
-public interface FbnsUiListener {
-  void onInfoButtonClicked(ListData fbnsData);
+public interface AccessibilityUiListener {
+  void onInfoButtonClicked(ListData accessibilityData);
 
-  void onActionButtonClicked(ListData fbnsData);
+//  void onActionButtonClicked(FbnsData fbnsData);
 }

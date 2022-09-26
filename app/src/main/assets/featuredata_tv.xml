@@ -31,5 +31,13 @@
         <color>#B997BA</color>
         <classname>com.meta.portal.sdk.app.privacyshutter.PrivacyShutterActivity</classname>
     </feature>
+    <feature>
+        <visible>true</visible>
+        <screenname>Accessibility</screenname>
+        <classnametitle></classnametitle>
+        <backgroundresourceid>ic_notifs_illustration</backgroundresourceid>
+        <color>#DA6048</color>
+        <classname>com.meta.portal.sdk.app.accessibility.AccessibilityActivity</classname>
+    </feature>
 </features>
 

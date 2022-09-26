@@ -29,7 +29,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.Utils;
-import com.meta.portal.sdk.app.fbns.FbnsData;
+import com.meta.portal.sdk.app.data.ListData;
 import com.meta.portal.sdk.app.ui.FeatureInfoAnimationController;
 import com.meta.portal.sdk.app.ui.TopAppBarAnimationController;
 
@@ -211,7 +211,10 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
       infoButton.setVisibility(View.INVISIBLE);
       mFeatureInfoContainer.setVisibility(View.INVISIBLE);
       mFeatureInfoContainerBackground.setVisibility(View.INVISIBLE);
-      startTopAppBarFadeOutAnimation();
+      if (!Utils.isTvDevice(FeatureBaseActivity.this)) {
+        startTopAppBarFadeOutAnimation();
+      }
+
     }
 
     if (infoButtonShowing()) {
@@ -294,7 +297,7 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
   }
 
   @Override
-  public void onInfoButtonClicked(FbnsData fbnsData) {
+  public void onInfoButtonClicked(ListData fbnsData) {
     mFeatureInfoListHeader.setText(fbnsData.getInfoTitle());
     mFeatureInfoListText.setText(fbnsData.getInfoText());
     mFeatureInfoListLink.setText(fbnsData.getInfoLink());
