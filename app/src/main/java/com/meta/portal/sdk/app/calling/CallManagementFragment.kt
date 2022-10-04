@@ -395,7 +395,8 @@ class CallFragment : Fragment() {
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSIONS_REQUEST_CODE_CAMERA) {
+        if (requestCode == PERMISSIONS_REQUEST_CODE_CAMERA ||
+                requestCode == PERMISSIONS_REQUEST_CODE_MICROPHONE) {
             if (!(PackageManager.PERMISSION_GRANTED == grantResults.firstOrNull())) {
                 activity?.onBackPressed()
             }
