@@ -14,10 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.annotation.DrawableRes;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.data.ListData;
 
@@ -30,7 +28,8 @@ public class ListViewHolderAccessibility extends RecyclerView.ViewHolder {
 
   private final AccessibilityUiListener mAccessibilityUiListener;
 
-  public ListViewHolderAccessibility(final View view, final AccessibilityUiListener accessibilityUiListener) {
+  public ListViewHolderAccessibility(
+      final View view, final AccessibilityUiListener accessibilityUiListener) {
     super(view);
     mAccessibilityUiListener = accessibilityUiListener;
     mFeatureNumber = (TextView) view.findViewById(R.id.feature_number);
@@ -63,7 +62,8 @@ public class ListViewHolderAccessibility extends RecyclerView.ViewHolder {
   public static ListViewHolderAccessibility newInstance(
       final ViewGroup parent, final AccessibilityUiListener accessibilityUiListener) {
     return new ListViewHolderAccessibility(
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_accessibility, parent, false),
-            accessibilityUiListener);
+        LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.list_item_accessibility, parent, false),
+        accessibilityUiListener);
   }
 }

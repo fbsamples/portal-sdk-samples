@@ -14,6 +14,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.graphics.drawable.Icon
 import android.hardware.display.DisplayManager
 import android.os.Bundle
 import android.util.Log
@@ -447,13 +448,17 @@ class CallFragment : Fragment() {
         private const val RATIO_4_3_VALUE = 4.0 / 3.0
         private const val RATIO_16_9_VALUE = 16.0 / 9.0
 
+        private const val APP_PACKAGE_NAME = "com.meta.portal.sdk.app"
 
         private val SELF_ID = UUID.randomUUID().toString()
         private const val SELF_DISPLAY_NAME = "Alice"
+        private val SELF_PROFILE_ICON = Icon.createWithResource(APP_PACKAGE_NAME, R.drawable.avatar_3)
         private val CONTACT_A_ID = UUID.randomUUID().toString()
         private const val CONTACT_A_DISPLAY_NAME = "Bob"
+        private val CONTACT_A_PROFILE_ICON = Icon.createWithResource(APP_PACKAGE_NAME, R.drawable.avatar_7)
         private val CONTACT_B_ID = UUID.randomUUID().toString()
         private const val CONTACT_B_DISPLAY_NAME = "John"
+        private val CONTACT_B_PROFILE_ICON = Icon.createWithResource(APP_PACKAGE_NAME, R.drawable.avatar_5)
 
         fun newInstance(): CallFragment? {
             return CallFragment()
@@ -645,15 +650,21 @@ class CallFragment : Fragment() {
             return VCCallParticipant.newBuilder()
                 .setUserId(SELF_ID)
                 .setDisplayName(SELF_DISPLAY_NAME)
+                // On next SDK push, set the icon
+                // .setProfileIcon(SELF_PROFILE_ICON)
                 .build()
         }
 
         private fun createContactListForOutgoingCall(): List<VCContact> {
-            return listOf(VCContact(CONTACT_A_ID, CONTACT_A_DISPLAY_NAME))
+            // On next SDK push, use this constructor
+            val contact = VCContact(CONTACT_A_ID, CONTACT_A_DISPLAY_NAME, CONTACT_A_PROFILE_ICON)
+            return listOf(contact)
         }
 
         private fun createContactListForIncomingCall(): List<VCContact> {
-            return listOf(VCContact(CONTACT_B_ID, CONTACT_B_DISPLAY_NAME))
+            // On next SDK push, use this constructor
+            val contact = VCContact(CONTACT_B_ID, CONTACT_B_DISPLAY_NAME, CONTACT_B_PROFILE_ICON)
+            return listOf(contact)
         }
     }
 

@@ -12,7 +12,6 @@ package com.meta.portal.sdk.app.fbns.ui;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.meta.portal.sdk.app.data.ListData;
 import java.util.ArrayList;
 import java.util.List;

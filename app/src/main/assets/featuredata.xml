@@ -29,7 +29,7 @@
         <classname>com.meta.portal.sdk.app.privacyshutter.PrivacyShutterActivity</classname>
     </feature>
     <feature>
-        <visible>true</visible>
+        <visible>false</visible>
         <screenname>Accessibility</screenname>
         <classnametitle></classnametitle>
         <backgroundresourceid>card_notifs_bkg</backgroundresourceid>

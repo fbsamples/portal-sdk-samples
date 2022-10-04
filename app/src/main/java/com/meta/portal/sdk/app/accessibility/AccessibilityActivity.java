@@ -11,7 +11,6 @@ package com.meta.portal.sdk.app.accessibility;
 
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
-
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.Utils;
 import com.meta.portal.sdk.app.base.ActivityCallback;
@@ -59,5 +58,4 @@ public class AccessibilityActivity extends FeatureBaseActivity {
   protected boolean designModeButtonShowing() {
     return false;
   }
-
 }

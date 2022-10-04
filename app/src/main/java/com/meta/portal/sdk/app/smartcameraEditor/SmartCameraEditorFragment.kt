@@ -149,8 +149,9 @@ class SmartCameraFragment : Fragment() {
 
     /** Declare and bind preview, capture and analysis use cases */
     private fun bindCameraUseCases() {
-
-        // Get screen metrics used to setup camera for full screen resolution
+        if(!isAdded) {
+            return
+        }
 
         // Get screen metrics used to setup camera for full screen resolution
         val metrics = resources.displayMetrics

@@ -197,6 +197,9 @@ class PrivacyShutterCameraFragment : Fragment() {
 
     /** Declare and bind preview, capture and analysis use cases */
     private fun bindCameraUseCases() {
+        if(!isAdded) {
+            return
+        }
 
         // Get screen metrics used to setup camera for full screen resolution
         val metrics = resources.displayMetrics

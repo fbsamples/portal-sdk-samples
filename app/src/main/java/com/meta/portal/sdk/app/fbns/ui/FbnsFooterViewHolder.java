@@ -12,10 +12,7 @@ package com.meta.portal.sdk.app.fbns.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.meta.portal.sdk.app.R;
 
 public class FbnsFooterViewHolder extends RecyclerView.ViewHolder {
@@ -24,13 +21,10 @@ public class FbnsFooterViewHolder extends RecyclerView.ViewHolder {
     super(itemView);
   }
 
-  public void bind() {
-
-  }
+  public void bind() {}
 
   public static FbnsFooterViewHolder newInstance(final ViewGroup parent) {
     return new FbnsFooterViewHolder(
-        LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.fbns_footer, parent, false));
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.fbns_footer, parent, false));
   }
 }

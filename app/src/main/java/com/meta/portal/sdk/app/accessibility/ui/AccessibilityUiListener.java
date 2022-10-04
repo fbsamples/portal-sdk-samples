@@ -14,5 +14,5 @@ import com.meta.portal.sdk.app.data.ListData;
 public interface AccessibilityUiListener {
   void onInfoButtonClicked(ListData accessibilityData);
 
-//  void onActionButtonClicked(FbnsData fbnsData);
+  //  void onActionButtonClicked(FbnsData fbnsData);
 }

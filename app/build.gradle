@@ -41,7 +41,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //Portal SDK Dependencies
-    def portal_sdk_version = "1.3.0"
+    def portal_sdk_version = "1.4.0"
     implementation "com.facebook.portal:ui:$portal_sdk_version"
     implementation "com.facebook.portal:smartcamera-editor:$portal_sdk_version"
     implementation "com.facebook.portal:systemstate:$portal_sdk_version"

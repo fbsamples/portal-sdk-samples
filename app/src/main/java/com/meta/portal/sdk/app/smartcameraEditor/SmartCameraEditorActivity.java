@@ -53,4 +53,8 @@ public class SmartCameraEditorActivity extends FeatureBaseActivity {
   protected boolean designModeButtonShowing() {
     return true;
   }
+
+  protected boolean verifyCameraState() {
+    return true;
+  }
 }

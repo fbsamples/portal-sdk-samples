@@ -15,12 +15,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.accessibility.ui.AccessibilityUiListener;
 import com.meta.portal.sdk.app.accessibility.ui.FeatureCardAdapterAccessibility;
@@ -39,24 +37,24 @@ public class AccessibilityFragment extends Fragment implements AccessibilityUiLi
 
   private ActivityCallback mActivityCallback;
 
-//  private FbnsTokenManager mFbnsTokenManager;
+  //  private FbnsTokenManager mFbnsTokenManager;
 
-//  FbnsMsgSender mMsgSender;
-//
-//  FBNSNotificationsReceiver fbnsNotificationsReceiver;
+  //  FbnsMsgSender mMsgSender;
+  //
+  //  FBNSNotificationsReceiver fbnsNotificationsReceiver;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mAccessibilityDataHelper = new AccessibilityDataHelper(getActivity());
-//    mFbnsTokenManager =
-//        new FbnsTokenManager(
-//            getActivity().getApplicationContext(),
-//            FbnsConstants.APP_ID,
-//            FbnsConstants.ACCESS_TOKEN);
-//    mMsgSender =
-//        new FbnsMsgSender(
-//            getActivity().getSharedPreferences(FbnsConstants.APP_ID, Context.MODE_PRIVATE));
+    //    mFbnsTokenManager =
+    //        new FbnsTokenManager(
+    //            getActivity().getApplicationContext(),
+    //            FbnsConstants.APP_ID,
+    //            FbnsConstants.ACCESS_TOKEN);
+    //    mMsgSender =
+    //        new FbnsMsgSender(
+    //            getActivity().getSharedPreferences(FbnsConstants.APP_ID, Context.MODE_PRIVATE));
   }
 
   @Override
@@ -70,11 +68,11 @@ public class AccessibilityFragment extends Fragment implements AccessibilityUiLi
   @Override
   public void onViewCreated(final View view, Bundle savedInstanceState) {
 
-//    fbnsNotificationsReceiver = new FBNSNotificationsReceiver();
-//    IntentFilter filter = new IntentFilter();
-//    filter.addCategory("com.meta.portal.sdk.app");
-//    filter.addAction("com.facebook.rti.fbns.intent.RECEIVE");
-//    getActivity().registerReceiver(fbnsNotificationsReceiver, filter);
+    //    fbnsNotificationsReceiver = new FBNSNotificationsReceiver();
+    //    IntentFilter filter = new IntentFilter();
+    //    filter.addCategory("com.meta.portal.sdk.app");
+    //    filter.addAction("com.facebook.rti.fbns.intent.RECEIVE");
+    //    getActivity().registerReceiver(fbnsNotificationsReceiver, filter);
 
     mRecyclerView = view.findViewById(R.id.recycler_view);
 
@@ -129,5 +127,4 @@ public class AccessibilityFragment extends Fragment implements AccessibilityUiLi
       outRect.right = space;
     }
   }
-
 }

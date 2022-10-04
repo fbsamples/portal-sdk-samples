@@ -10,13 +10,9 @@
 package com.meta.portal.sdk.app.accessibility.ui;
 
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.meta.portal.sdk.app.data.ListData;
-import com.meta.portal.sdk.app.fbns.ui.FbnsHeaderSecondViewHolder;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,7 +73,8 @@ public class FeatureCardAdapterAccessibility extends RecyclerView.Adapter<Recycl
         ((AccessibilityFooterViewHolder) holder).bind(mFooter, mLink);
         break;
       case ITEM_VIEW_TYPE_ITEM:
-        ((ListViewHolderAccessibility) holder).bind(mAccessibilityData.get(position - HEADER_COUNT));
+        ((ListViewHolderAccessibility) holder)
+            .bind(mAccessibilityData.get(position - HEADER_COUNT));
         break;
     }
   }

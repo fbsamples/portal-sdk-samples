@@ -10,9 +10,7 @@
 package com.meta.portal.sdk.app.fbns;
 
 import android.content.Context;
-
 import com.meta.portal.sdk.app.data.ListData;
-
 import java.util.ArrayList;
 import java.util.List;
 
