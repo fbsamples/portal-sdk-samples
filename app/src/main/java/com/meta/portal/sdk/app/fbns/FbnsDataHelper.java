@@ -62,10 +62,10 @@ public class FbnsDataHelper {
     fbnsDataIntegrateSDK.setStep(2);
     fbnsDataIntegrateSDK.setInfoTitle("Integrate with FBNS client SDK");
     fbnsDataIntegrateSDK.setInfoText(
-        "FBNS Client SDK abstracts the complexity of integrating with FBNS backend and Graph APIs \n\n."
+        "FBNS Client SDK abstracts the complexity of integrating with FBNS backend and Graph APIs.\n\n"
             + "The SDK would enable you to "
-            + "a)Obtain and Register a Push token;"
-            + "and b)Provide Callbacks to receive Push messages from your cloud servers through FBNS");
+            + "a)Obtain and Register a Push token"
+            + " and b)Provide Callbacks to receive Push messages from your cloud servers through FBNS.");
     fbnsDataIntegrateSDK.setInfoLink("Learn more at developers.facebook.com");
     fbnsDataIntegrateSDK.setType(ListData.STEP_TYPE.DEFAULT);
     mFbnsData.add(fbnsDataIntegrateSDK);
