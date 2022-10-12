@@ -12,6 +12,7 @@ package com.meta.portal.sdk.app.smartcamera;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Matrix;
@@ -43,6 +44,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import com.facebook.portal.systemstate.SystemStateClient;
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.Utils;
 import com.meta.portal.sdk.app.ui.ButtonAnimationControllerTv;
@@ -414,6 +416,35 @@ public class CameraFragment extends Fragment {
   }
 
   private void openCamera(int width, int height) {
+    final Activity activity = getActivity();
+    if (null == activity || activity.isFinishing()) {
+      return;
+    }
+
+    // check camera privacy state
+    final SystemStateClient privacyStateClient = new SystemStateClient(activity);
+    privacyStateClient
+        .isCameraEnabled()
+        .addOnCompleteListener(
+            cameraEnabled -> {
+              privacyStateClient.destroy();
+
+              // show error & finish activity if camera is in privacy state
+              if (cameraEnabled != null && Boolean.FALSE.equals(cameraEnabled.getResult())) {
+                new AlertDialog.Builder(activity)
+                    .setTitle(R.string.smart_camera_manual_feature_info_header)
+                    .setMessage(R.string.smart_camera_disabled_state_text)
+                    .setPositiveButton(
+                        R.string.feature_info_close, (dialogInterface, i) -> activity.finish())
+                    .show();
+                return;
+              }
+
+              openCameraDevice(width, height);
+            });
+  }
+
+  private void openCameraDevice(int width, int height) {
     final Activity activity = getActivity();
     if (null == activity || activity.isFinishing()) {
       return;

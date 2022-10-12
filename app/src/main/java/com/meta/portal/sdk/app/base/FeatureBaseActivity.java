@@ -9,7 +9,6 @@
 
 package com.meta.portal.sdk.app.base;
 
-import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,7 +27,6 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import com.facebook.portal.systemstate.SystemStateClient;
 import com.meta.portal.sdk.app.R;
 import com.meta.portal.sdk.app.Utils;
 import com.meta.portal.sdk.app.data.ListData;
@@ -290,9 +288,6 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
     if (Utils.isTvDevice(FeatureBaseActivity.this)) {
       setFeatureInfoShowing(mFeatureInfoShowing);
     }
-    if (verifyCameraState()) {
-      finishOnDisabledCamera();
-    }
   }
 
   private void startTopAppBarFadeOutAnimation() {
@@ -316,29 +311,6 @@ public abstract class FeatureBaseActivity extends BaseActivity implements Activi
   @Override
   public void updateSystemUiVisibility() {
     return;
-  }
-
-  protected boolean verifyCameraState() {
-    return false;
-  }
-
-  /** Retrieves camera state and shows error if camera is blocked (in a privacy mode) */
-  private void finishOnDisabledCamera() {
-    final SystemStateClient privacyStateClient = new SystemStateClient(this);
-    privacyStateClient
-        .isCameraEnabled()
-        .addOnCompleteListener(
-            cameraEnabled -> {
-              if (cameraEnabled != null && Boolean.FALSE.equals(cameraEnabled.getResult())) {
-                new AlertDialog.Builder(this)
-                    .setTitle(getFeatureInfoHeaderResId())
-                    .setMessage(R.string.smart_camera_disabled_state_text)
-                    .setPositiveButton(
-                        R.string.feature_info_close, (dialogInterface, i) -> finish())
-                    .show();
-              }
-              privacyStateClient.destroy();
-            });
   }
 
   protected abstract Fragment getFragment();

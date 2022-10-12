@@ -53,8 +53,4 @@ public class CameraActivity extends FeatureBaseActivity {
   protected boolean designModeButtonShowing() {
     return true;
   }
-
-  protected boolean verifyCameraState() {
-    return true;
-  }
 }
